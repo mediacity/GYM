@@ -1,0 +1,14 @@
+{
+    "name": "Coupans",
+    "alias": "coupans",
+    "description": "This module is for coupan",
+    "keywords": [],
+    "version" : "1.0",
+    "priority": 0,
+    "providers": [
+        "Modules\\Coupans\\Providers\\CoupansServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
