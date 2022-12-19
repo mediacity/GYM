@@ -49,7 +49,7 @@
                                         value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __('Select userid: Admin,Mrx') }} </small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __('Select userid: Admin,Mrx') }} </small>
                             </div>
                             <div class="form-group{{ $errors->has('service id') ? ' has-error' : '' }}">
                                 <label class="text-dark" for="cars">{{ __("Choose a service id:") }}<span
@@ -63,7 +63,7 @@
                                         value="{{ $service->id}}">{{ $service->name }}</option>
                                     @endforeach
                                 </select>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Select the service") }}
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Select the service") }}
                                 </small>
                             </div>
                             <br>
@@ -90,7 +90,7 @@
                                 {!! Form::textarea('detail', null, ['id' => 'summernote','class' => 'form-control'
                                 ,'required','placeholder' => 'Please Enter Package Detail']) !!}
                                 <small class="text-danger">{{ $errors->first('detail') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Add a  Package Description:This is some basic description") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Add a  Package Description:This is some basic description") }}</small>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -118,7 +118,7 @@
                                 {!! Form::text('comment', null, ['id' => 'summernote','class' => 'form-control'
                                 ,'required','placeholder' => 'Please Enter Comment']) !!}
                                 <small class="text-danger">{{ $errors->first('comment') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> 8
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> 8
                             </div>
                             <div class="form-group">
                                 <div class="text-dark"
@@ -127,8 +127,7 @@
                                         {!! Form::checkbox('is_active', 1,$appointment->is_active==1 ? 1
                                         : 0, ['id' => 'switch1', 'class' => 'custom-control-input'])
                                         !!}
-                                        <label class="custom-control-label" for="switch1">{{ __("Is") }}
-                                            {{ __("Active") }}</label>
+                                        <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                     </div>
                                     <br>
                                     <div class="form-group">

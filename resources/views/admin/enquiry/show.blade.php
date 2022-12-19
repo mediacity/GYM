@@ -1,16 +1,31 @@
 @extends('layouts.master')
 @section('title',__('All Enquiry'))
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-5">
+                <h4 class="page-title">{{ __("Enquiry") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Enquiry') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-7">
+                <div class="top-btn-block text-right">
+
+                    <a href="{{route('enquiry.index')}}" class="btn btn-primary-rgba mr-2"><i
+                    class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+                </div>
+            </div>  
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Enquiry') }}
-@endslot
-@slot('menu1')
-{{ __('Enquiry') }}
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <div class="card m-b-30">
     <div class="card-header">                                
         <div class="row align-items-center">
@@ -33,31 +48,31 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="order-primary-detail mb-4">
                 <h6>{{ __("Name") }}</h6>
-                <p class="mb-0">{{ __($enquiry->name ?? '-') }}</p>
+                <p class="mb-0">{{ ($enquiry->name ?? '-') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="order-primary-detail mb-4">
                 <h6>{{ __("Email ID") }}</h6>
-                <p class="mb-0">{{ __($enquiry->email ?? '-') }}</p>
+                <p class="mb-0">{{($enquiry->email ?? '-') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="order-primary-detail mb-4">
                 <h6>{{ __("Contact No") }}</h6>
-                <p class="mb-0">{{ __($enquiry->mobile ?? '-') }} / {{ __($enquiry->phone ?? '-') }}</p>
+                <p class="mb-0">{{ ($enquiry->mobile ?? '-') }} / {{ ($enquiry->phone ?? '-') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="order-primary-detail mb-4">
                 <h6>{{ __("Age") }}</h6>
-                <p class="mb-0">{{ __($enquiry->age) }}</p>
+                <p class="mb-0">{{ ($enquiry->age) }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="order-primary-detail mb-4">
                 <h6>{{ __("Purpose") }}</h6>
-                <p class="mb-0">{{ __($enquiry->purpose) }}</p>
+                <p class="mb-0">{{ ($enquiry->purpose) }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">

@@ -94,7 +94,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,$exercisename->is_active==1 ? 1 :0, ['id' => 'switch1', 'class'
                                     =>'custom-control-input'])
-                                    !!} <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                    !!} <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
                         </div>

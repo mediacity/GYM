@@ -1,28 +1,33 @@
 @extends('layouts.master')
 @section('title',__('All Members Attendance'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Members Attendance') }}
-@endslot
-@slot('menu1')
-{{ __('Members Attendance') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('memberattendance.create')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-plus mr-2"></i>{{ __("Member Attendance") }}</a>
-        <button type="button" class="btn btn-danger-rgba mr-2" data-toggle="modal" data-target="#bulk_delete"><i
-            class="feather icon-trash"></i>{{ __(" Delete Selected") }}</button>
-        <a href="{{ route('mem.index') }}" class="btn btn-success-rgba mr-2"><i
-            class="feather icon-download-cloud"></i>{{ __("Recycle") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5">
+            <h4 class="page-title">{{ __("Members Attendance") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Members Attendance') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-7">
+            <div class="top-btn-block text-right">
+                <a href="{{route('memberattendance.create')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-plus mr-2"></i>{{ __("Member Attendance") }}</a>
+                <button type="button" class="btn btn-danger-rgba mr-2" data-toggle="modal" data-target="#bulk_delete"><i
+                class="feather icon-trash"></i>{{ __(" Delete Selected") }}</button>
+                <a href="{{ route('mem.index') }}" class="btn btn-success-rgba mr-2"><i
+                class="feather icon-download-cloud mr-2"></i>{{ __("Recycle") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Row  -->
 <div class="row">
     <div class="col-md-12">

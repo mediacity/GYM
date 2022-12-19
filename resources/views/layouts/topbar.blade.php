@@ -38,28 +38,19 @@
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
-        <div class="col-lg-6">
-            <!-- <div class="togglebar">
-                <ul class="list-inline mb-0">
-
-                    <li class="list-inline-item">
-                        <div class="menubar">
-                            <a class="menu-hamburger" href="javascript:void();">
-                                <img src="{{ url('assets/images/svg-icon/menu.svg') }}"
-                                     class="img-fluid menu-hamburger-collapse" alt="menu">
-                                <img src="{{ url('assets/images/svg-icon/close.svg') }}"
-                                     class="img-fluid menu-hamburger-close" alt="close">
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div> -->
+        <div class="col-lg-4 col-md-3">
+            <div class="visit-btn">
+                <a href="#" target="_blank">
+                    <span class="live-icon">Visit Site</span>
+                    <i class="feather icon-external-link" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-8 col-md-9">
             <div class="infobar">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item mr-5 align-self-center">
-                        <i class="fa fa-clock-o mr-1"></i> {{ __(' Your Time is') }} <span class="text-primary" id="timeyours"></span>
+                        <i class="fa fa-clock-o mr-1"></i>{{ __(' Your Time is') }} <span class="text-primary" id="timeyours"></span>
                     </li>
                     @inject('languages','JoeDixon\Translation\Language')
                    
@@ -73,7 +64,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languagelink"
                                      x-placement="bottom-end">
                                      
-                                    @foreach ($languages->get() as $language)
+                                    @foreach ($languages->get() as $key => $language)
                                     <a class="dropdown-item" href="{{ route('languageSwitch',$language->language) }}">
                                         <i class="feather icon-globe"></i>
                                         {{$language->name}} ({{$language->language}})</a>
@@ -120,7 +111,12 @@
                         <div class="profilebar">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="{{ route('profile.index')}}" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{ url('assets/images/users/profile.svg') }}" class="img-fluid" alt="profile">
+                                    @if(Auth::user()->photo != '' && file_exists(public_path().'/media/users/'.Auth::user()->photo))
+                                    <img class="img-fluid" src="{{url('media/users/'.Auth::user()->photo)}}" title="{{ Auth::user()->name }}">
+                                    @else
+                                    <img class="img-fluid" title="{{ Auth::user()->name }}" src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                    @endif
+                                    
                                     <span class="live-icon">{{ Auth::user()->name }}</span>
                                     <span class="feather icon-chevron-down live-icon"></span>
                                 </a>
@@ -164,6 +160,7 @@
  <!-- End Breadcrumbbar -->
  @yield('scripts')
  <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <script>
       $( document ).ready(function() {
         

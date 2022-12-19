@@ -1,18 +1,25 @@
 @extends('layouts.master')
 @section('title',__('Multiple Currency'))
+@section('breadcum')
+	<div class="breadcrumbbar">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8">
+                <h4 class="page-title">{{ __("Multiple Currency Setting") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Multiple Currency') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+          
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-<h4> {{ __('Multiple Currency Setting') }} </h1>
-    @endslot
-    @slot('menu1')
-    {{ __('Multiple Currency') }}
-    @endslot
-    @endcomponent
-    <!-- End Breadcrumbbar -->
     <!-- Start Card -->
-    <div class="col-lg-12">
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="box-header with-border">
@@ -23,7 +30,7 @@
                         class="pull-right btn btn-primary btn-md mr-16 mt--40">+ Add
                         {{ __("Currency") }}</button>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     <table id="currencyTable" class="width100 table table-bordered">
                         <thead>
                             <tr>
@@ -84,10 +91,6 @@
             </div>
             <br><br>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
         <!-- End Card -->
     @endsection
     @section('script')

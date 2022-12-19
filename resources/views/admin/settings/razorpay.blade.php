@@ -24,11 +24,11 @@
 <!-- End Breadcrumbbar -->
 <!-- Start Contentbar -->
 @section('maincontent')
-<div class="contentbar">
+<div class="">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
-        <div class="col-lg-5 col-xl-3">
+        <div class="col-lg-5 col-xl-3 col-md-4">
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title mb-0"><i class="feather icon-credit-card"></i>{{ __(" Payment Method") }}</h5>
@@ -45,7 +45,7 @@
         </div>
         <!-- End col -->
         <!-- Start col -->
-        <div class="col-lg-7 col-xl-9">
+        <div class="col-lg-7 col-xl-9 col-md-8">
             <div class="tab-content" id="v-pills-tabContent">
                 <!-- Dashboard Start -->
                 <div class="tab-pane fade show active payment-setting" id="rpaytab" role="tabpanel">
@@ -71,7 +71,7 @@
                                     <input name="RAZOR_PAY_SECRET" autofocus="" type="text" class="form-control"
                                         placeholder="{{ __("Enter razorpay secret key") }}" value="{{ env('RAZOR_PAY_SECRET') }}">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group member-attendance-slider">
                                     <label class="switch"><input type="checkbox" id="togBtn" name="ENABLE_RAZOR_PAY"
                                             {{ env('ENABLE_RAZOR_PAY') == 1 ? "checked" : ""}}>
                                         <div class="slider round">
@@ -132,7 +132,7 @@
                                         <label class="custom-control-label" for="customRadioInline4">{{ __("Production") }}</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group member-attendance-slider">
                                     <label class="switch"><input type="checkbox" id="togBtn" name="ENABLE_PAYTM_PAY"
                                             {{ env('ENABLE_PAYTM_PAY')==1 ? "checked" : ""}}>
                                         <div class="slider round">

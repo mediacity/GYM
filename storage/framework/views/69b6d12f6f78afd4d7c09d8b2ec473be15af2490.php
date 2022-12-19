@@ -1,1 +1,0 @@
-<?php /**PATH C:\xampp\htdocs\GYM\gym_new\resources\views/message.blade.php ENDPATH**/ ?>

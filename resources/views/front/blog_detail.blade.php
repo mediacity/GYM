@@ -10,18 +10,22 @@
     <link href="{{ url('css/font_awesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
+    @if(in_array(app()->getLocale(),array('ar','he','ur', 'arc', 'az', 'dv', 'ku', 'fa')))
+    <link href="{{ url('assets/css/style_rtl.css') }}" rel="stylesheet" type="text/css">
+    @else 
     <link href="{{ url('css/theme.css') }}" rel="stylesheet" type="text/css">
+    @endif
     <!-- Styles -->
     <style>
-        html,
-        body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-        }
+            html,
+            body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
 
         .full-height {
             height: 100vh;
@@ -71,21 +75,21 @@
     <section id="navbar" class="navbar-main-block">
         <div class="container-xl">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-5 col-md-5">
                     <div class="navbar-logo">
                         <img src="{{ url('media/logo/1670406124GYMX 1 (1).png') }}" class="img-fluid" alt="">
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 col-md-7">
                     <div class="navbar-login-signup-btn">
                         @if (Route::has('login'))
                         <div class="links">
                             @auth
                             @hasrole('Super Admin')
-                                <a href="{{ route('admin.dashboard.index') }}">{{ __("Admin") }}</a>
+                                <a href="{{ route('admin.dashboard.index') }}" class="btn btn-primary mr-2">{{ __("Admin") }}</a>
                             @endhasrole
                             @hasrole('Trainer')
-                            <a href="{{ route('admin.dashboard.index') }}">{{ __("Trainer") }}</a>
+                            <a href="{{ route('admin.dashboard.index') }}" class="btn btn-primary mr-2">{{ __("Trainer") }}</a>
                             @endhasrole
                             @else
                             <a href="{{ route('login') }}" class="btn btn-primary mr-2"><i class="fa-solid fa-right-to-bracket mr-1"></i> {{ __("Login") }}</a>
@@ -115,7 +119,7 @@
     <section id="blog-detail" class="blog-detail-main-block">
         <div class="container-xl">
             <div class="row">
-                <div class="col-lg-8 col-8">
+                <div class="col-lg-8 col-md-8">
                     <div class="blog-detail-block">
                         <div class="blog-detail-image">
                             @if($blog->image !='' && file_exists(public_path().'/image/blog/'.$blog->image))
@@ -154,7 +158,7 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-4 col-md-4">
                     <div class="blog-detail-recent-post">
                         <h3 class="blog-recent-heading">Recent Posts</h3>
                         <div class="recent-block">

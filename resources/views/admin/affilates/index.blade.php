@@ -1,16 +1,23 @@
 @extends('layouts.master')
 @section('title',__('Affilates'))
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5">
+            <h4 class="page-title">{{ __("Affilates") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Affilates') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Affilates') }}
-@endslot
-@slot('menu1')
-{{ __('Affilates') }}
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -39,7 +46,7 @@
                             <div class="custom-switch">
                                 {!! Form::checkbox('status', 1,$affilates->status==1 ? 1 : 0, ['id' =>
                                 'switch1', 'class' => 'custom-control-input']) !!}
-                                <label class="custom-control-label" for="switch1">{{ __('Is Active') }}</label>
+                                <label class="custom-control-label" for="switch1"><span>{{ __('Status') }}</span></label>
                             </div>
                         </div>
                             <div class="form-group">

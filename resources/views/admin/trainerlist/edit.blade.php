@@ -1,26 +1,29 @@
 @extends('layouts.master')
 @section('title',__('Edit Trainer List :eid -',['eid' => $trainerlist->id]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Trainer List') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Trainer') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('trainerlist.index')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Trainer list") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Trainer') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('trainerlist.index')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Form -->
 <form class="form-light" action="{{route('trainerlist.update',$trainerlist->id)}}" method="POST">
     {{ method_field('PUT') }}
@@ -52,7 +55,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the user name") }} </small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the user name") }} </small>
                             </div>
                         </div>
                     </div>
@@ -77,7 +80,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the trainer name which is give to you") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the trainer name which is give to you") }}</small>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -109,7 +112,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted " name="personaltrainer"> <i
+                                <small class="text-muted text-info " name="personaltrainer"> <i
                                         class="text-dark feather icon-help-circle"></i> {{ __("select  your Trainer Type") }}
                                 </small>
                             </div>
@@ -159,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the date from a trainer given to you") }}</small>
+                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the date from a trainer given to you") }}</small>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -172,7 +175,7 @@
                                     description
                                     ']) !!}
                                     <small class="text-danger">{{ $errors->first('description') }}</small>
-                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>
+                                    <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
                                         {{ __(" Describe for which you need a trainer eg: Weigh loss , Gain biceps") }} </small>
                                 </div>
                             </div>

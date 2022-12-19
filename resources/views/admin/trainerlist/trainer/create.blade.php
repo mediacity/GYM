@@ -1,33 +1,36 @@
 @extends('layouts.master')
 @section('title',__('Add Trainer'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Trainer') }}
-@endslot
-@slot('menu1')
-{{ __('Trainer') }}
-@endslot
-@slot('menu2')
-{{ __('Add Trainer') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('trainer.index')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Trainer list") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Add Trainer') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('trainer.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start form -->
 <form  autocomplete="on" class="form-light form" novalidate action="{{route('trainer.store')}}" method="POST">
     {{ csrf_field() }}
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-6">
@@ -59,7 +62,7 @@
                     </div>
                 </div>
             </div>
-             <br>
+             <br> -->
               <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title mb-0">{{ __("Personal Informations") }}</h5>
@@ -102,7 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                           <div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -144,8 +147,8 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="row">
-                                 <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-dark" for="address">{{ __("Address:") }} <span
                                                 class="text-danger">*</span></label>
@@ -220,7 +223,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                  <div class="col-md-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="text-dark" for="address">{{ __("Select City:s") }} <span
                                                 class="text-danger">*</span></label>
@@ -239,7 +242,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                  <div class="col-md-12">
+                                <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -255,7 +258,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
-                                                <small class="text-muted"> <i
+                                                <small class="text-muted text-info"> <i
                                                         class="text-dark feather icon-help-circle"></i> {{ __("Enter your Qualification details") }}
                                                 </small>
                                             </div>
@@ -282,7 +285,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                 <div class="col-md-12">
+                                <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -333,7 +336,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label class="text-dark">{{ __("Trainer Specialization:") }} <span
                                                         class="text-danger">*</span></label>
                                                 <input value="{{ old('specialization') }}" autofocus="" type="text"
@@ -350,76 +355,95 @@
                                                         class="text-dark feather icon-help-circle"></i> {{ __("Enter your Specialization") }}
                                                 </small>
                                             </div>
-                                      
-                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                                                {!! Form::label('rating') !!} -<span class="text-danger">*</span>
-                                              
-                                                <div class="col-md-12">
-                                                    <div class="rating">
-                                                        <label>
-                                                            <input type="radio" name="rating" value="1" />
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="rating" value="2" />
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                    aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span>
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="rating" value="3" />
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                    aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                    aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="rating" value="4" />
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="rating" value="5" />
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                    aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                    aria-hidden="true"></i></span>
-                                                            <span class="icon"><i class="fa fa-star"
-                                                                     aria-hidden="true"></i></span>
-                                                        </label>
-                                                    </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="text-dark">{{ __("Select Image:") }} <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input name="photo" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                                 </div>
                                             </div>
+                                            @if(isset($trainer->photo))
+                                                <img src="{{ url('/assets/images/users/' .$trainer->photo) }}"
+                                                class="img-fluid ">
+                                            @endif
+                                            <small class="text-muted text-info"> <i
+                                                class="text-dark feather icon-help-circle"></i> {{ __("Please select your image") }}
+                                            </small>
+                                                
                                         </div>
-                                         <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <div
-                                                        class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
-                                                        <div class="custom-switch">
-                                                            {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1',
-                                                            'class' =>
-                                                            'custom-control-input']) !!}
-                                                            <label class="custom-control-label"
-                                                                for="switch1">{{ __("Is_Active") }}</label>
-                                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
+                                        {!! Form::label('rating') !!} -<span class="text-danger">*</span>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="rating">
+                                                <label>
+                                                    <input type="radio" name="rating" value="1" />
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="rating" value="2" />
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="rating" value="3" />
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="rating" value="4" />
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="rating" value="5" />
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                            aria-hidden="true"></i></span>
+                                                    <span class="icon"><i class="fa fa-star"
+                                                                aria-hidden="true"></i></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
+                                                    <div class="custom-switch">
+                                                        {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1',
+                                                        'class' =>
+                                                        'custom-control-input']) !!}
+                                                        <label class="custom-control-label"
+                                                            for="switch1"><span>{{ __("Status") }}</span></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -427,11 +451,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>
-                                        {{ __("Create") }}</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>
+                                            {{ __("Create") }}</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="clear-both"></div>

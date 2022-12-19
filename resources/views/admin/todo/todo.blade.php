@@ -1,33 +1,37 @@
 @extends('layouts.master')
 <!-- Start Breadcrumbbar -->
 @section('title',__('Add Todo'))
-@section('maincontent')
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Todo') }}
-@endslot
-@slot('menu1')
-{{ __('Board') }}
-@endslot
-@slot('menu2')
-{{ __('All Board') }}
-@endslot
-@slot('button')
-@if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' )
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{\Request::is('admin/todo') ? '#' : url('admin/todo')}}" class="btn btn-primary-rgba mr-2"
-        id="show"><i class="feather icon-plus mr-2"></i>{{ __("Add Board") }}</a>
-        <a href="{{url('admin/todoboard')}}" class="btn btn-danger-rgba mr-2"><i
-        class="feather icon-list mr-2"></i>{{ __("All Boards") }}</a>
-    </div> 
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-6">
+            <h4 class="page-title">{{ __("Todo") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Board') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('All Board') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+            <div class="top-btn-block text-right">
+                @if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' )
+                    <a href="{{\Request::is('admin/todo') ? '#' : url('admin/todo')}}" class="btn btn-primary-rgba mr-2"
+                    id="show"><i class="feather icon-plus mr-2"></i>{{ __("Add Board") }}</a>
+                    <a href="{{url('admin/todoboard')}}" class="btn btn-danger-rgba mr-2"><i
+                    class="feather icon-list mr-2"></i>{{ __("All Boards") }}</a>
+                @endif
+            </div>
+        </div>
+    </div>
 </div>
-@endif
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Contentbar -->
-<div class="contentbar">
+<div class="">
     <div class="row add-form {{\Request::is('admin/todo') ? 'hide-block' : ''}}">
         <div class="col-lg-12">
             <div class="card m-b-30">
@@ -65,10 +69,10 @@
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group{{ $errors->has('is_public') ? ' has-error' : '' }}">
                                 <div class="row">
-                                    <div class="col-lg-5 col-5">
+                                    <div class="col-lg-5 col-8">
                                         {!! Form::label('is_public', 'If Public Board') !!}
                                     </div>
-                                    <div class="col-lg-2 col-5 custom-switch">
+                                    <div class="col-lg-2 col-4 custom-switch">
                                         {!! Form::checkbox('is_public', 1, isset($todoboard) ? $todoboard->is_public :
                                         0, ['class' => 'custom-control-input']) !!}
                                         <label class="custom-control-label" for="is_public"></label>
@@ -81,10 +85,10 @@
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group{{ $errors->has('todo_active') ? ' has-error' : '' }}">
                                 <div class="row">
-                                    <div class="col-lg-5 col-5">
+                                    <div class="col-lg-5 col-8">
                                         {!! Form::label('todo_active', 'Status') !!}
                                     </div>
-                                    <div class="col-lg-2 col-2 custom-switch">
+                                    <div class="col-lg-2 col-4 custom-switch">
                                         {!! Form::checkbox('todo_active', 1, isset($todoboard) ? $todoboard->is_active :
                                         1, ['class' => 'custom-control-input']) !!}
                                         <label class="custom-control-label" for="todo_active"></label>

@@ -531,7 +531,7 @@
                                         <h5>{{ $todayexercises->user->name }}</h5>
                                         <p>{{ $todayexercises->user->email }}</p>
                                         <p><span
-                                                class="badge badge-primary-inverse">{{ $todayexercises->exercise->exercise_package}}</span>
+                                                class="badge badge-primary-inverse">{{ $todayexercises->exercise->exercise_package ?? ''}}</span>
                                         </p>
                                         <div class="button-list mt-4">
                                             <button type="button" class="btn btn-round btn-secondary-rgba"><i
@@ -694,7 +694,7 @@
     @endcan
     @can('dashboard.users')
     <div class="row">
-        <div class="col-lg-12 col-xl-6">
+        <div class="col-lg-6 col-xl-3 col-sm-6">
             <div class="card m-b-30  shadow-sm">
 
                 <div class="card-body">
@@ -712,7 +712,7 @@
 
             </div>
         </div>
-        <div class="col-lg-12 col-xl-6">
+        <div class="col-lg-6 col-xl-3 col-sm-6">
             <div class="card m-b-30 shadow-sm">
 
                 <div class="card-body">
@@ -743,24 +743,23 @@
     </div>
     @endcan
     @can('dashboard.trainer')
-    <div class="col-lg-12 col-xl-3">
-        <div class="card m-b-30">
-            <div class="blue">
+    <div class="row">
+        <div class="col-lg-6 col-xl-3 col-sm-6">
+            <div class="card m-b-30">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-7">
+                        <div class="col-6">
                             <h2>{{$trainers}}</h2>
-                            <h4>{{ __("User") }}</h4>
+                            <p class="font-14 mb-0">{{ __("User") }}</p>
                         </div>
-                        <div class="col-5 text-right">
-                            <div class="font-40"><a href="{{ route('users.index') }}"><i
-                                        class="feather icon-user-check"></i></a></div>
+                        <div class="col-6 text-right">
+                            <div><a href="{{ route('users.index') }}"><i
+                                        class="feather icon-user-check icondashboard"></i></a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     @endcan
     @can('dashboard.other')

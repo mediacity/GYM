@@ -73,12 +73,12 @@ $("#blog-slider").owlCarousel({
           dots: true,
       },
       600: {
-          items: 1,
+          items: 2,
           nav: false,
           dots: true,
       },
       768: {
-          items: 1,
+          items: 2,
           nav: false,
           dots: true,
       },

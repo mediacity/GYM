@@ -1,27 +1,31 @@
 @extends('layouts.master')
 @section('title',__('Edit Slider :eid -',['eid' => $slider->id]))
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-8">
+                <h4 class="page-title">{{ __("Slider") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Edit Slider') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-4">
+                <div class="top-btn-block  text-right">
+                    <a href="{{route('slider.index')}}" class="btn btn-primary-rgba mr-2"><i
+                    class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+                </div>
+            </div>
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Home') }}
-@endslot
-@slot('menu1')
-{{ __('Slider') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit slider') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6">
-    <a href="{{route('slider.index')}}" class="float-right btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
-</div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <!-- Content Wrapper. Contains page content -->
-<div class="contentbar">
+<div class="">
     <!-- Start row -->
     <div class="row justify-content-center">
         <!-- Start col -->
@@ -40,15 +44,15 @@
                                     @method('PUT')
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-10">
                                                 <div class="form-group text-dark">
-                                                   <label >{{ __("Choose Slider Image:") }}</label>
-                                                   <div class="input-group mb-3">
+                                                    <label >{{ __("Choose Slider Image:") }}</label>
+                                                    <div class="input-group mb-3">
                                                        <div class="custom-file">
                                                          <input type="file" name="image" value="{{ $slider['image'] }}" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                                              <label class="custom-file-label" for="inputGroupFile01">{{ $slider['image'] }}</label>
-                                                            </div>
-                                                         </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 
                                                 <div class="d-none form-group" id="url_box">
@@ -56,16 +60,16 @@
                                                     <input type="url" id="url" name="url" value="{{ $slider['url'] }}"
                                                         class="form-control" placeholder="{{ __("http://www.") }}">
                                                 </div>
-                                                 <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <label>{{ __("Slider Top Heading:") }}</label>
                                                              <span
-                                                        class="text-danger">*</span>
+                                                            class="text-danger">*</span>
                                                             <input name="heading" type="text"
                                                                 value="{{ $slider['heading'] }}"
                                                                 placeholder="{{ __("Enter top heading" ) }}" class="form-control" required="" />
-                                                             </div>
+                                                        </div>
                                                         <div class="col-md-4">
                                                             <label for="">{{ __("Text Color:") }}</label>
                                                             <input class="form-control" type="color" value=""
@@ -73,7 +77,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                  <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <label>{{ __("Slider Sub Heading:") }}</label>
@@ -81,7 +85,7 @@
                                                                 value="{{ $slider['subheading'] }}"
                                                                 placeholder="{{ __("Enter Sub heading") }}" class="form-control" />
                                                         </div>
-                                                         <div class="col-md-4">
+                                                        <div class="col-md-4">
                                                             <label for="">{{ __("Text Color:") }}</label>
                                                             <input class="form-control" type="color" value=""
                                                                 name="subheadingcolor">
@@ -104,8 +108,8 @@
                                                     <button type="submit" class="btn btn-primary-rgba"><i
                                                             class="fa fa-check-circle"></i> {{ __("Update") }}</button>
                                                 </div>
-                                              </div>
-                                            <div class="col-md-6">
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
                                                 <label for="link_by">{{ __("Image Preview:") }}</label>
                                                 <br><br>
                                                 <div >

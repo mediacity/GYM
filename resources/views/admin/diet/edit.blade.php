@@ -1,27 +1,32 @@
 @extends('layouts.master')
 @section('title',__('Edit Diet :eid -',['eid' => $diet->dietname]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Diet') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Diet') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('diet.index')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Diet") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Add Diet') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('diet.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!--Section: Live preview-->
 <form autocomplete="off" novalidate class="form-light" action="{{route('diet.update' , $diet->id)}}" method="POST" novalidate enctype="multipart/form-data">
     @csrf
@@ -46,7 +51,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                        <small class="text-muted"> <i
+                                        <small class="text-muted text-info"> <i
                                                 class="text-dark feather icon-help-circle"></i>{{ __("Enter your diet type eg : Weight Loss, Body Shaping ") }}</small>
                                     </div>
                                 </div>
@@ -69,7 +74,7 @@
                                         'description','class' =>
                                         'form-control' ,'required','placeholder' => 'Your Diet Description']) !!}
                                         <small class="text-danger">{{ $errors->first('description') }}</small>
-                                        <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __("Describe your diet to eat eg : Rice ,Salad") }}</small>
+                                        <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __("Describe your diet to eat eg : Rice ,Salad") }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -77,73 +82,75 @@
                         <div class="col-md-12">
                             <label class="text-dark">{{ __("Diet Includes: ") }}<span class="text-danger">*</span></label>
                             <div class="row">
-                                 <div class="col-md-12 col-sm-12">
-                                     <table class="myTable table table-bordered table-responsive" id="table_field">
-                                        <thead>
-                                            <tr>
-                                                    <th>{{ __("Contents") }}</th>
-                                                    <th>{{ __("Quantity") }}</th>
-                                                    <th>{{ __("Single Calories") }}</th>
-                                                    <th>{{ __("Total Calories") }}</th>
-                                                    <th> </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if(count($diet->diethascontent)>0)
-                                            @foreach($diet->diethascontent as $content)
-                                            <tr id="tableBody" class="tbody">
-                                                 <td><input type="text" name="content[]"
-                                                        class="diet_content form-control" required=""
-                                                        value="{{ $content->content }}">
-                                                    <input class="dietcontentid" type="hidden" name="dietcontentid[]"
-                                                        value="{{ $content->content }}">
-                                                </td>
-                                                 <td><input type="number" min="1" name="quantity[]" value="{{ filter_var($content->quantity) }}" class="form-control quantity  @error('quantity') is-invalid @enderror" value="">
-                                         </td>
-                                          <td><input type="number" min="1" name="single_kal[]" value="{{ filter_var($content->calories/$content->quantity) }}" class="form-control single_kal  @error('single_kal') is-invalid @enderror" value="">
-                                         </td>
-                                          <td><input type="text" value="{{ filter_var( $content->calories) }}" name="dcalories[]" class="form-control dcalories @error('dcalories') is-invalid @enderror" value="">
-                                        </td>
-                                                <td>
-                                                    @if($loop->last)
-                                                        <button class="btn btn-success addNew" type="button">
-                                                            +
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="table-responsive">
+                                        <table class="myTable table table-bordered table-responsive" id="table_field">
+                                            <thead>
+                                                <tr>
+                                                        <th>{{ __("Contents") }}</th>
+                                                        <th>{{ __("Quantity") }}</th>
+                                                        <th>{{ __("Single Calories") }}</th>
+                                                        <th>{{ __("Total Calories") }}</th>
+                                                        <th> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if(count($diet->diethascontent)>0)
+                                                @foreach($diet->diethascontent as $content)
+                                                <tr id="tableBody" class="tbody">
+                                                    <td><input type="text" name="content[]"
+                                                            class="diet_content form-control" required=""
+                                                            value="{{ $content->content }}">
+                                                        <input class="dietcontentid" type="hidden" name="dietcontentid[]"
+                                                            value="{{ $content->content }}">
+                                                    </td>
+                                                    <td><input type="number" min="1" name="quantity[]" value="{{ filter_var($content->quantity) }}" class="form-control quantity  @error('quantity') is-invalid @enderror" value="">
+                                            </td>
+                                            <td><input type="number" min="1" name="single_kal[]" value="{{ filter_var($content->calories/$content->quantity) }}" class="form-control single_kal  @error('single_kal') is-invalid @enderror" value="">
+                                            </td>
+                                            <td><input type="text" value="{{ filter_var( $content->calories) }}" name="dcalories[]" class="form-control dcalories @error('dcalories') is-invalid @enderror" value="">
+                                            </td>
+                                                    <td>
+                                                        @if($loop->last)
+                                                            <button class="btn btn-success addNew" type="button">
+                                                                +
+                                                            </button>
+                                                        @endif
+                                                        <button class="btn btn-danger removeBtn" type="button">
+                                                            -
                                                         </button>
-                                                    @endif
-                                                     <button class="btn btn-danger removeBtn" type="button">
-                                                        -
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                            @else
-                                            <tr id="tableBody" class="tbody">
-                                                <td><input type="text" name="content[]"
-                                                        class="diet_content form-control" required="">
-                                                    <input class="dietcontentid" type="hidden" name="dietcontentid[]"
-                                                        value="">
-                                                </td>
-                                                <td><input type="number" name="quantity[]" id="quantity" class="form-control quantity"
-                                                        required="" value="">
-                                                </td>
-                                                <td><input type="number" min="1" name="single_kal[]"class="form-control single_kal  @error('single_kal') is-invalid @enderror" value="">
-                                         </td>
-                                         <td><input type="text" name="dcalories[]" class="form-control dcalories @error('dcalories') is-invalid @enderror" value="">
-                                       </td>
-                                                <td><button class="btn addNew btn-success" type="button" name="add"
-                                                        id="add" value="+">
-                                                        +</button>
-                                                </td>
-                                                <td><button class="btn removeBtn btn-danger" type="button">
-                                                        - </button>
-                                                </td>
-                                            </tr>
-                                             @endif
-                                        </tbody>
-                                    </table>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                                @else
+                                                <tr id="tableBody" class="tbody">
+                                                    <td><input type="text" name="content[]"
+                                                            class="diet_content form-control" required="">
+                                                        <input class="dietcontentid" type="hidden" name="dietcontentid[]"
+                                                            value="">
+                                                    </td>
+                                                    <td><input type="number" name="quantity[]" id="quantity" class="form-control quantity"
+                                                            required="" value="">
+                                                    </td>
+                                                    <td><input type="number" min="1" name="single_kal[]"class="form-control single_kal  @error('single_kal') is-invalid @enderror" value="">
+                                            </td>
+                                            <td><input type="text" name="dcalories[]" class="form-control dcalories @error('dcalories') is-invalid @enderror" value="">
+                                        </td>
+                                                    <td><button class="btn addNew btn-success" type="button" name="add"
+                                                            id="add" value="+">
+                                                            +</button>
+                                                    </td>
+                                                    <td><button class="btn removeBtn btn-danger" type="button">
+                                                            - </button>
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                  </div>
                                 </div>
-                            <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the content and its calories which your diet need eg : Rice:130 kcal, Tomato:22 kcal") }}
+                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the content and its calories which your diet need eg : Rice:130 kcal, Tomato:22 kcal") }}
                             </small>
                         </div>
                         @error('diet includes')
@@ -170,7 +177,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                        <small class="text-muted"> <i
+                                        <small class="text-muted text-info"> <i
                                                 class="text-dark feather icon-help-circle"></i>{{ __("Enter the day on which you have to eat the diet eg : Monday, Tuesday ") }}</small>
                                         </div>
                                 </div>
@@ -195,7 +202,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                        <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>
+                                        <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
                                            {{ __(" Selecting diet session eg : Morning, Afternoon") }} </small>
 
                                     </div>
@@ -231,7 +238,7 @@
                                                 'switch1', 'class' =>
                                                 'custom-control-input'])
                                                 !!}
-                                                <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                                <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                             </div>
                                         </div>
                                     </div>

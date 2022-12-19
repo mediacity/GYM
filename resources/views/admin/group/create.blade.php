@@ -1,29 +1,32 @@
 @extends('layouts.master')
 @section('title',__('Add Group'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Group') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __('Add Group') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('group.index')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-6">
+            <h4 class="page-title">{{ __("Groups") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Add Groups') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+            <div class="top-btn-block text-right">
+                <a href="{{route('group.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Contentbar -->
-<div class="contentbar">
+<div class="">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -48,7 +51,7 @@
                                     {!! Form::text('name', null, ['class' => 'form-control', 'required','placeholder' =>
                                     'Please Enter Group Name']) !!}
                                     <small class="text-danger">{{ $errors->first('name') }}</small>
-                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter a group name: Weight loss, Weight gain") }}
+                                    <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter a group name: Weight loss, Weight gain") }}
                                     </small>
                                 </div>
                                 <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
@@ -57,7 +60,7 @@
                                     {!! Form::textarea('detail', null, ['id' => 'summernote','class' => 'form-control'
                                     ,'required','placeholder' => 'Please Enter Detail']) !!}
                                     <small class="text-danger">{{ $errors->first('detail') }}</small>
-                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter details") }}
+                                    <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter details") }}
                                     </small>
                                 </div>
                                 <div class="form-group{{ $errors->has('user id') ? ' has-error' : '' }}">
@@ -73,7 +76,7 @@
                                         @endforeach
                                         @endif
                                     </select>
-                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select users: oster,admin") }}
+                                    <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select users: oster,admin") }}
                                     </small>
                                 </div>
                                 <div
@@ -81,7 +84,7 @@
                                     <div class="custom-switch">
                                         {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
                                         'custom-control-input']) !!}
-                                        <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                        <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                     </div>
                                 </div>
                                 <div class="form-group">

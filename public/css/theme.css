@@ -146,8 +146,8 @@ element.style {
 	
 }
 .slider-img {
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	object-fit: cover;
 	border-radius: 6px;
 }
@@ -208,8 +208,8 @@ element.style {
 	top: 12px;
 }
 .manual-img {
-	width:100px; 
-	height:100px; 
+	width:80px; 
+	height:80px; 
 	border-radius:50%; 
 }
 .mt-20 {
@@ -293,13 +293,14 @@ element.style {
 	font-size: 78%;
 }
 .breadcrumbbar-one {
-	padding: 35px 45px 35px 20px;
+	padding: 35px 30px 35px 0;
 }
 .all-user-top-bar .card-header {
 	border-bottom: inherit;
+	padding: 15px 0;
 }
 .user-card {
-    padding: 15px 0 15px 20px;
+    padding: 15px 0;
 }
 .button-list-two .btn-success-rgba {
 	padding: 6px 10px;
@@ -314,6 +315,8 @@ element.style {
 }
 .profilebar img {
 	width: 33px;
+    height: 33px;
+    border-radius: 100%;
 }
 .topbar .infobar .infobar-icon img {
 	width: 27px;
@@ -381,6 +384,7 @@ element.style {
 .home-slider-sub-heading {
 	font-weight: 500;
 	color: #FFF;
+	font-size: 16px;
 }
 .home-slider-block .overlay-bg {
 	position: absolute;
@@ -396,7 +400,6 @@ element.style {
 	transition: all 0.5s ease;      
 }
 .faq-main-block .faq-heading {
-	text-align: center;
 	margin-bottom: 40px;
 	font-weight: 700;
 	color: #2B2A29;
@@ -460,7 +463,6 @@ element.style {
 	position: relative;
 }
 .blog-heading {
-	text-align: center;
 	margin-bottom: 40px;
 	font-weight: 700;
 	color: #2B2A29;
@@ -519,6 +521,8 @@ element.style {
 .blog-date {
     font-size: 14px;
     margin-top: 5px;
+	text-align: right;
+    padding-right: 15px;
 }
 .blog-block .overlay-bg {
 	position: absolute;
@@ -631,6 +635,7 @@ element.style {
 .blog-dtl-heading {
 	color: #2B2A29;
 	font-weight: 700;
+	font-size: 20px;
 }
 .blog-detail-image {
 	position: relative;
@@ -650,10 +655,6 @@ element.style {
 }
 .blog-detail-block .modal-dialog {
 	max-width: 800px;
-}
-.container-xl {
-    padding-right: 20px;
-    padding-left: 20px;
 }
 .play-btn {
     width: 70px;
@@ -720,9 +721,9 @@ element.style {
 	  box-shadow: none;
   
 	}
-  }
+}
   
-  @keyframes pulsate1 {
+@keyframes pulsate1 {
 	0% {
 	  -webkit-transform: scale(0.6);
 	  transform: scale(0.6);
@@ -736,63 +737,83 @@ element.style {
 	  box-shadow: none;
   
 	}
-  }
-  .terms-dtl-main-block {
+}
+.terms-dtl-main-block {
 	background-color: #f2f3f7;
 	padding: 50px 0;
-  }
-  .terms-dtl-block {
+}
+.terms-dtl-block {
 	background-color: #FFF;
-    border-radius: 5px;
-    padding: 50px 70px;
-    box-shadow: 0 0 30px 0 rgb(200 200 200 / 30%);
-  }
-  .terms-dtl-block h2 {
+	border-radius: 5px;
+	padding: 50px 70px;
+	box-shadow: 0 0 30px 0 rgb(200 200 200 / 30%);
+}
+.terms-dtl-block h2 {
 	font-weight: 700;
 	color: #2B2A29;
-  }
+}
 
-  .policy-dtl-main-block {
+.policy-dtl-main-block {
 	background-color: #f2f3f7;
 	padding: 50px 0;
-  }
-  .policy-dtl-block {
+}
+.policy-dtl-block {
 	background-color: #FFF;
-    border-radius: 5px;
-    padding: 50px 70px;
-    box-shadow: 0 0 30px 0 rgb(200 200 200 / 30%);
-  }
-  .policy-dtl-block h2 {
+	border-radius: 5px;
+	padding: 50px 70px;
+	box-shadow: 0 0 30px 0 rgb(200 200 200 / 30%);
+}
+.policy-dtl-block h2 {
 	font-weight: 700;
 	color: #2B2A29;
-  }
-  .footer-logo img {
+}
+.footer-logo img {
 	height: 35px;
-  }
-  .footer-block {
+}
+.footer-block {
 	float: right;
-  }
-  .footer-main-block {
+}
+.footer-main-block {
 	background-color: #2B2A29;
 	padding: 20px 0;
-  }
-  .footer-block p {
+}
+.footer-block p {
 	margin-bottom: 0;
 	color: #FFF;
-  }
-  .footer-logo {
-    padding: 10px 0;
-  }
-  .footer-block span a {
+}
+.footer-logo {
+	padding: 10px 0;
+}
+.footer-block span a {
 	color: #FF6500;
 	text-decoration: none;
-  }
+}
+.btn-primary.focus, 
+.btn-primary:focus {
+  	box-shadow: inherit;
+}
+.btn-primary:not(:disabled):not(.disabled):active {
+	box-shadow: inherit;
+	background-color: #FF6500;
+	border-color: #FF6500;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+	box-shadow: inherit;
+}
+.recent-block .blog-date {
+	text-align: left;
+	padding-right: 0;
+}
+.auth-img-logo-box {
+	background-color: #2B2A29;
+}
 
 
 @media (max-width: 767px) {
 	.contentbar {
-		padding: 0 10px 20px !important;
+		padding: 0 30px 20px !important;
 	}
+	
 	.breadcrumb {
 		margin-bottom: 20px !important;
 	}
@@ -832,9 +853,9 @@ element.style {
 	.card-pagination {
 		text-align: center;
 	}
-	.custom-switch {
+	/* .custom-switch {
 		padding-left: 0;
-	}
+	} */
 	.blog-detail-image img {
 		height: 200px;
 	}
@@ -859,23 +880,49 @@ element.style {
 	.terms-dtl-block {
 		padding: 30px;
 	}
+	.navbar-logo {
+		text-align: center;
+		margin-bottom: 25px;
+	}
+	.navbar-login-signup-btn {
+		text-align: center;
+	}
+	.navbar-main-block {
+		padding: 30px 0;
+	}
+	.home-slider-dtl {
+		text-align: center;
+		left: 0;
+    	right: 0;
+	}
+	.footer-logo {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.footer-block {
+		text-align: center;
+		float: none;
+	}
+	.breadcumb-dtl {
+		top: 25%;
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+	
 }
 @media (min-width: 767px) and (max-width: 992px) {
-	.breadcrumbbar {
-		padding: 35px 25px;
-		text-align: center;
-	}
-	.breadcrumbbar .breadcrumb-list {
-		text-align: center;
-	}
 	.contentbar {
-		padding: 0 10px 20px !important;
+		padding: 0 30px 20px !important;
+	}
+	.breadcrumbbar {
+		padding: 35px 30px;
 	}
 	.breadcrumb {
 		margin-bottom: 20px !important;
 	}
 	.breadcrumb-btn {
-		text-align: center;
+		text-align: left;
 	}
 	.breadcrumb-btn .btn {
 		margin-bottom: 10px;
@@ -885,12 +932,16 @@ element.style {
 	}
 	.breadcrumbbar-one {
 		text-align: left;
+		padding: 35px 30px 35px 30px;
+	}
+	.all-user-top-bar .btn {
+		margin-right: 2px !important;
 	}
 	.breadcrumbbar-one .breadcrumb-list {
 		text-align: left;
 	}
 	.top-btn-block {
-		text-align: center !important;
+		text-align: right !important;
 	}
 	.top-btn-block .btn {
 		margin-bottom: 10px;
@@ -915,6 +966,23 @@ element.style {
 	.blog-recent-img img {
 		height: 55px;
 	}
+	.home-slider-main-block .home-slider-image img {
+		height: 530px;
+	}
+	.home-slider-dtl {
+		left: 3%;
+	}
+	.blog-block {
+		height: 375px;
+	}
+	.faq-block .card-header {
+		padding: 0.75rem;
+	}
+	.breadcumb-dtl {
+		top: 13%;
+   	 	left: 2%;
+	}
+	
 }
 @media (min-width: 992px) and (max-width: 1200px) {
 	.breadcrumb-btn .btn {

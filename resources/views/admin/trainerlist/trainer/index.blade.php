@@ -1,45 +1,50 @@
 @extends('layouts.master')
 @section('title',__('All Trainers'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Trainer') }}
-@endslot
-@slot('menu1')
-{{ __('Trainer') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('trainer.create')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-plus mr-2"></i>{{ __("Add
-            Trainer") }}</a>
-        <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i
-                class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
-        <br>
-        <br>
-        <div class="col-md-12">
-            <form action="" method="get">
-                <div class="input-group">
-                    <input type="search" for="search" id="search" onsearch="OnSearch(this)" name="search"
-                        value="{{ app('request')->input('search') }}" class="form-control" placeholder="Search">
-                    <span class="input-group-prepend">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-            @if(app('request')->input('search') != '')
-            <a role="button" title="Back" href="{{ route('trainer.index') }}" name="clear" value="search" id="clear_id"
-                class="btn btn-warning btn-xs">
-                {{ __(" Clear Search") }}
-            </a>
-            @endif
-        </div> 
-    </div> 
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5">
+            <h4 class="page-title">{{ __("Trainer") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Trainer') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-7">
+            <div class="top-btn-block text-right">
+                <a href="{{route('trainer.create')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-plus mr-2"></i>{{ __("Add
+                Trainer") }}</a>
+                <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i
+                        class="feather icon-trash mr-2"></i> {{ __("Delete Selected") }}</button>
+                <br>
+                <br>
+                <div class="col-md-12">
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input type="search" for="search" id="search" onsearch="OnSearch(this)" name="search"
+                                value="{{ app('request')->input('search') }}" class="form-control" placeholder="Search">
+                            <span class="input-group-prepend">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    @if(app('request')->input('search') != '')
+                    <a role="button" title="Back" href="{{ route('trainer.index') }}" name="clear" value="search" id="clear_id"
+                        class="btn btn-warning btn-xs">
+                        {{ __(" Clear Search") }}
+                    </a>
+                    @endif
+                </div> 
+            </div>
+        </div>
+    </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start row -->
 <div class="row">
     <!-- Start col -->
@@ -118,11 +123,11 @@
                                 </td>
                                 <td> 
                                     @if($trainer->photo != '')
-                                    <img class="margin-right-15 width-height"
+                                    <img width="80px" height="80px" class="margin-right-15 width-height"
                                         src="{{url('/image/slider/'.$trainer->photo )}}"
                                         title="{{ $trainer->user_info?$trainer->user_info->name:''  }}">
                                     @else
-                                    <img class="margin-right-15" title="{{ ucfirst($trainer->user_info?$trainer->user_info->name:'') }}"
+                                    <img width="80px" height="80px" class="margin-right-15" title="{{ ucfirst($trainer->user_info?$trainer->user_info->name:'') }}"
                                         src="{{ Avatar::create($trainer->user_info?$trainer->user_info->name:'')->toBase64() }}" />
                                     @endif
                                 </td>

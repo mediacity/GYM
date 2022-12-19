@@ -36,7 +36,7 @@
                     @csrf
                     <div class="form-group">
                         <label class="text-dark">{{ __('Sender Name:') }} <small
-                                class="text-muted">(<b>{{ __("eg.") }}</b>{{ __(" John Doe)") }}</small></label>
+                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>{{ __(" John Doe)") }}</small></label>
                         <input name="MAIL_FROM_NAME" autofocus="" type="text" class="form-control"
                             placeholder="{{ __("enter sender name") }}" required="" value="{{ env('MAIL_FROM_NAME') }}">
                         <div class="invalid-feedback">
@@ -45,14 +45,14 @@
                     </div>
                     <div class="form-group">
                         <label class="text-dark">{{ __('Sender Address:') }} <small
-                                class="text-muted">(<b>{{ __("eg.") }}</b>
+                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>
                                 {{ __("info@example.com)") }}</small></label>
                         <input name="MAIL_FROM_ADDRESS" autofocus="" type="text" class="form-control"
                             placeholder="{{ __("enter your mail address") }}" value="{{ env('MAIL_FROM_ADDRESS') }}">
                     </div>
                     <div class="form-group">
                         <label class="text-dark">{{ __('Mail Host:') }} <small
-                                class="text-muted">(<b>{{ __("eg.") }}</b>
+                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>
                                 {{ __(" smtp.gmail.com)") }}</small></label>
                         <input placeholder="{{ __("enter mail host") }}" class="form-control" type="text" name="MAIL_HOST"
                             value="{{ env('MAIL_HOST') }}">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group">
                         <label class="text-dark">{{ __('Mail Driver:') }} <small
-                                class="text-muted">(<b>{{ __("eg.") }}</b>
+                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>
                                 {{ __("  smtp,sendmail,mail)") }}</small></label>
                         <input placeholder="{{ __("enter mail driver") }}" class="form-control" type="text" name="MAIL_DRIVER"
                             value="{{ env('MAIL_DRIVER') }}">
@@ -85,12 +85,12 @@
                         <div class="invalid-feedback">
                             {{ __('Please mail mail password !') }}.
                         </div>
-                        <small class="text-primary text-muted">{{ __("(") }}<b>{{ __("Note.") }}</b> {{ __("IF gmail is using as mail provider mustenable ") }}<b><a class="underline" href="https://www.google.com/landing/2step/">{{ __("2 StepVerification") }}</a></b> {{ __("and Than") }}
+                        <small class="text-primary text-muted text-info">{{ __("(") }}<b>{{ __("Note.") }}</b> {{ __("IF gmail is using as mail provider mustenable ") }}<b><a class="underline" href="https://www.google.com/landing/2step/">{{ __("2 StepVerification") }}</a></b> {{ __("and Than") }}
                             <b>{{ __("Create a app password") }}</b> {{ __("which will use here.)") }}</small>
                     </div>
                     <div class="form-group">
                         <label class="text-dark">{{ __('Mail Encryption:') }} <small
-                                class="text-muted">{{ __("(") }}<b>{{ __("eg.") }}</b>
+                                class="text-muted text-info">{{ __("(") }}<b>{{ __("eg.") }}</b>
                                 {{ __("TLS,SSL or NULL)") }}</small></label>
                         <input placeholder="{{ __("enter mail encryption") }}" class="form-control" type="text"
                             name="MAIL_ENCRYPTION" value="{{ env('MAIL_ENCRYPTION') }}">

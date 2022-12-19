@@ -1,28 +1,34 @@
 @extends('layouts.master')
 @section('title',__('Edit Staff Attendance :eid -',['eid' => $staffattendance->id]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Attendance') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Staff Attendance') }}
-@endslot
-@slot('button')
-<div class="col-md-4 col-lg-4">
-    <a href="{{route('staffattendance.index')}}" class="float-right btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-right mr-2"></i>{{ __("Back") }}</a>
-    <a href="{{ route('memberattendance.index') }}" title="Go To Member Attendance" role="button"
-        class="float-right btn btn-info-rgba mr-2"><i class="feather icon-arrow-left"></i>
-        {{ __("Member Aattendance") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Staff Attendance") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Staff Attendance') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{ route('memberattendance.index') }}" title="Go To Member Attendance" role="button"
+                    class="btn btn-info-rgba mr-2">
+                    {{ __("Member Aattendance") }}<i class="feather icon-arrow-left ml-2"></i></a>
+                <a href="{{route('staffattendance.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-right mr-2"></i>{{ __("Back") }}</a>
+               
+            </div>
+        </div>
+    </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Form -->
 <form autocomplete="off" class="form-light form" novalidate
     action="{{route('staffattendance.update', $staffattendance->id)}}" method="POST">
@@ -56,7 +62,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select your user name eg: John, joe ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select your user name eg: John, joe ") }}</small>
                             </div>
                         </div>
                     </div>
@@ -71,7 +77,7 @@
                                 {!! Form::textarea('location', $staffattendance->location, ['id' => 'location','class'
                                 => 'form-control' ,'required','placeholder' => 'Your Location']) !!}
                                 <small class="text-danger">{{ $errors->first('location') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Your attendance location") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Your attendance location") }}</small>
 
                             </div>
 
@@ -82,7 +88,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group member-attendance-slider">
                                 <label class="text-dark">{{ __("Attendance: ") }}<span
                                         class="text-danger">*</span></label><br>
                                 <label class="switch"><input type="checkbox" id="togBtn" name="attend"
@@ -123,7 +129,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the  Attendance date") }} </small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the  Attendance date") }} </small>
 
                             </div>
                         </div>
@@ -144,7 +150,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Give your  reason or comment for your attend details ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Give your  reason or comment for your attend details ") }}</small>
 
                             </div>
                         </div>

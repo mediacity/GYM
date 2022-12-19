@@ -384,7 +384,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="text-dark" for="issue">{{ ("Health Issue:") }}}}</label>
+                                <label class="text-dark" for="issue">{{ ("Health Issue:") }}</label>
                                 <br>
                                 <label for="issue">
                                     <input {{ ($user->issue != ['NO'] ? "checked" : "") }} class="health_check"

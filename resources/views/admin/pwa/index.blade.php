@@ -1,14 +1,24 @@
 @extends('layouts.master')
 @section('title',__('All PWA'))
+@section('breadcum')
+	<div class="breadcrumbbar">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8">
+                <h4 class="page-title">{{ __("PWA") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('PWA') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+          
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('PWA') }}
-@endslot
-@slot('menu1')
-{{ __('PWA') }}
-@endslot
-@endcomponent
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -69,7 +79,7 @@
               </div>
 
               <div class="row">
-                <div class="col-md-5">
+                <div class="col-lg-5 col-md-8">
 
                   <div class="form-group">
                     <label for="">{{__('ShortcutIconForHome')}}: <span class="text-danger">*</span> </label>
@@ -88,7 +98,7 @@
                   </div>
                 </div>
                 @if(env('SHORTCUT_ICON1') != NULL)
-                <div class="col-md-1 card text-center">
+                <div class="col-lg-1 col-md-4 card text-center">
                   @if(env('SHORTCUT_ICON1') != NULL)
                   <div class="card-body">
                     <img class="img-responsive" src="{{ url('images/icons/'.env('SHORTCUT_ICON1'))}}"
@@ -97,7 +107,7 @@
                   @endif
                 </div>
                 @endif
-                <div class="col-md-5">
+                <div class="col-lg-5 col-md-8">
                   <div class="form-group">
                     <label for="">{{__('ShortcutIconForLogin')}}: <span class="text-danger">*</span> </label>
 
@@ -116,7 +126,7 @@
                   </div>
                 </div>
                 @if(env('SHORTCUT_ICON2') != NULL)
-                <div class="col-md-1 card text-center">
+                <div class="col-lg-1 col-md-4 card text-center">
 
                   <div class="card-body">
                     <img class="img-responsive" src="{{ url('images/icons/'.env('SHORTCUT_ICON2'))}}"
@@ -136,7 +146,7 @@
             <form action="{{ route('pwa.icons.update') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-lg-6 col-md-12">
                   <div class="form-group">
                      <label>{{__('PWAIcon')}} (512x512): <span class="text-danger">*</span> </label>
                        <div class="custom-file">
@@ -166,7 +176,7 @@
 
               <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-12">
 
                   <div class="form-group">
 

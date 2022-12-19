@@ -1,15 +1,23 @@
 @extends('layouts.master')
 @section('title',__('All Language'))
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8">
+                <h4 class="page-title">{{ __("Language") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Language') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Language') }}
-@endslot
-@slot('menu1')
-{{ __('Language') }}
-@endslot
-@endcomponent
 <div class="row">
     <div class="col-md-12">
         <!-- card started -->

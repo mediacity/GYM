@@ -106,7 +106,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group ">
-                                    <div class="custom-switch">
+                                    <div class="custom-switch settings-switch">
                                         <div class="row">
                                             <div class="col-lg-6 col-10">
                                                 <label for="exampleInputDetails">{{ __('Inspect Element Disabled') }} :</label><br>   
@@ -121,7 +121,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group ">
-                                    <div class="custom-switch">
+                                    <div class="custom-switch settings-switch">
                                         <div class="row">
                                             <div class="col-lg-6 col-10">
                                                 <label for="exampleInputDetails">{{ __('Right Click Disabled') }} :</label><br> 

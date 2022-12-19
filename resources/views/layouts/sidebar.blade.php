@@ -21,6 +21,9 @@
                         </li>
                         <!--Enquiry-->
                         @can('enquiry.view')
+                        <li class="header">
+                         <span>{{ __('Enquiry') }}</span>
+                        </li>
                         <li class="{{ Nav::isResource('enquiry') }} vertical-active">
                             <a class="{{ Nav::isResource('enquiry') }}" href="{{ route('enquiry.index') }}">
                                 <i class="feather icon-phone-call"></i>
@@ -29,6 +32,10 @@
                         </li>
                         @endcan
                          <!-- Users -->
+                         
+                         <li class="header">
+                         <span>{{ __('User') }}</span>
+                        </li>
                           <li class="{{ Nav::isResource('users') }} {{ Nav::isResource('roles') }}">
                             <a href="javaScript:void();">
                                 <i class="feather icon-user-check"></i><span>{{ __('Users') }}</span><i class="feather icon-chevron-right"></i>
@@ -53,6 +60,9 @@
                             </ul>
                         </li>
                         <!-- Gym Management -->
+                        <li class="header">
+                         <span>{{ __('Management') }}</span>
+                        </li>
                         <li class="{{ Nav::isResource('exercise') }} {{ Nav::isResource('measurement') }}  {{ Nav::isResource('locker') }}  ">
                             <a href="javaScript:void();">
                                 <i class="feather icon-voicemail"></i><span>{{ __('Gym Management') }}</span><i class="feather icon-chevron-right"></i>
@@ -83,6 +93,7 @@
                                 @endcan
                                 <!-- Measurements -->
                                 @can('measurements.view')
+                                
                                 <li>
                                     <a class="{{ Nav::isResource('measurement') }}" href="{{ route('measurement.index') }}">
                                         {{ __('Measurements') }}
@@ -158,6 +169,9 @@
 
                         </li>
                         @endcan
+                        <li class="header">
+                            <span>{{ __('Trainer') }}</span>
+                        </li>
                         <li class="{{ Nav::isResource('trainer') }} {{ Nav::isResource('trainerlist') }}">
                             <a href="javaScript:void();">
                                 <i class="feather icon-user-plus"></i><span>{{ __('Trainer') }}</span><i
@@ -237,6 +251,10 @@
                                 </li>
                             </ul>
                         </li>
+                        
+                        <li class="header">
+                            <span>{{ __('Report') }}</span>
+                        </li>
                          <li>
                             <a href="javaScript:void();">
                                 <i class="feather icon-file"></i><span>{{ __('Reports') }}</span><i
@@ -257,15 +275,7 @@
                                 <li>
                                     <a href="{{ route('device.logs') }}">{{ __('Device History ') }}</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('user.image') }}">{{ __('Download Image ') }}</a>
-                                </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="{{ url('clear-cache') }}">
-                                <i class="feather icon-loader"></i> <span>{{ __('Clear Cache') }}</span>
-                            </a>
                         </li>
                         @can('ptsubscription.view')
                         <li>
@@ -275,12 +285,19 @@
                         </li>
                         @endcan
                         <!--Setting-->
+                        <li class="header">
+                            <span>{{ __('Setting') }}</span>
+                        </li>
                         <li>
                             <a href="javaScript:void();">
-                                <i class="feather icon-settings"></i><span>{{ __('Settings') }}</span><i
-                                    class="feather icon-chevron-right"></i>
-                                </a>
+                                <i class="feather icon-settings"></i>
+                                <span>{{ __('Settings') }}</span>
+                                <i class="feather icon-chevron-right"></i>
+                            </a>
                             <ul class="vertical-submenu">
+                                 <li>
+                                    <a href="{{ url('clear-cache') }}">{{ __('Clear Cache') }}</a>
+                                </li>
                                  @can('settings.update')
                                  <li>
                                     <a href="{{ route('site.settings') }}">{{ __('Site Settings') }}</a>
@@ -323,6 +340,10 @@
                                     <a href="{{ route('pwa.setting.index') }}">{{ __('PWA Settings') }}</a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li class="header">
+                            <span>{{ __('Front Setting') }}</span>
                         </li>
                         <li class="{{ Nav::isResource('pages') }} {{ Nav::isResource('faq') }} {{ Nav::isResource('slider') }}
                             {{ Nav::isResource('blogs') }}">

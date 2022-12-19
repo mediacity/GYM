@@ -1,25 +1,32 @@
 @extends('layouts.master')
 @section('title',__('All Pages'))
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-4 col-lg-5">
+                <h4 class="page-title">{{ __("Pages") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Pages') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-7">
+                <div class="top-btn-block text-right">
+                    <a href="{{route('pages.create')}}" class="btn btn-primary-rgba mr-2"><i
+                    class="feather icon-plus mr-2"></i>{{ __("Add Pages") }}</a>
+                    <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i
+                    class="feather icon-trash mr-2"></i> {{ __("Delete Selected") }}</button>
+                    <a href="{{ route('pag.index') }}" class="btn btn-success-rgba mr-2"><i class="feather icon-download-cloud mr-2"></i>{{ __("Recycle") }}</a>
+                </div>
+            </div>  
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Pages') }}
-@endslot
-@slot('menu1')
-{{ __('Pages') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6 text-right">
-    <a href="{{route('pages.create')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-plus mr-2"></i>{{ __("Add Pages") }}</a>
-   <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i
-            class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
-                <a href="{{ route('pag.index') }}" class="btn btn-success-rgba mr-2"><i class="feather icon-download-cloud mr-2"></i>{{ __("Recycle") }}</a>
-             </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <!-- Start Row -->
 <div class="row">
     <!-- Start col -->

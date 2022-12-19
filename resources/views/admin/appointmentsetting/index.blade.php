@@ -1,27 +1,30 @@
 @extends('layouts.master')
 @section('title',__('Add Appointmentsetting'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Appointmentsetting') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __('Add Appointmentsetting') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('appointmentsetting.index')}}" class="btn btn-dark-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Appointment Setting") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Add Appointment Setting') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('appointmentsetting.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Contentbar -->
 <div class="row">
     <!-- Start col -->
@@ -34,7 +37,7 @@
         <div class="card m-b-30">
             <div class="card-header">
                 <div class="row align-items-center">
-                    <div class="col-6">
+                    <div class="col-12">
                         <h5 class="card-title mb-0">{{ __("Create Appointmentsetting") }}</h5>
                     </div>
                 </div>
@@ -80,7 +83,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
                                     'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
                         </div><br>

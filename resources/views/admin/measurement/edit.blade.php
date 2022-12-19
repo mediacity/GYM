@@ -1,25 +1,31 @@
 @extends('layouts.master')
 @section('title',__('Edit Measurement :eid -',['eid' => $measurement->user_id]))
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Measurement") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Measurement') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('measurement.index')}}" class="float-right btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
+        @endif
+    </div>
+</div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Measurement') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Measurement') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6">
-    <a href="{{route('measurement.index')}}" class="float-right btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
-   </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <!-- Start Form -->
 <form class="form-light form" action="{{route('measurement.update' , $measurement->id)}}" novalidate method="POST">
     {{ csrf_field() }}
@@ -519,7 +525,7 @@
                                                                                     ['id' => 'switch1', 'class' =>
                                                                                     'custom-control-input']) !!}
                                                                                     <label class="custom-control-label"
-                                                                                        for="switch1">{{ __("Is Active") }}</label>
+                                                                                        for="switch1"><span>{{ __("Status") }}</span></label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

@@ -1,30 +1,35 @@
 @extends('layouts.master')
 @section('title',__('Edit Quotation :eid -',['eid' => $quotation->id]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Home') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Quotation') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('quotation.index')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Quotation") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Quotation') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block  text-right">
+                <a href="{{route('quotation.index')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
  {!! Form::model($quotation, ['method' => 'PATCH', 'route' => ['quotation.update', $quotation->id], 'files' =>
             true , 'class' => 'form form-light' , 'novalidate']) !!}
 
-<div class="col-md-12">
+
     <!-- Start row -->
     <div class="row">
         <div class="col-md-12">
@@ -260,7 +265,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12 col-lg-6">
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="form-group{{ $errors->has('additionalnote') ? ' has-error' : '' }}">
@@ -274,7 +279,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12 col-lg-6">
                     <div class="card m-b-30">
                         <div class="card-body">
 
@@ -320,7 +325,7 @@
                             <div class="custom-switch">
                                 {!! Form::checkbox('is_active', 1,$quotation->is_active==1 ? 1 : 0, ['id' => 'switch1',
                                 'class' => 'custom-control-input']) !!}
-                                <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                             </div>
                         </div>
                          <div class="form-group">
@@ -336,10 +341,8 @@
         </div>
     </div>
       {!! Form::close() !!}
-        </div>
-    </div>
 </form>
-        @endsection
+    @endsection
         @section('script')
       
         <script>

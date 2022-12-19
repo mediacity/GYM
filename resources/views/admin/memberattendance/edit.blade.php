@@ -1,31 +1,36 @@
 @extends('layouts.master')
 @section('title',__('Edit Member Attendance :eid -',['eid' => $memberattendance->id]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Attendance') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Member Attendance') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6">
-    <a href="{{route('memberattendance.index')}}" class="float-right btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Create") }}</a>
-    <a href="{{ route('staffattendance.index') }}" title="Go To Staff Attendance" role="button"
-        class="float-right btn btn-primary-rgba mr-2"><i class="feather icon-arrow-right"></i>
-       {{ __(" Staff Aattendance") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-7">
+            <h4 class="page-title">{{ __("Attendance") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Member Attendance') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-5">
+            <div class="top-btn-block text-right">
+                <a href="{{ route('staffattendance.index') }}" title="Go To Staff Attendance" role="button"
+                    class="btn btn-primary-rgba mr-2">
+                {{ __(" Staff Aattendance") }}<i class="feather icon-arrow-right ml-2"></i></a>
+                <a href="{{route('memberattendance.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
+    </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
+
 <!-- Start Form -->
-<form autocomplete="off" class="form-light form" novalidate
-    action="{{route('memberattendance.update', $memberattendance->id)}}" method="POST">
+<form autocomplete="off" class="form-light form" novalidate action="{{route('memberattendance.update', $memberattendance->id)}}" method="POST">
     {{ csrf_field() }}
     @method('PUT')
     <div class="row">
@@ -34,8 +39,8 @@
                 <div class="card-header">
                     <h1 class="card-title">{{ __('Edit Attendance Details:') }}</h1>
                 </div>
-            <br>
-             <!--name-->
+                <br>
+                <!--name-->
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
@@ -55,13 +60,13 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Select your user name eg: John, joe") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Select your user name eg: John, joe") }}</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                  <!--Location -->
-                   <div class="col-md-12">
+                <!--Location -->
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
@@ -70,7 +75,7 @@
                                 {!! Form::textarea('location', $memberattendance->location, ['id' => 'location','class'
                                 => 'form-control' ,'required','placeholder' => 'Your Location']) !!}
                                 <small class="text-danger">{{ $errors->first('location') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Your attendance location") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Your attendance location") }}</small>
                             </div>
                         </div>
                     </div>
@@ -79,7 +84,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group member-attendance-slider">
                                 <label class="text-dark">{{ __("Attendance: ") }}<span class="text-danger">*</span></label><br>
                                 <label class="switch"><input type="checkbox" id="togBtn" name="attend"
                                         {{ $memberattendance->attend == 'present' ? 'checked' : '' }} >
@@ -99,8 +104,8 @@
                          </div>
                     </div>
                 </div>
-                 <!--date-->
-                  <div class="col-md-12">
+                <!--date-->
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -119,13 +124,13 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the Attendance date") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the Attendance date") }}</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <!--date-->
-                  <div class="col-md-12">
+                <!--date-->
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -139,13 +144,13 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Give your reason or comment for your attend details ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Give your reason or comment for your attend details ") }}</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <br>
-                 <div class="col-md-6">
+                <br>
+                <div class="col-md-6">
                     <div class="form-group">
                         <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
                         <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i> {{ __("Update") }}</button>
@@ -155,7 +160,9 @@
             </div>
         </div>
     </div>
-    <!-- End Form -->
+</form>
+<!-- End Form -->
+@endsection
 @section('script')
 <script>
     $('.calendar').each(function () {

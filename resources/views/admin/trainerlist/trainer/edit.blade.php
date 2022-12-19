@@ -1,27 +1,30 @@
 @extends('layouts.master')
 @section('title',__('Edit Trainer :eid -',['eid' => $trainer->trainer_name]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Trainer') }}
-@endslot
-@slot('menu1')
-{{ __('Trainer') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Trainer') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('trainer.index')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Trainer list") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Trainer') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('trainer.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <div class="admin-form">
     <form action="{{route('trainer.update',$trainer->id)}}" method="POST" enctype="multipart/form-data"
         class="form-light form" novalidate>
@@ -428,7 +431,7 @@
                                             <div class="custom-switch">
                                                 {!! Form::checkbox('is_active', 1,$trainer->is_active==1 ? 1 : 0,
                                                 ['id' => 'switch1', 'class' => 'custom-control-input']) !!}
-                                                <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                                <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                             </div>
                                         </div>
                                     </div>

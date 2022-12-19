@@ -1,27 +1,32 @@
 @extends('layouts.master')
 @section('title',__('Edit Products :eid -',['eid' => $supplement->id]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Home') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Products') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('supplement.index')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Products") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Edit Products') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('supplement.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start row -->
 <div class="row">
     <!-- Start col -->
@@ -88,7 +93,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,$supplement->is_active==1 ? 1 : 0, ['id' =>
                                     'switch1', 'class' => 'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Is Actives") }}</label>
+                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
                             <div class="form-group">
