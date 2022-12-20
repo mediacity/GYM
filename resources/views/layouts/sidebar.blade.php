@@ -24,9 +24,6 @@
                         <li class="header">
                          <span>{{ __('Enquiry') }}</span>
                         </li>
-                        <li class="vertical-active">
-                         <span>{{ __('Enquiry') }}</span>
-                        </li>
                         <li class="{{ Nav::isResource('enquiry') }} vertical-active">
                             <a class="{{ Nav::isResource('enquiry') }}" href="{{ route('enquiry.index') }}">
                                 <i class="feather icon-phone-call"></i>
@@ -37,10 +34,6 @@
                          <!-- Users -->
                          
                          <li class="header">
-                         <span>{{ __('User') }}</span>
-                        </li>
-                         
-                         <li class="vertical-active">
                          <span>{{ __('User') }}</span>
                         </li>
                           <li class="{{ Nav::isResource('users') }} {{ Nav::isResource('roles') }}">
