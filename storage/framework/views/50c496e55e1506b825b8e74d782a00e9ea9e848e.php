@@ -21,6 +21,9 @@
                         </li>
                         <!--Enquiry-->
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('enquiry.view')): ?>
+                        <li class="vertical-active">
+                         <span><?php echo e(__('Enquiry')); ?></span>
+                        </li>
                         <li class="<?php echo e(Nav::isResource('enquiry')); ?> vertical-active">
                             <a class="<?php echo e(Nav::isResource('enquiry')); ?>" href="<?php echo e(route('enquiry.index')); ?>">
                                 <i class="feather icon-phone-call"></i>
@@ -29,6 +32,10 @@
                         </li>
                         <?php endif; ?>
                          <!-- Users -->
+                         
+                         <li class="vertical-active">
+                         <span><?php echo e(__('User')); ?></span>
+                        </li>
                           <li class="<?php echo e(Nav::isResource('users')); ?> <?php echo e(Nav::isResource('roles')); ?>">
                             <a href="javaScript:void();">
                                 <i class="feather icon-user-check"></i><span><?php echo e(__('Users')); ?></span><i class="feather icon-chevron-right"></i>
@@ -53,6 +60,9 @@
                             </ul>
                         </li>
                         <!-- Gym Management -->
+                        <li class="vertical-active">
+                         <span><?php echo e(__('Management')); ?></span>
+                        </li>
                         <li class="<?php echo e(Nav::isResource('exercise')); ?> <?php echo e(Nav::isResource('measurement')); ?>  <?php echo e(Nav::isResource('locker')); ?>  ">
                             <a href="javaScript:void();">
                                 <i class="feather icon-voicemail"></i><span><?php echo e(__('Gym Management')); ?></span><i class="feather icon-chevron-right"></i>
@@ -84,6 +94,7 @@
                                 <?php endif; ?>
                                 <!-- Measurements -->
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('measurements.view')): ?>
+                                
                                 <li>
                                     <a class="<?php echo e(Nav::isResource('measurement')); ?>" href="<?php echo e(route('measurement.index')); ?>">
                                         <?php echo e(__('Measurements')); ?>
@@ -163,6 +174,9 @@
 
                         </li>
                         <?php endif; ?>
+                        <li class="vertical-active">
+                            <span><?php echo e(__('Trainer')); ?></span>
+                        </li>
                         <li class="<?php echo e(Nav::isResource('trainer')); ?> <?php echo e(Nav::isResource('trainerlist')); ?>">
                             <a href="javaScript:void();">
                                 <i class="feather icon-user-plus"></i><span><?php echo e(__('Trainer')); ?></span><i
@@ -243,6 +257,10 @@
                                 </li>
                             </ul>
                         </li>
+                        
+                        <li class="vertical-active">
+                            <span><?php echo e(__('Report')); ?></span>
+                        </li>
                          <li>
                             <a href="javaScript:void();">
                                 <i class="feather icon-file"></i><span><?php echo e(__('Reports')); ?></span><i
@@ -263,15 +281,7 @@
                                 <li>
                                     <a href="<?php echo e(route('device.logs')); ?>"><?php echo e(__('Device History ')); ?></a>
                                 </li>
-                                <li>
-                                    <a href="<?php echo e(route('user.image')); ?>"><?php echo e(__('Download Image ')); ?></a>
-                                </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="<?php echo e(url('clear-cache')); ?>">
-                                <i class="feather icon-loader"></i> <span><?php echo e(__('Clear Cache')); ?></span>
-                            </a>
                         </li>
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ptsubscription.view')): ?>
                         <li>
@@ -281,12 +291,19 @@
                         </li>
                         <?php endif; ?>
                         <!--Setting-->
+                        <li class="vertical-active">
+                            <span><?php echo e(__('Setting')); ?></span>
+                        </li>
                         <li>
                             <a href="javaScript:void();">
-                                <i class="feather icon-settings"></i><span><?php echo e(__('Settings')); ?></span><i
-                                    class="feather icon-chevron-right"></i>
-                                </a>
+                                <i class="feather icon-settings"></i>
+                                <span><?php echo e(__('Settings')); ?></span>
+                                <i class="feather icon-chevron-right"></i>
+                            </a>
                             <ul class="vertical-submenu">
+                                 <li>
+                                    <a href="<?php echo e(url('clear-cache')); ?>"><?php echo e(__('Clear Cache')); ?></a>
+                                </li>
                                  <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('settings.update')): ?>
                                  <li>
                                     <a href="<?php echo e(route('site.settings')); ?>"><?php echo e(__('Site Settings')); ?></a>
@@ -333,6 +350,10 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="vertical-active">
+                            <span><?php echo e(__('Front Setting')); ?></span>
+                        </li>
                         <li class="<?php echo e(Nav::isResource('pages')); ?> <?php echo e(Nav::isResource('faq')); ?> <?php echo e(Nav::isResource('slider')); ?>
 
                             <?php echo e(Nav::isResource('blogs')); ?>">
@@ -368,6 +389,18 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
+                                <li>
+                                    <a class="<?php echo e(Nav::isResource('privacy-policy')); ?>" href="<?php echo e(route('privacy-policy')); ?>">
+                                        <?php echo e(__('Privacy Policy')); ?>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="<?php echo e(Nav::isResource('terms-condition')); ?>" href="<?php echo e(route('terms-condition')); ?>">
+                                        <?php echo e(__('	Terms And Condition')); ?>
+
+                                    </a>
+                                </li>
                                 <!-- Blogs -->
                                 <li>
                                     <a class="<?php echo e(Nav::isResource('blog')); ?> <?php echo e(Nav::isResource('blogcategory')); ?>"

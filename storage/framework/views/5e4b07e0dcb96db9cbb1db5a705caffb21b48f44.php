@@ -56,31 +56,11 @@
 
                             </th>
                             <th>
-                                <?php echo e(__("Weight")); ?>
-
-                            </th>
-                            <th>
-                                <?php echo e(__("Chest")); ?>
-
-                            </th>
-                            <th>
                                 <?php echo e(__("Triceps")); ?>
 
                             </th>
                             <th>
-                                <?php echo e(__("Biceps")); ?>
-
-                            </th>
-                            <th>
-                                <?php echo e(__("Abdomen")); ?>
-
-                            </th>
-                            <th>
                                 <?php echo e(__("Waist")); ?>
-
-                            </th>
-                            <th>
-                                <?php echo e(__("Fat")); ?>
 
                             </th>
                             <th>
@@ -152,14 +132,19 @@
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo e(ucfirst($measurement->user['name'])); ?> </td>
-                                <td><?php echo e($measurement -> height); ?></td>
-                                <td><?php echo e($measurement -> weight); ?></td>
-                                <td><?php echo e($measurement -> chest); ?></td>
-                                <td><?php echo e($measurement -> tricep); ?></td>
-                                <td><?php echo e($measurement -> bicep); ?></td>
-                                <td><?php echo e($measurement -> abdomen); ?></td>
-                                <td><?php echo e($measurement -> waist); ?></td>
-                                <td><?php echo e($measurement -> fat); ?></td>
+                                <td> 
+                                    <b>Height : </b> <?php echo e($measurement -> height); ?> Ft<br>
+                                    <b>Weight : </b> <?php echo e($measurement -> weight); ?> Kg<br>
+                                    <b>Chest : </b> <?php echo e($measurement -> chest); ?> In
+                                </td>
+                                <td>
+                                    <b>Tricep : </b> <?php echo e($measurement -> tricep); ?> In<br>
+                                    <b>Bicep : </b> <?php echo e($measurement -> bicep); ?> In<br>
+                                    <b>Abdomen : </b> <?php echo e($measurement -> abdomen); ?> In
+                                </td>
+                                <td>
+                                    <b>waist : </b> <?php echo e($measurement -> waist); ?> In<br>
+                                </td>
                                 <td><?php echo e($measurement -> date); ?></td>
                                 <?php if(Auth::user()->roles->first()->name == 'Trainer' ||
                                 Auth::user()->roles->first()->name == 'Super Admin' ): ?>

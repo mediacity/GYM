@@ -6,6 +6,7 @@
 "use strict";
 $(document).ready(function() {
     /* -----  Apex Line Chart ----- */
+    var purchased = ''
     var options = {
         chart: {
             height: 300,

@@ -155,35 +155,30 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-4">
+                    <?php if(count($relevant_blogs)>0): ?>
                     <div class="blog-detail-recent-post">
                         <h3 class="blog-recent-heading">Recent Posts</h3>
+                        <?php $__currentLoopData = $relevant_blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rblog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="recent-block">
                             <div class="row">
                                 <div class="col-lg-4 col-4">
                                     <div class="blog-recent-img">
-                                        <img src="<?php echo e(url('image/blog/blog-01.jpg')); ?>" class="img-fluid" alt="">
+                                        <?php if($rblog->image !='' && file_exists(public_path().'/image/blog/'.$rblog->image)): ?>
+                                        <img src="<?php echo e(url('/image/blog/'.$rblog->image)); ?>" class="img-fluid" alt="">
+                                        <?php else: ?> 
+                                        <img src="<?php echo e(Avatar::create(config('app.name'))->toBase64()); ?>" class="img-fluid" alt="">
+                                        <?php endif; ?> 
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-8">
-                                    <h4 class="recent-heading"><a href="#" title="">Shaping</a></h4>
-                                    <div class="blog-date">December,9 2022</div>
+                                    <h4 class="recent-heading"><a href="<?php echo e(route('blog.detail',$rblog->id )); ?>" title="<?php echo e($rblog->title); ?>"><?php echo e($rblog->title); ?></a></h4>
+                                    <div class="blog-date"><?php echo e(date('F,d Y', strtotime($rblog->created_at))); ?></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="recent-block">
-                            <div class="row">
-                                <div class="col-lg-4 col-4">
-                                    <div class="blog-recent-img">
-                                        <img src="<?php echo e(url('image/blog/blog-01.jpg')); ?>" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-8">
-                                    <h4 class="recent-heading"><a href="#" title="">Shaping</a></h4>
-                                    <div class="blog-date">December,9 2022</div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -198,7 +193,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-block">
-                        <p>All rights reserved<br><span><a href="#" title="">Terms &amp; Condition</a> and <a href="#" title="">Privacy Policy</a></span></p>
+                    <p>All rights reserved<br><span><a href="<?php echo e(route('front-terms-condition' )); ?>" title="">Terms &amp; Condition</a> and <a href="<?php echo e(route('front-privacy-policy')); ?>" title="">Privacy Policy</a></span></p>
                     </div>
                 </div>
             </div>

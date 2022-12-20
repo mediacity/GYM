@@ -59,7 +59,7 @@
             <div class="infobar">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item mr-5 align-self-center">
-                        <i class="fa fa-clock-o mr-1"></i> <?php echo e(__(' Your Time is')); ?> <span class="text-primary" id="timeyours"></span>
+                        <i class="fa fa-clock-o mr-1"></i><?php echo e(__(' Your Time is')); ?> <span class="text-primary" id="timeyours"></span>
                     </li>
                     <?php $languages = app('JoeDixon\Translation\Language'); ?>
                    
@@ -73,7 +73,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languagelink"
                                      x-placement="bottom-end">
                                      
-                                    <?php $__currentLoopData = $languages->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $languages->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <a class="dropdown-item" href="<?php echo e(route('languageSwitch',$language->language)); ?>">
                                         <i class="feather icon-globe"></i>
                                         <?php echo e($language->name); ?> (<?php echo e($language->language); ?>)</a>
@@ -121,7 +121,12 @@
                         <div class="profilebar">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="<?php echo e(route('profile.index')); ?>" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<?php echo e(url('assets/images/users/profile.svg')); ?>" class="img-fluid" alt="profile">
+                                    <?php if(Auth::user()->photo != '' && file_exists(public_path().'/media/users/'.Auth::user()->photo)): ?>
+                                    <img class="img-fluid" src="<?php echo e(url('media/users/'.Auth::user()->photo)); ?>" title="<?php echo e(Auth::user()->name); ?>">
+                                    <?php else: ?>
+                                    <img class="img-fluid" title="<?php echo e(Auth::user()->name); ?>" src="<?php echo e(Avatar::create(Auth::user()->name)->toBase64()); ?>" />
+                                    <?php endif; ?>
+                                    
                                     <span class="live-icon"><?php echo e(Auth::user()->name); ?></span>
                                     <span class="feather icon-chevron-down live-icon"></span>
                                 </a>
@@ -167,6 +172,7 @@
  <!-- End Breadcrumbbar -->
  <?php echo $__env->yieldContent('scripts'); ?>
  <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <script>
       $( document ).ready(function() {
         

@@ -155,35 +155,30 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-4">
+                    @if(count($relevant_blogs)>0)
                     <div class="blog-detail-recent-post">
                         <h3 class="blog-recent-heading">Recent Posts</h3>
+                        @foreach($relevant_blogs as $rblog)
                         <div class="recent-block">
                             <div class="row">
                                 <div class="col-lg-4 col-4">
                                     <div class="blog-recent-img">
-                                        <img src="{{ url('image/blog/blog-01.jpg')}}" class="img-fluid" alt="">
+                                        @if($rblog->image !='' && file_exists(public_path().'/image/blog/'.$rblog->image))
+                                        <img src="{{ url('/image/blog/'.$rblog->image) }}" class="img-fluid" alt="">
+                                        @else 
+                                        <img src="{{ Avatar::create(config('app.name'))->toBase64() }}" class="img-fluid" alt="">
+                                        @endif 
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-8">
-                                    <h4 class="recent-heading"><a href="#" title="">Shaping</a></h4>
-                                    <div class="blog-date">December,9 2022</div>
+                                    <h4 class="recent-heading"><a href="{{ route('blog.detail',$rblog->id ) }}" title="{{$rblog->title}}">{{$rblog->title}}</a></h4>
+                                    <div class="blog-date">{{date('F,d Y', strtotime($rblog->created_at))}}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="recent-block">
-                            <div class="row">
-                                <div class="col-lg-4 col-4">
-                                    <div class="blog-recent-img">
-                                        <img src="{{ url('image/blog/blog-01.jpg')}}" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-8">
-                                    <h4 class="recent-heading"><a href="#" title="">Shaping</a></h4>
-                                    <div class="blog-date">December,9 2022</div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -198,7 +193,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-block">
-                        <p>All rights reserved<br><span><a href="#" title="">Terms &amp; Condition</a> and <a href="#" title="">Privacy Policy</a></span></p>
+                    <p>All rights reserved<br><span><a href="{{ route('front-terms-condition' ) }}" title="">Terms &amp; Condition</a> and <a href="{{ route('front-privacy-policy') }}" title="">Privacy Policy</a></span></p>
                     </div>
                 </div>
             </div>
@@ -206,7 +201,7 @@
     </footer>
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ url('js/theme.js') }}"></script>
 </body>
 </html>

@@ -76,7 +76,7 @@
 <script src="{{ url('assets/js/custom/custom-switchery.js') }}"></script>
 
 <script src="{{ url('assets/js/core.js') }}"></script>
-<script src="{{ url('js/admin.js') }}"></script>
+<script src="{{ url('assets/js/admin.js') }}"></script>
 <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.rateyo.js')}}"></script>
 <script src="{{ asset('assets/js/customjs.js') }}"></script>
@@ -159,8 +159,7 @@
     $("#datepicker").datepicker({
       changeMonth: true,
       changeYear: true,
-      yearRange: '1950:{{ date('
-      Y ') }}',
+      yearRange: '{{ date(' Y ') }}',
       dateFormat: "yy-mm-dd",
     });
   });
@@ -233,10 +232,10 @@
   var ONESIGNAL_APP_ID = @json(env('ONESIGNAL_APP_ID'));
   var USER_ID = '{{  auth()->user()?auth()->user()->id:"" }}';
 </script>
-<script src="{{ url('js/onesignal.js') }}"></script>
+<script src="{{ url('assets/js/onesignal.js') }}"></script>
 <script src="{{ url('/OneSignalSDK/OneSignalSDK.js') }}"></script>
 @endif
-<script src="{{ url('js/admintable.js') }}"></script>
+<script src="{{ url('assets/js/admintable.js') }}"></script>
 <script type="text/javascript">
     $('#summernote').summernote({
         height: 400

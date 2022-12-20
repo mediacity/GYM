@@ -45,7 +45,6 @@
                         </th>
                                 <th>#</th>
                                 <th>{{ __("Page Title") }}</th>
-                                <th>{{ __("Detail") }}</th>
                                 <th>{{ __("About Us") }}</th>
                                 <th>{{ __("Status") }}</th>
                                 <th>{{ __("Action") }}</th>
@@ -91,7 +90,6 @@
                                     {{$key+1}}
                                 </td>
                                 <td>{{ucfirst($list->title)}} </td>
-                                <td>{{str_limit($list->detail,'30') }}</td>
                                 <td>{{ucfirst($list->aboutus)}} </td>
                                 <td>
                                     {!! Form::open(['method' => 'POST', 'route' => ['pages.status', $list->id]]) !!}
@@ -107,9 +105,9 @@
                                     <div class="button-list">
                                         <a href="{{route('pages.edit', $list->id)}}"
                                             class="btn btn-xm btn-success-rgba"><i class="feather icon-edit-2"></i></a>
-                                        <button type="button" class="btn btn-xm btn-danger-rgba" data-toggle="modal"
+                                        <!-- <button type="button" class="btn btn-xm btn-danger-rgba" data-toggle="modal"
                                             data-target="#deleteModal{{$list->id}}"><i
-                                                class="feather icon-trash"></i></button>
+                                                class="feather icon-trash"></i></button> -->
                                         <!-- Modal -->
                                         <div id="deleteModal{{$list->id}}" class="delete-modal modal fade"
                                             role="dialog">

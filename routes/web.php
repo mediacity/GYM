@@ -17,6 +17,8 @@ Route::middleware(['is_install','switch_lang'])->group(function () {
     // Front 
     Route::get('/', 'DashboardController@welcome')->name('home');
     Route::get('blog/detail/{id}', 'FrontController@blog_details')->name('blog.detail');
+    Route::get('privacy-policy', 'FrontController@privacy_policy')->name('front-privacy-policy');
+    Route::get('terms-and-condition', 'FrontController@terms_condition')->name('front-terms-condition');
     Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 /** Ajax Fetch State / City */
@@ -160,6 +162,12 @@ Route::middleware(['is_install','switch_lang'])->group(function () {
             Route::post('admin/faq/status/{id}', 'FaqController@status_update')->name('faq.status');
             Route::post('admin/faq/bulk_delete', 'FaqController@bulk_delete')->name('faq.bulk_delete');
             Route::resource('admin/pages', 'PagesController');
+
+            Route::get('privacy-policy', 'PagesController@privacy_policy')->name('privacy-policy');
+            Route::get('terms-condition', 'PagesController@terms_condition')->name('terms-condition');
+            Route::post('privacy-policy-update', 'PagesController@privacy_policy_update')->name('privacy-policy-update');
+            Route::post('terms-condition-update', 'PagesController@terms_condition_update')->name('term-condition-update');
+
             Route::post('admin/pages/status/{id}', 'PagesController@status_update')->name('pages.status');
             Route::post('admin/pages/bulk_delete', 'PagesController@bulk_delete')->name('pages.bulk_delete');
             Route::resource('admin/selectpages', 'SelectPagesController');

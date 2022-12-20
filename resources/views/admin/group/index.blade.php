@@ -53,7 +53,6 @@
                                         #
                                     </th>
                                     <th>{{ __("Name") }}</th>
-                                    <th>{{ __("Description") }}</th>
                                     <th>{{ __("UserName") }}</th>
                                     <th>{{ __("Status") }}</th>
                                     <th>{{ __("Action") }}</th>
@@ -99,7 +98,6 @@
                                         {{$key+1}}
                                     </td>
                                     <td>{{ucfirst($list->name)}} </td>
-                                    <td>{{str_limit($list->detail,'50') }}</td>
                                     <td>
                                         @isset($list->user_id)
                                         @foreach($list->user_id as $key => $uid)

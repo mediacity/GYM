@@ -76,7 +76,7 @@
 <script src="<?php echo e(url('assets/js/custom/custom-switchery.js')); ?>"></script>
 
 <script src="<?php echo e(url('assets/js/core.js')); ?>"></script>
-<script src="<?php echo e(url('js/admin.js')); ?>"></script>
+<script src="<?php echo e(url('assets/js/admin.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/plugins/summernote/summernote-bs4.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/jquery.rateyo.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/customjs.js')); ?>"></script>
@@ -159,8 +159,7 @@
     $("#datepicker").datepicker({
       changeMonth: true,
       changeYear: true,
-      yearRange: '1950:<?php echo e(date('
-      Y ')); ?>',
+      yearRange: '<?php echo e(date(' Y ')); ?>',
       dateFormat: "yy-mm-dd",
     });
   });
@@ -233,10 +232,10 @@
   var ONESIGNAL_APP_ID = <?php echo json_encode(env('ONESIGNAL_APP_ID'), 15, 512) ?>;
   var USER_ID = '<?php echo e(auth()->user()?auth()->user()->id:""); ?>';
 </script>
-<script src="<?php echo e(url('js/onesignal.js')); ?>"></script>
+<script src="<?php echo e(url('assets/js/onesignal.js')); ?>"></script>
 <script src="<?php echo e(url('/OneSignalSDK/OneSignalSDK.js')); ?>"></script>
 <?php endif; ?>
-<script src="<?php echo e(url('js/admintable.js')); ?>"></script>
+<script src="<?php echo e(url('assets/js/admintable.js')); ?>"></script>
 <script type="text/javascript">
     $('#summernote').summernote({
         height: 400

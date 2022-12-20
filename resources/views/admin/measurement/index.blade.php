@@ -52,25 +52,10 @@
                                 {{ __("Height") }}
                             </th>
                             <th>
-                                {{ __("Weight") }}
-                            </th>
-                            <th>
-                                {{ __("Chest") }}
-                            </th>
-                            <th>
                                 {{ __("Triceps") }}
                             </th>
                             <th>
-                                {{ __("Biceps") }}
-                            </th>
-                            <th>
-                                {{ __("Abdomen") }}
-                            </th>
-                            <th>
                                 {{ __("Waist") }}
-                            </th>
-                            <th>
-                                {{ __("Fat") }}
                             </th>
                             <th>
                                 {{ __("Follow Up Date") }}                        
@@ -139,14 +124,19 @@
                                     @endif
                                 </td>
                                 <td>{{ucfirst($measurement->user['name']) }} </td>
-                                <td>{{$measurement -> height}}</td>
-                                <td>{{$measurement -> weight }}</td>
-                                <td>{{$measurement -> chest}}</td>
-                                <td>{{$measurement -> tricep}}</td>
-                                <td>{{$measurement -> bicep }}</td>
-                                <td>{{$measurement -> abdomen }}</td>
-                                <td>{{$measurement -> waist }}</td>
-                                <td>{{$measurement -> fat }}</td>
+                                <td> 
+                                    <b>Height : </b> {{$measurement -> height}} Ft<br>
+                                    <b>Weight : </b> {{$measurement -> weight}} Kg<br>
+                                    <b>Chest : </b> {{$measurement -> chest}} In
+                                </td>
+                                <td>
+                                    <b>Tricep : </b> {{$measurement -> tricep}} In<br>
+                                    <b>Bicep : </b> {{$measurement -> bicep}} In<br>
+                                    <b>Abdomen : </b> {{$measurement -> abdomen}} In
+                                </td>
+                                <td>
+                                    <b>waist : </b> {{$measurement -> waist}} In<br>
+                                </td>
                                 <td>{{$measurement -> date }}</td>
                                 @if(Auth::user()->roles->first()->name == 'Trainer' ||
                                 Auth::user()->roles->first()->name == 'Super Admin' )

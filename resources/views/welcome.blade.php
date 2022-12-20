@@ -180,7 +180,7 @@
                         </div>
                         <div class="blog-dtl">
                             <h4 class="blog-dtl-heading"><a href="{{ route('blog.detail',$blog->id ) }}" title="{{$blog->title}}">{{$blog->title}}</a></h4>
-                            <p>{{substr($blog->detail, 0, 100);}}</p>
+                            <!-- <p>{{substr($blog->detail, 0, 100);}}</p> -->
                         </div>
                         <hr>
                         <div class="row">
@@ -223,7 +223,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-block">
-                        <p>All rights reserved<br><span><a href="#" title="">Terms &amp; Condition</a> and <a href="#" title="">Privacy Policy</a></span></p>
+                    <p>All rights reserved<br><span><a href="{{ route('front-terms-condition' ) }}" title="">Terms &amp; Condition</a> and <a href="{{ route('front-privacy-policy') }}" title="">Privacy Policy</a></span></p>
                     </div>
                 </div>
             </div>
@@ -256,7 +256,7 @@
     </div> -->
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ url('js/theme.js') }}"></script>
 </body>
 </html>

@@ -47,7 +47,6 @@
                         </th>
                                 <th>#</th>
                                 <th><?php echo e(__("Page Title")); ?></th>
-                                <th><?php echo e(__("Detail")); ?></th>
                                 <th><?php echo e(__("About Us")); ?></th>
                                 <th><?php echo e(__("Status")); ?></th>
                                 <th><?php echo e(__("Action")); ?></th>
@@ -94,7 +93,6 @@
 
                                 </td>
                                 <td><?php echo e(ucfirst($list->title)); ?> </td>
-                                <td><?php echo e(str_limit($list->detail,'30')); ?></td>
                                 <td><?php echo e(ucfirst($list->aboutus)); ?> </td>
                                 <td>
                                     <?php echo Form::open(['method' => 'POST', 'route' => ['pages.status', $list->id]]); ?>
@@ -113,9 +111,9 @@
                                     <div class="button-list">
                                         <a href="<?php echo e(route('pages.edit', $list->id)); ?>"
                                             class="btn btn-xm btn-success-rgba"><i class="feather icon-edit-2"></i></a>
-                                        <button type="button" class="btn btn-xm btn-danger-rgba" data-toggle="modal"
+                                        <!-- <button type="button" class="btn btn-xm btn-danger-rgba" data-toggle="modal"
                                             data-target="#deleteModal<?php echo e($list->id); ?>"><i
-                                                class="feather icon-trash"></i></button>
+                                                class="feather icon-trash"></i></button> -->
                                         <!-- Modal -->
                                         <div id="deleteModal<?php echo e($list->id); ?>" class="delete-modal modal fade"
                                             role="dialog">

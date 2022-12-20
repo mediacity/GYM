@@ -326,7 +326,7 @@ class DashboardController extends Controller
         $todaydiet = Dietpackage::orderBy('id', 'DESC')->take(5)->get();
         $todayenquiry = Enquiry::orderBy('id', 'DESC')->take(5)->get();
         $todayreferal = AffilateHistory::orderBy('id', 'DESC')->take(5)->get();
-       
+        \Session::put('changed_language', 'en');
         $todayappointment = Appointment::orderBy('id', 'DESC')->take(5)->get();
         $userbirthday = User::whereDate('dob', Carbon::today())->take(5)->get();
         $referallist = array(

@@ -1,4 +1,4 @@
-    
+
 <?php $__env->startSection('title',__(' Dashboard')); ?>
 <!-- Start Breadcrumbbar -->
 <?php $__env->startSection('breadcum'); ?>
@@ -21,7 +21,7 @@
 <!-- End Breadcrumbbar -->
 <!-- Start Contentbar -->
 <?php $__env->startSection('maincontent'); ?>
-<div class="contentbar">
+<div class="">
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard.superadmin')): ?>
     <!-- Start row -->
     <div class="row">

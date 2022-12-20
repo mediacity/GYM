@@ -51,7 +51,6 @@
               </th>
               <th>{{ __("Name/Image") }}</th>
               <th>{{ __("Link") }}</th>
-              <th>{{ __("Detail") }}</th>
               <th>{{ __("Price") }}</th>
               <th>{{ __("Offerprice") }}</th>
               @if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin'
@@ -111,7 +110,6 @@
               </td>
               <td><a href="{{ $list->link }}">{{str_limit($list->link, '30')}}</a></td>
 
-              <td>{{str_limit($list->detail,'10') }}</td>
               <td>{{ '$'.($list->price) }}</td>
               <td>
                 @if(($list->offerprice)>0) <span class="badge badge-success">
