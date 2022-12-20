@@ -33,12 +33,7 @@ class TrainerlistController extends Controller
      */
     public function index(Request $request)
     {
-        $trainerlist = Trainerlist::all();
-        if (!$request->id) {
-            return redirect(route('users.index'));
-        }
-
-        $trainerlist = Trainerlist::orderBy('created_at', 'desc')->where('user_id', '=', base64_decode($request->id))->get();
+        $trainerlist = Trainerlist::orderBy('created_at', 'desc')->where('user_id', '=', Auth::user()->id)->get();
         
         return view('admin.trainerlist.index', compact('trainerlist'));
     }

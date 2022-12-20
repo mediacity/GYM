@@ -44,13 +44,13 @@ class PaymentController extends Controller
         $payment->name = Auth::user()->name;
         $payment->email = Auth::user()->email;
         $payment->mobile = Auth::user()->mobile;
-        $payment->payment_id = strip_tags($request->razorpay_payment_id);
-        $payment->amount = strip_tags($request->totalAmount);
-        $payment->package_id = strip_tags($request->product_id);
+        $payment->payment_id = $request->razorpay_payment_id;
+        $payment->amount = $request->totalAmount;
+        $payment->package_id = $request->product_id;
         $payment->payment_method = 'razorpay';
         $payment->status = 'confirmed';
         $payment->to = date('d-m-y');
-        $package = Packages::where('id', strip_tags($request->product_id))->first();
+        $package = Packages::where('id', $request->product_id)->first();
         if (isset($package['duration'])) {
 
             if ($package['duration'] == '1 Month') {
@@ -94,6 +94,7 @@ class PaymentController extends Controller
 
             }
         }
+       
         $payment->save();
         $users = User::role('Super Admin')->first();
         $name = Auth::user()->name;

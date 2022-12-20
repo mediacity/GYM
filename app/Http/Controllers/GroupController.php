@@ -20,7 +20,7 @@ class GroupController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['permission:locker.view']);
+        // $this->middleware(['permission:group.view']);
     }
     /**
      * This function is used to display all group.
@@ -29,8 +29,22 @@ class GroupController extends Controller
      * @return Renderable
      */
     public function index(Request $request)
-    {
-        $grouplist = Group::orderBy('id', 'DESC')->get();
+    {  
+       $user_role = Auth::user()->roles[0]->name ?? 'No role set';
+        if ($user_role == 'User' || $user_role == 'user') {
+            $userGroupID = [];
+            $gplists = Group::all();
+            foreach ($gplists as $key => $gplist) {                
+                if(in_array(Auth::user()->id, $gplist->user_id)){
+                    foreach ($gplist->user_id as $key => $userID) {
+                        array_push($userGroupID,$gplist->id);
+                    }                    
+                }
+            }
+            $grouplist = Group::whereIn('id',$userGroupID)->orderBy('id', 'DESC')->get();
+        } else {
+            $grouplist = Group::orderBy('id', 'DESC')->get();
+        }
         return view('admin.group.index', compact('grouplist'));
     }
 
@@ -41,7 +55,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        if (!Auth::user()->can('locker.add')) {
+        if (!Auth::user()->can('group.add')) {
             return abort(403,__( 'User does not have the right permissions.'));
 
         }
@@ -89,11 +103,10 @@ class GroupController extends Controller
         if (!Auth::user()->can('group.edit')) {
             return abort(403, __('User does not have the right permissions.'));
         }
-        {
-            $users = User::all();
-            $group = Group::findOrFail(__($id));
-            return view('admin.group.edit', compact('group', 'users'));
-        }
+        $users = User::all();
+        $group = Group::findOrFail($id);
+        
+        return view('admin.group.edit', compact('group', 'users'));
 
     }
     /**

@@ -531,7 +531,7 @@
                                         <h5>{{ $todayexercises->user->name }}</h5>
                                         <p>{{ $todayexercises->user->email }}</p>
                                         <p><span
-                                                class="badge badge-primary-inverse">{{ $todayexercises->exercise->exercise_package ?? ''}}</span>
+                                                class="badge badge-primary-inverse">{{ $todayexercises->exercise?$todayexercises->exercise->exercise_package:''}}</span>
                                         </p>
                                         <div class="button-list mt-4">
                                             <button type="button" class="btn btn-round btn-secondary-rgba"><i

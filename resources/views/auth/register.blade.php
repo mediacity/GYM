@@ -202,8 +202,8 @@
         var stateurl = @json(route('list.state'));
         var cityurl = @json(route('list.cities'));
 
-    </script>
-    <script src="{{ url('js/admin.js') }}"></script>
+                </script>
+                <script src="{{ url('assets/js/admin.js') }}"></script>
 
 </body>
 </html>

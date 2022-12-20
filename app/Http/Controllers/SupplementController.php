@@ -131,7 +131,7 @@ class SupplementController extends Controller
 
         if ($image = $request->file('image')) {
             $optimizeImage = Image::make($image);
-            $optimizePath = public_path() . '/image/blog/';
+            $optimizePath = public_path() . '/image/supplements/';
             $name = time() . $image->getClientOriginalName();
             if ($supplement->image != '') {
                 $image_file = @file_get_contents(public_path() . '/image/supplements/' . $supplement->image);

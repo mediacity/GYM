@@ -17,7 +17,6 @@ class AppointmentsettingController extends Controller
     public function index()
     {
         $appointmentsettinglist = Appointmentsetting::orderBy('created_at', 'desc')->get();
-
         return view('admin.appointmentsetting.index', compact('appointmentsettinglist'));
     }
 

@@ -55,7 +55,7 @@
                             <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
                                 {!! Form::label('detail', 'Description',['class'=>'required']) !!}<span
                                     class="text-danger">*</span>
-                                {!! Form::textarea('detail', null, ['class' => 'form-control' ,'required', 'placeholder'
+                                {!! Form::textarea('detail', null, ['id' => 'summernote','class' => 'form-control' ,'required', 'placeholder'
                                 => 'Please Enter Package description']) !!}
                                 <small class="text-danger">{{ $errors->first('detail') }}</small>
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter details") }}
