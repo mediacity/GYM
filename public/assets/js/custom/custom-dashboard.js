@@ -7,6 +7,7 @@
 $(document).ready(function() {   
     
     /* -----  Apex Area1 Chart ----- */
+    var user = '';
     var options = {
         chart: {
             type:"area",

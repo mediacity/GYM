@@ -235,11 +235,11 @@
     </footer>
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
     @if(in_array(app()->getLocale(),array('ar','he','ur', 'arc', 'az', 'dv', 'ku', 'fa')))
-    <script src="{{ url('js/theme_rtl.js') }}"></script>
+    <script src="{{ url('assets/js/theme_rtl.js') }}"></script>
     @else 
-    <script src="{{ url('js/theme.js') }}"></script>
+    <script src="{{ url('assets/js/theme.js') }}"></script>
     @endif
 </body>
 </html>

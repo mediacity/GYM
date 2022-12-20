@@ -376,6 +376,16 @@
                                     </a>
                                 </li>
                                 @endcan
+                                <li>
+                                    <a class="{{ Nav::isResource('privacy-policy') }}" href="{{ route('privacy-policy') }}">
+                                        {{ __('Privacy Policy') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="{{ Nav::isResource('terms-condition') }}" href="{{ route('terms-condition') }}">
+                                        {{ __('	Terms And Condition') }}
+                                    </a>
+                                </li>
                                 <!-- Blogs -->
                                 <li>
                                     <a class="{{ Nav::isResource('blog') }} {{ Nav::isResource('blogcategory') }}"

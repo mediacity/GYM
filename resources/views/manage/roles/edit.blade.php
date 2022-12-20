@@ -842,5 +842,5 @@
 @endsection
 <!-- End Contentbar -->
 @section('script')
-<script src="{{ url('js/checkbox.js') }}"></script>
+<script src="{{ url('assets/js/checkbox.js') }}"></script>
 @endsection

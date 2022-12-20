@@ -22,6 +22,7 @@ class QuotationController extends Controller
     {
         $subquotation = Subquotation::all();
         $quotation = Quotation::orderBy('created_at', 'desc')->get();
+        
         return view('admin.quotation.index', compact('quotation', 'subquotation'));
     }
 

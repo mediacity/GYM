@@ -63,7 +63,6 @@ class MultiCurrencyController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'code' => 'required|string|max:3|min:3',
         ], [

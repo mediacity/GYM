@@ -120,7 +120,7 @@
   });
   $('body').on('click', '.buy_now', function (e) {
     var totalAmount = $(this).attr("data-amount");
-    var product_id = $(this).attr("data-id");
+    var product_id = $(this).attr("data-planid");
 
     var options = {
       "key": "rzp_test_MO2mGQNEAnyxdT",

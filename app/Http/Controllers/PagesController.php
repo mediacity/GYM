@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pages;
+use App\Models\PrivacyPolicy;
+use App\Models\TermCondition;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -166,6 +168,46 @@ class PagesController extends Controller
             $pages->delete();
         }
         toastr()->error(__('Selected Pages has been deleted.'));
+        return back();
+    }
+
+    public function privacy_policy()
+    {
+        $data['pages'] = PrivacyPolicy::first();
+        return view('admin.pages.policy', $data);
+    }
+
+    public function privacy_policy_update(Request $request)
+    {
+        $data['title'] = $request->title;
+        $data['detail'] = $request->detail;
+        if(PrivacyPolicy::count()=='0'){
+            PrivacyPolicy::create($data);
+        } else {
+            $priv = PrivacyPolicy::first();
+            $priv->update($data);
+        }
+        toastr()->info(__('Privacy Policy Updated.'));
+        return back();
+    }
+
+    public function terms_condition()
+    {
+        $data['pages'] = TermCondition::first();
+        return view('admin.pages.terms', $data);
+    }
+
+    public function terms_condition_update(Request $request)
+    {
+        $data['title'] = $request->title;
+        $data['detail'] = $request->detail;
+        if(TermCondition::count()=='0'){
+            TermCondition::create($data);
+        } else {
+            $priv = TermCondition::first();
+            $priv->update($data);
+        }
+        toastr()->info(__('Term And Condition Updated.'));
         return back();
     }
 }

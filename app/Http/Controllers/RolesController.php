@@ -31,7 +31,7 @@ class RolesController extends Controller
     public function index(Request $request)
     {
         $roles = \DB::table('roles')->select('roles.id', 'roles.name')->get();
-
+    
         if ($request->ajax()) {
             return DataTables::of($roles)
 

@@ -40,7 +40,7 @@ class EventController extends Controller
     public function eventOrderGen(Request $request)
     {
 
-        $input = strip_tags($request->except('_token'));
+        $input = $request->except('_token');
         $input['order_id'] = rand(1111, 9999);
         $payment = PaytmWallet::with('receive');
         $payment->prepare([
@@ -48,7 +48,7 @@ class EventController extends Controller
             'user' => Auth::User()->id,
             'mobile_number' => '1234567890',
             'email' => Auth::User()->email,
-            'amount' => strip_tags($request->amount),
+            'amount' => $request->amount,
             'callback_url' => url('payment/status'),
         ]);
         $package = Packages::where('id', $request->id)->first();
