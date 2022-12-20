@@ -124,7 +124,7 @@
                                                         @method('POST')
                                                         <button type="reset" class="btn btn-gray translate-y-3"
                                                             data-dismiss="modal">{{ __("No") }}</button>
-                                                        <button type="submit" class="btn btn-danger">{{ _("Yes") }}}</button>
+                                                        <button type="submit" class="btn btn-danger">{{ __("Yes") }}}</button>
                                                     </form>
                                                 </div>
                                             </div>

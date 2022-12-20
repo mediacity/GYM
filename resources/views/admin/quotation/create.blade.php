@@ -37,7 +37,7 @@
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Date: ") }}<span class="text-danger">*</span></label>
                                 <div class="input-group">
@@ -56,7 +56,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group{{ $errors->has('Name') ? ' has-error' : '' }}">
                                 {!! Form::label('name', 'Name',['class'=>'required']) !!}<span
                                     class="text-danger">*</span></label>
@@ -67,7 +67,7 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Email: ") }}<span class="text-danger">*</span></label>
                                 <input value="{{ old('email') }}" autofocus="" type="email" name="email"
@@ -81,7 +81,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Mobile:") }}<span class="text-danger">*</span></label>
                                 <input value="{{ old('mobile') }}" title="enter valid no." pattern="[0-9]{10}"
@@ -89,24 +89,7 @@
                                     name="mobile">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <label class="text-dark" for="address">{{ __("Address: ") }}<span
-                                        class="text-danger">*</span></label>
-                                <textarea required="" class="@error('adress') is-invalid @enderror form-control"
-                                    id="adress" name="address"
-                                    placeholder="{{ __("Enter Your Address here") }}">{{ old('adress') }}</textarea>
-                                @error('adress')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Select Country: ") }}<span
                                         class="text-danger">*</span></label>
@@ -128,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Select State: ") }}<span
                                         class="text-danger">*</span></label>
@@ -148,7 +131,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Select City: ") }}<span
                                         class="text-danger">*</span></label>
@@ -168,7 +151,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Pincode: ") }}<span class="text-danger">*</span></label>
 
@@ -182,7 +165,21 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark" for="address">{{ __("Address: ") }}<span
+                                        class="text-danger">*</span></label>
+                                <textarea required="" class="@error('adress') is-invalid @enderror form-control"
+                                    id="adress" name="address"
+                                    placeholder="{{ __("Enter Your Address here") }}">{{ old('adress') }}</textarea>
+                                @error('adress')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Select Your Status:") }} <span class="text-danger">*</span></label>
                                 <select required="" name="status" id="status" class="form-control select2">
@@ -267,7 +264,7 @@
         </div>
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12 col-lg-6">
+                <div class="col-md-12 col-lg-12">
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="form-group{{ $errors->has('additionalnote') ? ' has-error' : '' }}">
@@ -282,58 +279,69 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-6">
+                <div class="col-md-12 col-lg-12">
                     <div class="card m-b-30">
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-dark">{{ __("Subtotal:") }} <span class="text-danger">*</span></label>
+                                        <input value="{{ old('subtotal') }}" autofocus="" type="number" name="subtotal"
+                                            id="subtotal" class="form-control @error('subtotal') is-invalid @enderror"
+                                            placeholder="{{ __("Enter Your Subtotal") }}" required="">
+                                            @error('subtotal')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-dark">{{ __("Tax:") }} <span class="text-danger">*</span></label>
+                                        <input value="{{ old('tax') }}" autofocus="" type="number" name="tax" id="tax"
+                                            class="form-control @error('tax') is-invalid @enderror" placeholder="{{ __("Enter Your Tax") }}"
+                                            required="">
 
-                            <div class="form-group">
-                                <label class="text-dark">{{ __("Subtotal:") }} <span class="text-danger">*</span></label>
-                                <input value="{{ old('subtotal') }}" autofocus="" type="number" name="subtotal"
-                                    id="subtotal" class="form-control @error('subtotal') is-invalid @enderror"
-                                    placeholder="{{ __("Enter Your Subtotal") }}" required="">
-                                     @error('subtotal')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="text-dark">{{ __("Tax:") }} <span class="text-danger">*</span></label>
-                                <input value="{{ old('tax') }}" autofocus="" type="number" name="tax" id="tax"
-                                    class="form-control @error('tax') is-invalid @enderror" placeholder="{{ __("Enter Your Tax") }}"
-                                    required="">
+                                        @error('tax')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-dark">{{ __("GrandTotal:") }} <span class="text-danger">*</span></label>
+                                        <input value="{{ old('grandtotal') }}" autofocus="" type="number" name="grandtotal"
+                                            id="grandtotal" class="form-control @error('grandtotal') is-invalid @enderror"
+                                            placeholder= "{{ __("Enter Your Grandtotal") }}" required="">
 
-                                @error('tax')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="text-dark">{{ __("GrandTotal:") }} <span class="text-danger">*</span></label>
-                                <input value="{{ old('grandtotal') }}" autofocus="" type="number" name="grandtotal"
-                                    id="grandtotal" class="form-control @error('grandtotal') is-invalid @enderror"
-                                    placeholder= "{{ __("Enter Your Grandtotal") }}" required="">
-
-                                @error('grandtotal')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div
-                                class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
-                                <div class="custom-switch">
-                                    {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
-                                    'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
+                                        @error('grandtotal')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
+                                        <div class="custom-switch">
+                                            {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
+                                            'custom-control-input']) !!}
+                                            <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                                <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
-                                    {{ __("Create") }}</button>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                        <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
+                                            {{ __("Create") }}</button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="clear-both"></div>
 

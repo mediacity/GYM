@@ -91,7 +91,7 @@
                     </h4>
 
                     <h4 class="card-title">{{ __('Edit user :') }} {{ $user->name }}</h4>
-                  </div>
+                </div>
 
                 <div class="card-body">
 
@@ -322,9 +322,7 @@
                             </div>
                         </div>
 
-
-
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Date of Birth:") }}</label>
                                 <div class="input-group">
@@ -339,14 +337,14 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Occupation:") }}</label>
                                 <input value="{{ $user['name'] }}" type="text" class="form-control"
                                     placeholder="{{ __("enter occupation of user") }}">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Select Role:") }} <span class="text-danger">*</span></label>
                                 <select required="" name="role" id="" class="form-control select2">
@@ -362,7 +360,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Demo: ") }}<span class="text-danger">*</span></label><br>
                                 <label class="switch"><input type="checkbox" id="togBtn" name="demo"
@@ -380,9 +378,21 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
+                            <input type="file" name="file" value="{{ $user->file }}" id="file2" class="{{ $errors->has('file') ? ' is-invalid' : '' }} inputfile inputfile-1" />
+                            <label for="file2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 20 17">
+                                    <path
+                                        d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                                </svg>
+                            </label>
+                            <span class="text-danger invalid-feedback" role="alert"></span> <br> 
+                            <small class="text-muted text-info" name="details"> 
+                                <i class="text-dark feather icon-help-circle"></i>
+                               {{ __(" Upload Document") }}
+                            </small>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="issue">{{ ("Health Issue:") }}</label>
                                 <br>
@@ -410,41 +420,27 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <br>
-                                <small class="text-muted" name="details"> <i
+                                <small class="text-muted text-info" name="details"> <i
                                         class="text-dark feather icon-help-circle"></i> {{ __("Enter your health description
                                         :For eg.- any health problem like B.P, Sugar etc..") }}
                                 </small>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <input type="file" name="file" value="{{ $user->file }}" id="file2"
-                                class="{{ $errors->has('file') ? ' is-invalid' : '' }} inputfile inputfile-1" />
-                            <label for="file2"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="30"
-                                    viewBox="0 0 20 17">
-                                    <path
-                                        d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
-                                </svg></label>
-
-                            <span class="text-danger invalid-feedback" role="alert"></span> <br> <small
-                                class="text-muted text-info" name="details"> <i
-                                    class="text-dark feather icon-help-circle"></i>
-                               {{ __(" Upload Document") }}
-                            </small></div>
-                           </div>
-                </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i> {{ __("Update") }}</button>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i> {{ __("Update") }}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear-both"></div>
                 </div>
-                <div class="clear-both"></div>
             </div>
         </div>
-
+    </div>
 </form>
-<br>
 @endsection
 <!-- End Contentbar -->
 @section('script')

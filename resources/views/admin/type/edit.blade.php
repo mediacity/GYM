@@ -50,7 +50,7 @@
                                     {!! Form::text('name', null, ['class' => 'form-control', 'required','placeholder' =>
                                 'Please Enter Exercise Name']) !!}
                                 <small class="text-danger">{{ $errors->first('title') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
                                    {{ __(" Enter the exercise  Type : Traditional pushup , Clap Pushup") }}</small>
                             </div>
                             <div

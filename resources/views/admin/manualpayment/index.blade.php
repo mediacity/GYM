@@ -261,34 +261,31 @@
                                                     <div class="col-md-12">
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <h1 class="card-title">
+                                                                <h1 class="card-title mb-4">
                                                                     {{ __('Edit Manual Payment Details:') }}</h1>
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label class="text-dark">{{ __("Payment Name:") }} <span
-                                                                                    class="text-danger">*</span></label>
-                                                                            <input type="text"
-                                                                                class="form-control @error('payment_name') is-invalid @enderror"
-                                                                                placeholder="{{ __("Your Payment name") }}"
-                                                                                name="payment_name" required=""
-                                                                                value="{{ $method->payment_name }}">
-                                                                            @error('payment_name')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                            @enderror
-                                                                            <small class="text-muted text-info"> <i
-                                                                                    class="text-dark feather icon-help-circle"></i>
-                                                                               {{ __(" Enter your payement name") }}</small>
-                                                                        </div>
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label class="text-dark">{{ __("Payment Name:") }} <span
+                                                                                class="text-danger">*</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('payment_name') is-invalid @enderror"
+                                                                            placeholder="{{ __("Your Payment name") }}"
+                                                                            name="payment_name" required=""
+                                                                            value="{{ $method->payment_name }}">
+                                                                        @error('payment_name')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
+                                                                        <small class="text-muted text-info"> <i
+                                                                                class="text-dark feather icon-help-circle"></i>
+                                                                            {{ __(" Enter your payement name") }}</small>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
@@ -310,8 +307,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
@@ -331,8 +326,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div
@@ -350,7 +343,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <button type="reset" class="btn btn-danger-rgba"><i
                                                                     class="fa fa-ban"></i>

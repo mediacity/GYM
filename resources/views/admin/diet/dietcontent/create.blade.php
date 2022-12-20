@@ -31,21 +31,21 @@
 <form class="form-light form" action="{{route('dietcontent.store')}}" method="POST" novalidate>
     {{ csrf_field() }}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
                      <h1 class="card-title">{{ __('Add Contents for your Diet:') }}</h1>
                 </div>
-                <br>
-                <div class="col-md-12">
+                <br>          
+                <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">Content: <span class="text-danger">*</span></label>
                                 <input value="{{ old('content') }}" autofocus="" type="text"
                                     class="form-control @error('content') is-invalid @enderror"
                                     placeholder="{{ __('Enter Content name') }}" name="content" required="">
-                                     @error('content')
+                                        @error('content')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -53,11 +53,7 @@
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the content which your diet needed eg: Tomato, Rice") }}</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Quantity: ") }}<span class="text-danger">*</span></label>
                                 <input value="{{ old('quantity') }}" autofocus="" type="text"
@@ -71,18 +67,14 @@
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Enter the quantity of the content mentioned. For eg: 2 qty") }}</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--Content-->
-                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
+                        <!--Content-->
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Calories: ") }}<span class="text-danger">*</span></label>
                                 <input value="{{ old('calories') }}" autofocus="" type="text"
                                     class="form-control @error('calories') is-invalid @enderror"
                                     placeholder="{{ __('Enter Calories') }}" name="calories" required="" pattern="[0-9]+">
-                                     @error('calories')
+                                        @error('calories')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -90,12 +82,8 @@
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the caloriess of the content eg:, 20 kcal") }}</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--Is Active-->
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-6">
+                        <!--Is Active-->
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <div class="text-dark"
                                     class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
@@ -109,15 +97,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                        <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
-                            {{ __("Create") }}</button>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
+                                    {{ __("Create") }}</button>
+                            </div>
+                        </div>
                     </div>
+                    <div class="clear-both"></div>
                 </div>
-                <div class="clear-both"></div>
             </div>
         </div>
     </div>

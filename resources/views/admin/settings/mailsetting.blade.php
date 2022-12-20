@@ -34,68 +34,84 @@
                   <form class="form" action="{{ route('mail.setting.save') }}" method="POST" novalidate
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Sender Name:') }} <small
-                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>{{ __(" John Doe)") }}</small></label>
-                        <input name="MAIL_FROM_NAME" autofocus="" type="text" class="form-control"
-                            placeholder="{{ __("enter sender name") }}" required="" value="{{ env('MAIL_FROM_NAME') }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please sender name !') }}.
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Sender Name:') }} <small
+                                        class="text-muted text-info">(<b>{{ __("eg.") }}</b>{{ __(" John Doe)") }}</small></label>
+                                <input name="MAIL_FROM_NAME" autofocus="" type="text" class="form-control"
+                                    placeholder="{{ __("enter sender name") }}" required="" value="{{ env('MAIL_FROM_NAME') }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please sender name !') }}.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Sender Address:') }} <small
+                                        class="text-muted text-info">(<b>{{ __("eg.") }}</b>
+                                        {{ __("info@example.com)") }}</small></label>
+                                <input name="MAIL_FROM_ADDRESS" autofocus="" type="text" class="form-control"
+                                    placeholder="{{ __("enter your mail address") }}" value="{{ env('MAIL_FROM_ADDRESS') }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Mail Host:') }} <small
+                                        class="text-muted text-info">(<b>{{ __("eg.") }}</b>
+                                        {{ __(" smtp.gmail.com)") }}</small></label>
+                                <input placeholder="{{ __("enter mail host") }}" class="form-control" type="text" name="MAIL_HOST"
+                                    value="{{ env('MAIL_HOST') }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please mail host !') }}.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Mail Driver:') }} <small
+                                        class="text-muted text-info">(<b>{{ __("eg.") }}</b>
+                                        {{ __("  smtp,sendmail,mail)") }}</small></label>
+                                <input placeholder="{{ __("enter mail driver") }}" class="form-control" type="text" name="MAIL_DRIVER"
+                                    value="{{ env('MAIL_DRIVER') }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please mail driver !') }}.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Mail Username:') }}</label>
+                                <input placeholder="{{ __("enter mail username") }}" class="form-control" type="text" name="MAIL_USERNAME"
+                                    value="{{ env('MAIL_USERNAME') }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please mail username !') }}.
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Mail Encryption:') }} <small
+                                        class="text-muted text-info">{{ __("(") }}<b>{{ __("eg.") }}</b>
+                                        {{ __("TLS,SSL or NULL)") }}</small></label>
+                                <input placeholder="{{ __("enter mail encryption") }}" class="form-control" type="text"
+                                    name="MAIL_ENCRYPTION" value="{{ env('MAIL_ENCRYPTION') }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Mail Password:') }}</label>
+                                <input placeholder="{{ __("enter mail password") }}" class="form-control" type="text" name="MAIL_PASSWORD"
+                                    value="{{ env('MAIL_PASSWORD') }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please mail mail password !') }}.
+                                </div>
+                                <small class="text-primary text-muted text-info">{{ __("(") }}<b>{{ __("Note.") }}</b> {{ __("IF gmail is using as mail provider mustenable ") }}<b><a class="underline" href="https://www.google.com/landing/2step/">{{ __("2 StepVerification") }}</a></b> {{ __("and Than") }}
+                                    <b>{{ __("Create a app password") }}</b> {{ __("which will use here.)") }}</small>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Sender Address:') }} <small
-                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>
-                                {{ __("info@example.com)") }}</small></label>
-                        <input name="MAIL_FROM_ADDRESS" autofocus="" type="text" class="form-control"
-                            placeholder="{{ __("enter your mail address") }}" value="{{ env('MAIL_FROM_ADDRESS') }}">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Mail Host:') }} <small
-                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>
-                                {{ __(" smtp.gmail.com)") }}</small></label>
-                        <input placeholder="{{ __("enter mail host") }}" class="form-control" type="text" name="MAIL_HOST"
-                            value="{{ env('MAIL_HOST') }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please mail host !') }}.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Mail Driver:') }} <small
-                                class="text-muted text-info">(<b>{{ __("eg.") }}</b>
-                                {{ __("  smtp,sendmail,mail)") }}</small></label>
-                        <input placeholder="{{ __("enter mail driver") }}" class="form-control" type="text" name="MAIL_DRIVER"
-                            value="{{ env('MAIL_DRIVER') }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please mail driver !') }}.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Mail Username:') }}</label>
-                        <input placeholder="{{ __("enter mail username") }}" class="form-control" type="text" name="MAIL_USERNAME"
-                            value="{{ env('MAIL_USERNAME') }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please mail username !') }}.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Mail Password:') }}</label>
-                        <input placeholder="{{ __("enter mail password") }}" class="form-control" type="text" name="MAIL_PASSWORD"
-                            value="{{ env('MAIL_PASSWORD') }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please mail mail password !') }}.
-                        </div>
-                        <small class="text-primary text-muted text-info">{{ __("(") }}<b>{{ __("Note.") }}</b> {{ __("IF gmail is using as mail provider mustenable ") }}<b><a class="underline" href="https://www.google.com/landing/2step/">{{ __("2 StepVerification") }}</a></b> {{ __("and Than") }}
-                            <b>{{ __("Create a app password") }}</b> {{ __("which will use here.)") }}</small>
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Mail Encryption:') }} <small
-                                class="text-muted text-info">{{ __("(") }}<b>{{ __("eg.") }}</b>
-                                {{ __("TLS,SSL or NULL)") }}</small></label>
-                        <input placeholder="{{ __("enter mail encryption") }}" class="form-control" type="text"
-                            name="MAIL_ENCRYPTION" value="{{ env('MAIL_ENCRYPTION') }}">
-                    </div>
-                    <div class="card-footer">
+                    <div class="footer">
                         <button type="submit" class="btn btn-primary-rgba"><i class="feather icon-save mr-2"></i>
                             {{ __('Save') }}</button>
                     </div>

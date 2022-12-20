@@ -57,32 +57,40 @@
                             <form class="form" action="{{ route('payment.settings.save',['type' => 'razorpay']) }}"
                                 method="POST" novalidate>
                                 @csrf
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __('Razorpay Key:') }}</label>
-                                    <input name="RAZOR_PAY_KEY" autofocus="" type="text" class="form-control"
-                                        placeholder="{{ __("Enter razorpay key") }}" required=""
-                                        value="{{ env('RAZOR_PAY_KEY') ? env('RAZOR_PAY_KEY') : 'no' }}">
-                                    <div class="invalid-feedback">
-                                        {{ __('Please provide Razorpay api key !') }}.
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-dark">{{ __('Razorpay Key:') }}</label>
+                                            <input name="RAZOR_PAY_KEY" autofocus="" type="text" class="form-control"
+                                                placeholder="{{ __("Enter razorpay key") }}" required=""
+                                                value="{{ env('RAZOR_PAY_KEY') ? env('RAZOR_PAY_KEY') : 'no' }}">
+                                            <div class="invalid-feedback">
+                                                {{ __('Please provide Razorpay api key !') }}.
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-dark">{{ __('Razorpay Secret Key:') }} </label>
+                                            <input name="RAZOR_PAY_SECRET" autofocus="" type="text" class="form-control"
+                                                placeholder="{{ __("Enter razorpay secret key") }}" value="{{ env('RAZOR_PAY_SECRET') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group member-attendance-slider">
+                                            <label class="switch"><input type="checkbox" id="togBtn" name="ENABLE_RAZOR_PAY"
+                                                    {{ env('ENABLE_RAZOR_PAY') == 1 ? "checked" : ""}}>
+                                                <div class="slider round">
+                                                    <!--ADDED HTML -->
+                                                    <span class="on" value="1">{{ __("Active") }}</span><span class="off"
+                                                        value="0">{{ __("Deactive") }}</span>
+                                                    <!--END-->
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __('Razorpay Secret Key:') }} </label>
-                                    <input name="RAZOR_PAY_SECRET" autofocus="" type="text" class="form-control"
-                                        placeholder="{{ __("Enter razorpay secret key") }}" value="{{ env('RAZOR_PAY_SECRET') }}">
-                                </div>
-                                <div class="form-group member-attendance-slider">
-                                    <label class="switch"><input type="checkbox" id="togBtn" name="ENABLE_RAZOR_PAY"
-                                            {{ env('ENABLE_RAZOR_PAY') == 1 ? "checked" : ""}}>
-                                        <div class="slider round">
-                                            <!--ADDED HTML -->
-                                            <span class="on" value="1">{{ __("Active") }}</span><span class="off"
-                                                value="0">{{ __("Deactive") }}</span>
-                                            <!--END-->
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="card-footer razorpay-btn">
+                                <div class="footer razorpay-btn">
                                     <button type="submit" class="btn btn-primary-rgba"><i class="feather icon-save mr-2"></i> {{ __('Save') }}</button>
                                 </div>
                             </form>
@@ -98,52 +106,64 @@
                             <form class="form" action="{{ route('payment.settings.save',['type' => 'paytm']) }}"
                                 method="POST" novalidate>
                                 @csrf
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __('Paytm Merchant Id:') }}</label>
-                                    <input name="PAYTM_MERCHANT_ID" autofocus="" type="text" class="form-control"
-                                        placeholder="{{ __("Enter Paytm Id") }}" required="" value="{{ env('PAYTM_MERCHANT_ID') }}">
-                                    <div class="invalid-feedback">
-                                        {{ __('Please provide Paytm api key !') }}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __('Paytm Merchant Key:') }} </label>
-                                    <input name="PAYTM_MERCHANT_KEY" autofocus="" type="text" class="form-control"
-                                        placeholder="{{ __("Enter Paytm Merchant key") }}" value="{{ env('PAYTM_MERCHANT_KEY') }}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __('Paytm Merchant Website:') }} </label>
-                                    <input name="PAYTM_MERCHANT_WEBSITE" autofocus="" type="text" class="form-control"
-                                        placeholder="{{ __("Enter Paytm Secret key") }}"
-                                        value="{{ env('PAYTM_MERCHANT_WEBSITE') }}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __('PAYTM ENVIROMENT:') }} </label><br>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline3" name="ENVIRONMENT"
-                                            class="custom-control-input" value="local"
-                                            {{ (env('ENVIRONMENT') == 'local' ? "checked" : "") }}>
-                                        <label class="custom-control-label" for="customRadioInline3">{{ __("Local") }}</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline4" name="ENVIRONMENT"
-                                            class="custom-control-input" value="production"
-                                            {{ (env('ENVIRONMENT') == 'production' ? "checked" : "") }}>
-                                        <label class="custom-control-label" for="customRadioInline4">{{ __("Production") }}</label>
-                                    </div>
-                                </div>
-                                <div class="form-group member-attendance-slider">
-                                    <label class="switch"><input type="checkbox" id="togBtn" name="ENABLE_PAYTM_PAY"
-                                            {{ env('ENABLE_PAYTM_PAY')==1 ? "checked" : ""}}>
-                                        <div class="slider round">
-                                            <!--ADDED HTML -->
-                                            <span class="on" value="1">{{ __("Active") }}</span><span class="off"
-                                                value="0">{{ __("Deactive") }}</span>
-                                            <!--END-->
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-dark">{{ __('Paytm Merchant Id:') }}</label>
+                                            <input name="PAYTM_MERCHANT_ID" autofocus="" type="text" class="form-control"
+                                                placeholder="{{ __("Enter Paytm Id") }}" required="" value="{{ env('PAYTM_MERCHANT_ID') }}">
+                                            <div class="invalid-feedback">
+                                                {{ __('Please provide Paytm api key !') }}
+                                            </div>
                                         </div>
-                                    </label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-dark">{{ __('Paytm Merchant Key:') }} </label>
+                                            <input name="PAYTM_MERCHANT_KEY" autofocus="" type="text" class="form-control"
+                                                placeholder="{{ __("Enter Paytm Merchant key") }}" value="{{ env('PAYTM_MERCHANT_KEY') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-dark">{{ __('Paytm Merchant Website:') }} </label>
+                                            <input name="PAYTM_MERCHANT_WEBSITE" autofocus="" type="text" class="form-control"
+                                                placeholder="{{ __("Enter Paytm Secret key") }}"
+                                                value="{{ env('PAYTM_MERCHANT_WEBSITE') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-dark">{{ __('PAYTM ENVIROMENT:') }} </label><br>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline3" name="ENVIRONMENT"
+                                                    class="custom-control-input" value="local"
+                                                    {{ (env('ENVIRONMENT') == 'local' ? "checked" : "") }}>
+                                                <label class="custom-control-label" for="customRadioInline3">{{ __("Local") }}</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline4" name="ENVIRONMENT"
+                                                    class="custom-control-input" value="production"
+                                                    {{ (env('ENVIRONMENT') == 'production' ? "checked" : "") }}>
+                                                <label class="custom-control-label" for="customRadioInline4">{{ __("Production") }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group member-attendance-slider">
+                                            <label class="switch"><input type="checkbox" id="togBtn" name="ENABLE_PAYTM_PAY"
+                                                    {{ env('ENABLE_PAYTM_PAY')==1 ? "checked" : ""}}>
+                                                <div class="slider round">
+                                                    <!--ADDED HTML -->
+                                                    <span class="on" value="1">{{ __("Active") }}</span><span class="off"
+                                                        value="0">{{ __("Deactive") }}</span>
+                                                    <!--END-->
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-footer">
+                                <div class="footer">
                                     <button type="submit" class="btn btn-primary-rgba"><i class="feather icon-save mr-2"></i>
                                         {{ __('Save') }}</button>
                                 </div>

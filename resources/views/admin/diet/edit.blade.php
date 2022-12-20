@@ -34,52 +34,100 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                 <div class="card-header">
+                <div class="card-header">
                     <h1 class="card-title">{{ __('Edit your diet:') }}</h1>
-                 </div>
+                </div>
                 <br>
-                 <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="text-dark">{{ __("Diet Name: ") }}<span class="text-danger">*</span></label>
-                                        <input value="{{ $diet->dietname }}" autofocus="" type="text"
-                                            class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="{{ __("Enter Diet name") }}" name="dietname" required="">
-                                             @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info"> <i
-                                                class="text-dark feather icon-help-circle"></i>{{ __("Enter your diet type eg : Weight Loss, Body Shaping ") }}</small>
-                                    </div>
-                                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __("Diet Name: ") }}<span class="text-danger">*</span></label>
+                                <input value="{{ $diet->dietname }}" autofocus="" type="text"
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="{{ __("Enter Diet name") }}" name="dietname" required="">
+                                        @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i
+                                        class="text-dark feather icon-help-circle"></i>{{ __("Enter your diet type eg : Weight Loss, Body Shaping ") }}</small>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }} input-file-block">
-                            {!! Form::label('image', 'Diet Image',['class'=>'text-dark']) !!}
-                            {!! Form::file('image', ['class' => 'input-file', 'id'=>'image']) !!}
-                            <small class="text-danger">{{ $errors->first('image') }}</small>
-                        </div>
-                    </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                        {!! Form::label('description', 'Description',['class'=>'required text-dark'])
-                                        !!} <span class="text-danger">*</span>
-                                        {!! Form::textarea('description', $diet->description, ['id' =>
-                                        'description','class' =>
-                                        'form-control' ,'required','placeholder' => 'Your Diet Description']) !!}
-                                        <small class="text-danger">{{ $errors->first('description') }}</small>
-                                        <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __("Describe your diet to eat eg : Rice ,Salad") }}</small>
-                                    </div>
-                                </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                    <label class="text-dark">{{ __('Diet Day:') }} <span class="text-danger">*</span></label>
+                                <select data-placeholder="{{ __("Please select day") }}" name="day_id[]"
+                                    class="mdb-select md-form form-control select2" multiple>
+                                    <option value="">{{ __("Select Day") }}</option>
+                                    @foreach(App\day::all() as $day)
+                                        <option @if($diet->day != '') @foreach($diet->day as $dietday)
+                                        {{ $dietday == $day->id ? "selected" : "" }} @endforeach @endif
+                                        value="{{ $day->id }}"> {{ $day['day'] }} </option>
+                                        @endforeach
+                                </select>
+                                @error('day')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i
+                                        class="text-dark feather icon-help-circle"></i>{{ __("Enter the day on which you have to eat the diet eg : Monday, Tuesday ") }}</small>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                    <label class="text-dark">{{ __('Session:') }}<span class="text-danger">*</span></label>
+                                <select data-placeholder="{{ __('Please select diet session') }}" name="session_id[]"
+                                    id="session_id[]"{{ __("Please select diet session") }} class="form-control select2" multiple>
+                                    <option value=""></option>
+                                    @foreach(App\dietid::all() as $session_id)
+                                        <option @if($diet->session_id != '') @foreach($diet->session_id as $session)
+                                        {{ $session == $session_id->id ? "selected" : "" }} @endforeach @endif
+                                        value="{{ $session_id->id }}"> {{ $session_id['session_id'] }} </option>
+                                    @endforeach
+                                </select>
+                                @error('session_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
+                                    {{ __(" Selecting diet session eg : Morning, Afternoon") }} </small>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label class="text-dark">{{ __(" Follow Up Date: ") }}<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input value="{{$diet->followup_date}}" name="followup_date" type="text" id="calendar2"
+                                    class="calendar form-control" placeholder="{{ __('yyyy/mm/dd') }}" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2"><i
+                                            class="feather icon-calendar"></i></span>
+                                </div>
+                            </div>
+                            @error('date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
+                               {{ __(" Please Enter Next Followup Date ") }}</small>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                {!! Form::label('description', 'Description',['class'=>'required text-dark'])
+                                !!} <span class="text-danger">*</span>
+                                {!! Form::textarea('description', $diet->description, ['id' =>
+                                'description','class' =>
+                                'form-control' ,'required','placeholder' => 'Your Diet Description']) !!}
+                                <small class="text-danger">{{ $errors->first('description') }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __("Describe your diet to eat eg : Rice ,Salad") }}</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 mb-3">
                             <label class="text-dark">{{ __("Diet Includes: ") }}<span class="text-danger">*</span></label>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
@@ -158,107 +206,43 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                         <label class="text-dark">{{ __('Diet Day:') }} <span class="text-danger">*</span></label>
-                                        <select data-placeholder="{{ __("Please select day") }}" name="day_id[]"
-                                            class="mdb-select md-form form-control select2" multiple>
-                                            <option value="">{{ __("Select Day") }}</option>
-                                            @foreach(App\day::all() as $day)
-                                             <option @if($diet->day != '') @foreach($diet->day as $dietday)
-                                                {{ $dietday == $day->id ? "selected" : "" }} @endforeach @endif
-                                                value="{{ $day->id }}"> {{ $day['day'] }} </option>
-                                                @endforeach
-                                        </select>
-                                        @error('day')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info"> <i
-                                                class="text-dark feather icon-help-circle"></i>{{ __("Enter the day on which you have to eat the diet eg : Monday, Tuesday ") }}</small>
-                                        </div>
-                                </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }} input-file-block">
+                                {!! Form::label('image', 'Diet Image',['class'=>'text-dark']) !!}
+                                {!! Form::file('image', ['class' => 'input-file', 'id'=>'image']) !!}
+                                <small class="text-danger">{{ $errors->first('image') }}</small>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                         <label class="text-dark">{{ __('Session:') }}<span class="text-danger">*</span></label>
-                                        <select data-placeholder="{{ __('Please select diet session') }}" name="session_id[]"
-                                            id="session_id[]"{{ __("Please select diet session") }} class="form-control select2" multiple>
-                                            <option value=""></option>
-                                            @foreach(App\dietid::all() as $session_id)
-                                             <option @if($diet->session_id != '') @foreach($diet->session_id as $session)
-                                                {{ $session == $session_id->id ? "selected" : "" }} @endforeach @endif
-                                                value="{{ $session_id->id }}"> {{ $session_id['session_id'] }} </option>
-                                            @endforeach
-                                        </select>
-                                        @error('session_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
-                                           {{ __(" Selecting diet session eg : Morning, Afternoon") }} </small>
-
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <div class="text-dark"
+                                    class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
+                                    <div class="custom-switch">
+                                        {!! Form::checkbox('is_active', 1,$diet->is_active==1 ? 1 :0, ['id' =>
+                                        'switch1', 'class' =>
+                                        'custom-control-input'])
+                                        !!}
+                                        <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <label class="text-dark">{{ __(" Follow Up Date: ") }}<span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <input value="{{$diet->followup_date}}" name="followup_date" type="text" id="calendar2"
-                                    class="calendar form-control" placeholder="{{ __('yyyy/mm/dd') }}" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="basic-addon2"><i
-                                            class="feather icon-calendar"></i></span>
-                                </div>
-                            </div>
-                            @error('date')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
-                               {{ __(" Please Enter Next Followup Date ") }}</small>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="text-dark"
-                                            class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
-                                            <div class="custom-switch">
-                                                {!! Form::checkbox('is_active', 1,$diet->is_active==1 ? 1 :0, ['id' =>
-                                                'switch1', 'class' =>
-                                                'custom-control-input'])
-                                                !!}
-                                                <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
                                 <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
                                     {{ __("Update") }}</button>
                             </div>
                         </div>
-
-                        <div class="clear-both"></div>
                     </div>
+                    <div class="clear-both"></div>
                 </div>
             </div>
+        </div>
+    </div>
 </form>
-</div>
 @endsection
 @section('script')
 <script>

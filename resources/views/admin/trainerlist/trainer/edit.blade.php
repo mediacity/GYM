@@ -4,7 +4,7 @@
 <div class="breadcrumbbar breadcrumbbar-one">
     <div class="row align-items-center">
         <div class="col-lg-4 col-md-8">
-            <h4 class="page-title">{{ __("Trainer list") }}</h4>
+            <h4 class="page-title">{{ __("Trainer") }}</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
@@ -63,7 +63,7 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group{{ $errors->has('trainer_name') ? ' has-error' : '' }}">
                                 <label class="text-dark" for="users id">{{ __("Choose a trainer") }} <span
                                         class="text-danger">*</span></label>
@@ -79,7 +79,7 @@
                                    {{ __(" Select the user : Admin , Mr.x") }}</small>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Email: ") }}<span class="text-danger">*</span></label>
                                 <input autofocus="" type="email"
@@ -96,11 +96,7 @@
                                 </small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Mobile Number:") }} <span class="text-danger">*</span></label>
                                 <input autofocus="" type="tel" pattern="[0-9]{10}"
@@ -117,7 +113,7 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Date of Birth:") }}</label>
                                 <div class="input-group">
@@ -139,10 +135,7 @@
                                 </small>
                             </div>
                         </div>
-                    </div>
-                    {{-- </div> --}}
-                    <div class="row">
-                         <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Address: ") }}<span
                                         class="text-danger">*</span></label>
@@ -159,7 +152,7 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Pincode:") }} <span class="text-danger">*</span></label>
                                 <input required="" type="text" pattern="[0-9]+" placeholder="{{ __("Enter pincode") }}" name="pincode"
@@ -174,7 +167,7 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Select Country:") }} <span
                                         class="text-danger">*</span></label>
@@ -187,7 +180,6 @@
                                         value="{{ $country->id }}"> {{ $country->nicename }} </option>
                                     @endforeach
                                 </select>
-                                <hr>
                                 @error('country_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -196,9 +188,11 @@
                                 <div class="invalid-feedback">
                                     {{ __('Please select country') }}
                                 </div>
+                                <small class="text-muted text-info"><i class="text-dark feather icon-help-circle"></i> {{ __("Enter your Country") }}
+                                </small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Select State: ") }}<span
                                         class="text-danger">*</span></label>
@@ -212,7 +206,6 @@
                                     @endforeach
                                     @endif
                                 </select>
-                                <hr>
                                 @error('state_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -221,9 +214,11 @@
                                 <div class="invalid-feedback">
                                     {{ __('Please select state') }}
                                 </div>
+                                <small class="text-muted text-info"><i class="text-dark feather icon-help-circle"></i> {{ __("Enter your State") }}
+                                </small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark" for="address">{{ __("Select City:") }} <span
                                         class="text-danger">*</span></label>
@@ -236,7 +231,6 @@
                                         {{ $city->name }}</option>
                                     @endforeach
                                 </select>
-                                <hr>
                                 @error('city_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -245,107 +239,101 @@
                                 <div class="invalid-feedback">
                                     {{ __('Please select city') }}
                                 </div>
+                                <small class="text-muted text-info"><i class="text-dark feather icon-help-circle"></i> {{ __("Enter your City") }}
+                                </small>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-dark">{{ __("Trainer Qualification:") }} <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                                            placeholder="{{ __("Enter your Qualification ") }}" name="qualification" required=""
-                                            value="{{ $trainer->qualification }}">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __("Trainer Qualification:") }} <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                    placeholder="{{ __("Enter your Qualification ") }}" name="qualification" required=""
+                                    value="{{ $trainer->qualification }}">
 
-                                        @error('qualification')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info"> <i
-                                                class="text-dark feather icon-help-circle"></i>
-                                           {{ __(" Enter your Qualification details") }}
-                                        </small>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-
-                                        <label class="text-dark">{{ __("Enter Trainer Experience (In Years):") }} <span
-                                                class="text-danger">*</span></label>
-                                        <input autofocus="" type="text" pattern="[0-9]+"
-                                            class="form-control @error('experience') is-invalid @enderror"
-                                            placeholder="{{ __("Enter Your Trainer Experience") }}" name="experience" required=""
-                                            value="{{ $trainer->experience }}">
-
-                                        @error('experience')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info"> <i
-                                                class="text-dark feather icon-help-circle"></i>
-                                           {{ __(" Enter your Experience") }}
-                                        </small>
-                                    </div>
-                                </div>
+                                @error('qualification')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i
+                                        class="text-dark feather icon-help-circle"></i>
+                                    {{ __(" Enter your Qualification details") }}
+                                </small>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-dark">{{ __("Trainer client Limit:") }} <span
-                                                class="text-danger">*</span></label>
-                                        <input class="form-control @error('trainer_limit') is-invalid @enderror"
-                                            placeholder="{{ __("Enter the Trainer Client limit ") }}" name="trainer_limit"
-                                            type="number" required="" value="{{ $trainer->trainer_limit }}">
 
-                                        @error('trainer_limit')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info"> <i
-                                                class="text-dark feather icon-help-circle"></i>
-                                           {{ __(" Enter your Trainer Client limit") }}
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-dark">{{ __("Enter Trainer Type: ") }}<span
-                                                class="text-danger">*</span></label>
-                                        <select required="" name="type" id="type" class="form-control select2">
-                                            <option value="Trainer type not set">{{ __("Select Trainer Type") }}</option>
-                                            <option {{ $trainer->type =='Not a Personal Trainer' ? "selected" : "" }}
-                                                value="Not a Personal Trainer">{{ __("Not a Personal Trainer") }}</option>
-                                            <option {{ $trainer->type =='Home Personal Trainer' ? "selected" : "" }}
-                                                value="Home Personal Trainer">{{ __("Home Personal Trainer") }}</option>
-                                            <option {{ $trainer->type =='Online Personal Trainer' ? "selected" : "" }}
-                                                value="Online Personal Trainer">{{ __("Online Personal Trainer") }}</option>
-                                            <option
-                                                {{ $trainer->type =='Home Online Personal Trainer' ? "selected" : "" }}
-                                                value="Home Online Personal Trainer">{{ __("Home Online Personal Trainer") }}
-                                            </option>
-                                            <option {{ $trainer->type =='Gym Personal Trainer' ? "selected" : "" }}
-                                                value="Gym Personal Trainer">{{ __("Gym Personal Trainer") }}</option>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
 
-                                        </select>
-                                        @error('rating')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <small class="text-muted text-info" name="type"> <i
-                                                class="text-dark feather icon-help-circle"></i> {{ __("Enter your Trainer Type") }}
-                                        </small>
-                                    </div>
-                                </div>
+                                <label class="text-dark">{{ __("Enter Trainer Experience (In Years):") }} <span
+                                        class="text-danger">*</span></label>
+                                <input autofocus="" type="text" pattern="[0-9]+"
+                                    class="form-control @error('experience') is-invalid @enderror"
+                                    placeholder="{{ __("Enter Your Trainer Experience") }}" name="experience" required=""
+                                    value="{{ $trainer->experience }}">
+
+                                @error('experience')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i
+                                        class="text-dark feather icon-help-circle"></i>
+                                    {{ __(" Enter your Experience") }}
+                                </small>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __("Trainer client Limit:") }} <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control @error('trainer_limit') is-invalid @enderror"
+                                    placeholder="{{ __("Enter the Trainer Client limit ") }}" name="trainer_limit"
+                                    type="number" required="" value="{{ $trainer->trainer_limit }}">
+
+                                @error('trainer_limit')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i
+                                        class="text-dark feather icon-help-circle"></i>
+                                    {{ __(" Enter your Trainer Client limit") }}
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __("Enter Trainer Type: ") }}<span
+                                        class="text-danger">*</span></label>
+                                <select required="" name="type" id="type" class="form-control select2">
+                                    <option value="Trainer type not set">{{ __("Select Trainer Type") }}</option>
+                                    <option {{ $trainer->type =='Not a Personal Trainer' ? "selected" : "" }}
+                                        value="Not a Personal Trainer">{{ __("Not a Personal Trainer") }}</option>
+                                    <option {{ $trainer->type =='Home Personal Trainer' ? "selected" : "" }}
+                                        value="Home Personal Trainer">{{ __("Home Personal Trainer") }}</option>
+                                    <option {{ $trainer->type =='Online Personal Trainer' ? "selected" : "" }}
+                                        value="Online Personal Trainer">{{ __("Online Personal Trainer") }}</option>
+                                    <option
+                                        {{ $trainer->type =='Home Online Personal Trainer' ? "selected" : "" }}
+                                        value="Home Online Personal Trainer">{{ __("Home Online Personal Trainer") }}
+                                    </option>
+                                    <option {{ $trainer->type =='Gym Personal Trainer' ? "selected" : "" }}
+                                        value="Gym Personal Trainer">{{ __("Gym Personal Trainer") }}</option>
+
+                                </select>
+                                @error('rating')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info" name="type"> <i
+                                        class="text-dark feather icon-help-circle"></i> {{ __("Enter your Trainer Type") }}
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Trainer Specialization:") }} <span
                                         class="text-danger">*</span></label>
@@ -363,10 +351,9 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
                                 {!! Form::label('rating') !!}-<span class="text-danger">*</span>
-                                <div class="col-md-6">
                                     <div class="rating">
                                         <label>
                                             <input type="radio" name="rating" value="1"
@@ -419,10 +406,9 @@
                                                     aria-hidden="true"></i></span>
                                         </label>
                                     </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-lg-4 col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -439,15 +425,19 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>
-                            {{ __("Update") }}</button>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>
+                                    {{ __("Update") }}</button>
+                            </div>
+                        </div>
                     </div>
+                    <div class="clear-both"></div>
                 </div>
-                <div class="clear-both"></div>
+            </div>
+        </div>
     </form>
 </div>
 @endsection

@@ -41,19 +41,25 @@
             <div class="card-body">
                 <form action="{{ route('admin.onesignal.keys') }}" method="POST">
                     @csrf
-                    <div class="form-group">
-                        <label for="ONESIGNAL_APP_ID">{{ __("ONESIGNAL APP ID: ") }}<span
-                                class="text-danger">*</span></label>
-                        <input type="text" value="{{ env('ONESIGNAL_APP_ID') }}" name="ONESIGNAL_APP_ID"
-                            placeholder="{{ __("Enter ONESIGNAL APP ID " ) }}"id="ONESIGNAL_APP_ID" type=""
-                            class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="ONESIGNAL_REST_API_KEY">{{ __(" ONESIGNAL REST API KEY: ") }}<span
-                                class="text-danger">*</span></label>
-                        <input type="text" value="{{ env('ONESIGNAL_REST_API_KEY') }}"
-                            name="ONESIGNAL_REST_API_KEY" placeholder="{{ __("Enter ONESIGNAL REST API KEY ") }}"
-                            id="ONESIGNAL_REST_API_KEY" type="" class="form-control">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label for="ONESIGNAL_APP_ID">{{ __("ONESIGNAL APP ID: ") }}<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" value="{{ env('ONESIGNAL_APP_ID') }}" name="ONESIGNAL_APP_ID"
+                                    placeholder="{{ __("Enter ONESIGNAL APP ID " ) }}"id="ONESIGNAL_APP_ID" type=""
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label for="ONESIGNAL_REST_API_KEY">{{ __(" ONESIGNAL REST API KEY: ") }}<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" value="{{ env('ONESIGNAL_REST_API_KEY') }}"
+                                    name="ONESIGNAL_REST_API_KEY" placeholder="{{ __("Enter ONESIGNAL REST API KEY ") }}"
+                                    id="ONESIGNAL_REST_API_KEY" type="" class="form-control">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-md">

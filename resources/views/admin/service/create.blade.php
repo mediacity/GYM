@@ -38,11 +38,11 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        {!! Form::open(['method' => 'POST', 'route' => 'service.store','files' => true , 'class' =>
-                        'form form-light' ,'novalidate']) !!}
-                        <div class="admin-form">
+                <div class="admin-form">
+                    {!! Form::open(['method' => 'POST', 'route' => 'service.store','files' => true , 'class' =>
+                    'form form-light' ,'novalidate']) !!}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group {{ $errors->has('Name') ? ' has-error' : '' }}">
                                 {!! Form::label('name', 'Name',['class'=>'required']) !!}<span
                                     class="text-danger">*</span></label>
@@ -51,6 +51,8 @@
                                 <small class="text-danger">{{ $errors->first('name') }}</small>
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Enter service name") }} </small>
                             </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                                 {!! Form::label('price', 'Service price',['class'=>'required']) !!}<span
                                     class="text-danger">*</span></label>
@@ -59,23 +61,28 @@
                                 <small class="text-danger">{{ $errors->first('price') }}</small>
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter a Service price: 2400 ,2000...") }}</small>
                             </div>
-                            <div
-                                class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class'
                                     =>'custom-control-input']) !!}
                                     <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
                                 <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
                                     {{ __("Create") }}</button>
                             </div>
-                            <div class="clear-both"></div>
-                            {!! Form::close() !!}
                         </div>
                     </div>
+                    <div class="clear-both"></div>
+                            {!! Form::close() !!}
                 </div>
             </div>
         </div>

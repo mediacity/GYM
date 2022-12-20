@@ -38,9 +38,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="admin-form">
+                <div class="admin-form">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
                             {!! Form::open(['method' => 'POST', 'route' => 'exercisename.store','files' => true ,
                             'class' => 'form-light form' ,'novalidate']) !!}
                             <div class="form-group{{ $errors->has('Exercisename') ? ' has-error' : '' }}">
@@ -51,17 +51,20 @@
                                 'required','placeholder' =>
                                 'Please Enter Exercisename']) !!}
                                 <small class="text-danger">{{ $errors->first('exercisename') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter Exercise name eg: push-up,pull-up") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter Exercise name eg: push-up,pull-up") }}</small>
                             </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group{{ $errors->has('body_part') ? ' has-error' : '' }}">
                                 {!! Form::label('body_part', 'Bodypart',['class'=>'required']) !!}<span
                                     class="text-danger">*</span></label>
 
                                 {!! Form::text('body_part', null, ['class' => 'form-control', 'required','placeholder' =>'Please Enter Bodypart']) !!}
                                 <small class="text-danger">{{ $errors->first('body_part') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Enter Bodypart for which exercise is assigned eg: Arm , hips..") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Enter Bodypart for which exercise is assigned eg: Arm , hips..") }}</small>
                             </div>
-
+                        </div>
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __('Exercise Type: ') }}<span class="text-danger">*</span></label>
                                 <select data-placeholder="{{ __("Please select exercise type") }}" name="type[]"
@@ -79,8 +82,10 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the Exercise Type : Traditional Pushups, Clap Pushups ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the Exercise Type : Traditional Pushups, Clap Pushups ") }}</small>
                             </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 {!! Form::label('detail', 'Description',['class'=>'required']) !!}<span
                                     class="text-danger">*</span></label>
@@ -88,31 +93,36 @@
                                 {!! Form::textarea('detail', null, ['id' => 'summernote','class' => 'form-control'
                                 ,'required','placeholder' => 'Please Enter Exercise Detail']) !!}
                                 <small class="text-danger">{{ $errors->first('description') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter Exercise Description ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter Exercise Description ") }}</small>
                             </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
                            <div class="form-group">
-                                            <div
-                                                class="text-dark form-group{{ $errors->has('is_active') ? 'has-error' : '' }} switch-main-block">
-                                                <div class="custom-switch">
-                                                    {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
-                                                    'custom-control-input'])
-                                                    !!}
-                                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</<span></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
+                                <div class="text-dark form-group{{ $errors->has('is_active') ? 'has-error' : '' }} switch-main-block">
+                                    <div class="custom-switch">
+                                        {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
+                                        'custom-control-input'])
+                                        !!}
+                                        <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</<span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
                                 <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
                                 <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
                                     {{ __("Create") }}</button>
                             </div>
-                            <div class="clear-both"></div>
-                            {!! Form::close() !!}
                         </div>
+                        <div class="clear-both"></div>
+                        {!! Form::close() !!}
                     </div>
                  </div>
             </div>
         </div>
+    </div>
+</div>
         <!-- End Row -->
         @endsection
         

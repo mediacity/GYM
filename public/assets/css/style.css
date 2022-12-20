@@ -32550,8 +32550,8 @@ input[type=range]:focus {
   padding: 5px 0;
 }
 .pricing .pricing-bottom.pricing-bottom-basic {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .pricing .pricing-bottom.pricing-bottom-professional {
   padding-top: 30px;
@@ -35505,6 +35505,9 @@ button.btn.btn-sm.btn-primary.religion-btn {
 }
 .btn-success:not(:disabled):not(.disabled):active:focus {
   box-shadow: inherit;
+}
+.pricing {
+  padding-bottom: 0 !important;
 }
 @media (max-width: 767px) {
   .topbar .infobar {

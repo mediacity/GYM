@@ -184,39 +184,37 @@
                                                 </div>
 
                                                 <div class="col-4 border-right">
-                                                    <div class="blog-link">
-                                                        <div class="admin-table-action-block">
-                                                            <button type="button" class="btn btn-lg-btn-danger"
-                                                                data-toggle="modal"
-                                                                data-target="#deleteModal{{$item->id}}">
-                                                                <h4><i class="feather icon-trash userdelete"></i></h4>
-                                                                <small class="text-muted">{{ __("Delete") }}</small>
-                                                            </button>
+                                                    <div class="admin-table-action-block">
+                                                        <button type="button" class="btn btn-lg-btn-danger"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteModal{{$item->id}}">
+                                                            <h4><i class="feather icon-trash userdelete"></i></h4>
+                                                            <small class="text-muted">{{ __("Delete") }}</small>
+                                                        </button>
 
-                                                            <div id="deleteModal{{$item->id}}"
-                                                                class="delete-modal modal fade" role="dialog">
-                                                                <div class="modal-dialog modal-sm">
+                                                        <div id="deleteModal{{$item->id}}"
+                                                            class="delete-modal modal fade" role="dialog">
+                                                            <div class="modal-dialog modal-sm">
 
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal">&times;</button>
-                                                                            <div class="delete-icon"></div>
-                                                                        </div>
-                                                                        <div class="modal-body text-center">
-                                                                            <h4 class="modal-heading">{{ __("Are You Sure ?") }}</h4>
-                                                                            <p>{{ __("Do you really want to delete these records? This process cannot be undone.") }}</p>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            {!! Form::open(['method' =>
-                                                                            'DELETE', 'route' =>
-                                                                            ['users.destroy', $item->id]]) !!}
-                                                                            <button type="reset" class="btn btn-dark"
-                                                                                data-dismiss="modal">{{ __("No") }}</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-danger">{{ __("Yes") }}</button>
-                                                                            {!! Form::close() !!}
-                                                                        </div>
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal">&times;</button>
+                                                                        <div class="delete-icon"></div>
+                                                                    </div>
+                                                                    <div class="modal-body text-center">
+                                                                        <h4 class="modal-heading">{{ __("Are You Sure ?") }}</h4>
+                                                                        <p>{{ __("Do you really want to delete these records? This process cannot be undone.") }}</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        {!! Form::open(['method' =>
+                                                                        'DELETE', 'route' =>
+                                                                        ['users.destroy', $item->id]]) !!}
+                                                                        <button type="reset" class="btn btn-dark"
+                                                                            data-dismiss="modal">{{ __("No") }}</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">{{ __("Yes") }}</button>
+                                                                        {!! Form::close() !!}
                                                                     </div>
                                                                 </div>
                                                             </div>

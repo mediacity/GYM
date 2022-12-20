@@ -41,7 +41,7 @@
                 <!--name-->
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __
                                 ("Name: ") }}<span class="text-danger">*</span></label>
@@ -59,49 +59,8 @@
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select your user name eg: John, joe") }}</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--Location -->
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                                {!! Form::label('location', 'Location',['class'=>'required text-dark']) !!} <span
-                                    class="text-danger">*</span>
-                                {!! Form::textarea('location', null, ['id' => 'location','class' => 'form-control'
-                                ,'required','placeholder' => 'Your Location']) !!}
-                                <small class="text-danger">{{ $errors->first('location') }}</small>
-                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Your attendance location") }}</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Attend details-->
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group member-attendance-slider">
-                                <label class="text-dark">{{ __("Attendance:") }} <span class="text-danger">*</span></label><br>
-                                <label class="switch"><input type="checkbox" id="togBtn" name="attend">
-                                    <div class="slider round">
-                                        <!--ADDED HTML -->
-                                        <span class="on">{{ __("Present") }}</span><span class="off">{{ __("Absent") }}</span>
-                                        <!--END-->
-                                    </div>
-                                </label>
-                                @error('attend')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--date-->
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
+                        <!--date-->
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Date:") }} <span class="text-danger">*</span></label>
                                 <div class="input-group">
@@ -121,12 +80,8 @@
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Choose the Attendance date") }}</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--date-->
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
+                        <!--date-->
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Comments:") }} <span class="text-danger">*</span></label>
                                 <input value="{{ old('comment') }}" type="text"
@@ -141,22 +96,51 @@
                                 <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Give your reason or comment for your attend details") }} </small>
                             </div>
                         </div>
+                        <!--Location -->
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                                {!! Form::label('location', 'Location',['class'=>'required text-dark']) !!} <span
+                                    class="text-danger">*</span>
+                                {!! Form::textarea('location', null, ['id' => 'location','class' => 'form-control'
+                                ,'required','placeholder' => 'Your Location']) !!}
+                                <small class="text-danger">{{ $errors->first('location') }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Your attendance location") }}</small>
+                            </div>
+                        </div>
+                        <!--Attend details-->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group member-attendance-slider">
+                                <label class="text-dark">{{ __("Attendance:") }} <span class="text-danger">*</span></label><br>
+                                <label class="switch"><input type="checkbox" id="togBtn" name="attend">
+                                    <div class="slider round">
+                                        <!--ADDED HTML -->
+                                        <span class="on">{{ __("Present") }}</span><span class="off">{{ __("Absent") }}</span>
+                                        <!--END-->
+                                    </div>
+                                </label>
+                                @error('attend')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <br>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                        <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
-                            {{ __("Create") }}</button>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
+                                    {{ __("Create") }}</button>
+                            </div>
+                        </div>
                     </div>
+                    <div class="clear-both"></div>
                 </div>
-                <div class="clear-both"></div>
             </div>
         </div>
     </div>
 </form>
-</div>
 <!-- End Form -->
 @endsection
 @section('script')
