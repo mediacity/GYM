@@ -31921,7 +31921,6 @@ input[type=range]:focus {
   }
   .invoice .invoice-footer .invoice-footer-btn {
     text-align: center;
-    margin-top: 30px;
   }
 }
 /* 
@@ -35509,6 +35508,28 @@ button.btn.btn-sm.btn-primary.religion-btn {
 .pricing {
   padding-bottom: 0 !important;
 }
+#social-links ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#social-links ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+#social-links ul li span {
+  font-size: 24px;
+}
+.invoice-meta ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.invoice-meta ul li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+
 @media (max-width: 767px) {
   .topbar .infobar {
     text-align: center;
@@ -35537,6 +35558,15 @@ button.btn.btn-sm.btn-primary.religion-btn {
   }
   .auth-box-img img {
     border-radius: 4px 4px 0 0;
+  }
+  .invoice-meta-box {
+    text-align: left !important;
+  }
+  #social-links {
+    text-align: center !important;
+  }
+  .invoice-address {
+    margin-top: 30px;
   }
 }
 

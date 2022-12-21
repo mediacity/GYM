@@ -36386,6 +36386,29 @@ button.btn.btn-sm.btn-primary.religion-btn {
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: inherit;
 }
+#social-links ul {
+  list-style-type: none;
+  padding-right: 0;
+}
+#social-links ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+#social-links ul li span {
+  font-size: 24px;
+}
+.invoice-meta ul {
+  list-style-type: none;
+  padding-right: 0;
+}
+.invoice-meta ul li {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 20px;
+}
+.invoice-address ul {
+  padding-right: 0;
+}
 
 
 
@@ -36480,6 +36503,15 @@ button.btn.btn-sm.btn-primary.religion-btn {
   }
   .auth-box-img img {
     border-radius: 4px 4px 0 0;
+  }
+  .invoice-meta-box {
+    text-align: left !important;
+  }
+  #social-links {
+    text-align: center !important;
+  }
+  .invoice-address {
+    margin-top: 30px;
   }
 }
 
