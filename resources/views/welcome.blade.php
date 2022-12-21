@@ -257,6 +257,6 @@
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ url('js/theme.js') }}"></script>
+    <script src="{{ url('assets/js/theme.js') }}"></script>
 </body>
 </html>
