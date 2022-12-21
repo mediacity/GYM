@@ -21,7 +21,7 @@
                         </li>
                         <!--Enquiry-->
                         @can('enquiry.view')
-                        <li class="vertical-active">
+                        <li class="header">
                          <span>{{ __('Enquiry') }}</span>
                         </li>
                         <li class="{{ Nav::isResource('enquiry') }} vertical-active">
@@ -33,7 +33,7 @@
                         @endcan
                          <!-- Users -->
                          
-                         <li class="vertical-active">
+                         <li class="header">
                          <span>{{ __('User') }}</span>
                         </li>
                           <li class="{{ Nav::isResource('users') }} {{ Nav::isResource('roles') }}">
@@ -60,7 +60,7 @@
                             </ul>
                         </li>
                         <!-- Gym Management -->
-                        <li class="vertical-active">
+                        <li class="header">
                          <span>{{ __('Management') }}</span>
                         </li>
                         <li class="{{ Nav::isResource('exercise') }} {{ Nav::isResource('measurement') }}  {{ Nav::isResource('locker') }}  ">
@@ -169,7 +169,7 @@
 
                         </li>
                         @endcan
-                        <li class="vertical-active">
+                        <li class="header">
                             <span>{{ __('Trainer') }}</span>
                         </li>
                         <li class="{{ Nav::isResource('trainer') }} {{ Nav::isResource('trainerlist') }}">
@@ -252,7 +252,7 @@
                             </ul>
                         </li>
                         
-                        <li class="vertical-active">
+                        <li class="header">
                             <span>{{ __('Report') }}</span>
                         </li>
                          <li>
@@ -285,7 +285,7 @@
                         </li>
                         @endcan
                         <!--Setting-->
-                        <li class="vertical-active">
+                        <li class="header">
                             <span>{{ __('Setting') }}</span>
                         </li>
                         <li>
@@ -342,7 +342,7 @@
                             </ul>
                         </li>
 
-                        <li class="vertical-active">
+                        <li class="header">
                             <span>{{ __('Front Setting') }}</span>
                         </li>
                         <li class="{{ Nav::isResource('pages') }} {{ Nav::isResource('faq') }} {{ Nav::isResource('slider') }}

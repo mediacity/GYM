@@ -1,26 +1,29 @@
 @extends('layouts.master')
 @section('title',__('Add Trainer'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Trainer list') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __('Add a Trainer') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('trainerlist.index')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Trainer list") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Add a Trainer') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('trainerlist.index')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Form -->
 <form class="form-light form" novalidate action="{{route('trainerlist.store')}}" method="POST">
     {{ csrf_field() }}
@@ -51,7 +54,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the user name") }} </small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Select the user name") }} </small>
                             </div>
                         </div>
                     </div>
@@ -74,7 +77,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Select the trainer name which is given to you") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Select the trainer name which is given to you") }}</small>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -146,7 +149,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Choose the date from which a trainer given to you") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Choose the date from which a trainer given to you") }}</small>
                             </div>
                         </div>
                     </div>
@@ -160,7 +163,7 @@
                                 {!! Form::textarea('description', null, ['id' => 'description','class' =>
                                 'form-control' ,'required','placeholder' => 'Your description']) !!}
                                 <small class="text-danger">{{ $errors->first('description') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Describe for which you need a trainer eg: Weigh loss , Gain biceps ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Describe for which you need a trainer eg: Weigh loss , Gain biceps ") }}</small>
                             </div>
                         </div>
                     </div>
@@ -175,7 +178,7 @@
                                         {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>
                                         'custom-control-input'])
                                         !!}
-                                        <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                                        <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                     </div>
                                 </div>
                             </div>

@@ -1,28 +1,33 @@
 @extends('layouts.master')
 @section('title',__('All Diet'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Diet') }}
-@endslot
-@slot('menu1')
-{{ __('Diet') }}
-@endslot
-@slot('button')
-@if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' )
-<div class="col-md-12 col-lg-6 text-right">
-  <div class="top-btn-block">
-    <a href="{{route('dietpackage.create',['id' => app('request')->input('id')])}}"
-    class="btn btn-primary-rgba mr-2"><i class="feather icon-plus mr-2"></i>{{ __("Add Diet") }}</a>
-    <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i
-      class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
-  </div>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5">
+            <h4 class="page-title">{{ __("Diet") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Diet') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-7">
+            <div class="top-btn-block text-right">
+              <a href="{{route('dietpackage.create',['id' => app('request')->input('id')])}}"
+              class="btn btn-primary-rgba mr-2"><i class="feather icon-plus mr-2"></i>{{ __("Add Diet") }}</a>
+              <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i
+                class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
+            </div>
+        </div>
+        @endif
+    </div>
 </div>
-@endif
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Contentbar -->
 <div class="row">
   <!-- Start col -->

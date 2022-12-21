@@ -98,11 +98,11 @@
                                 <td>{{$key+1}}</td>
                                 <td>
                                     @if($trainer->photo != '')
-                                    <img class="margin-right-15 width-height"
+                                    <img width="60px" height="60px"  class="margin-right-15 width-height"
                                         src="{{url('/image/slider/'.$trainer->photo )}}"
                                         title="{{ $trainer->trainer_name  }}">
                                     @else
-                                    <img class="margin-right-15" title="{{ ucfirst($trainer->trainer_name) }}"
+                                    <img width="60px" height="60px" class="margin-right-15" title="{{ ucfirst($trainer->trainer_name) }}"
                                         src="{{ Avatar::create($trainer->trainer_name)->toBase64() }}" />
                                     @endif
                                 </td>

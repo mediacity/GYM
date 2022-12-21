@@ -1,19 +1,29 @@
 @extends('layouts.master')
 @section('title',__('All PWA'))
+@section('breadcum')
+	<div class="breadcrumbbar">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8">
+                <h4 class="page-title">{{ __("PWA") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('PWA') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+          
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('PWA') }}
-@endslot
-@slot('menu1')
-{{ __('PWA') }}
-@endslot
-@endcomponent
 <div class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">{{ __('ProgressiveWebAppSetting') }}</h5>
+        <h5 class="card-title">{{ __('Progressive Web App Setting') }}</h5>
       </div>
       <div class="card-body">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -23,7 +33,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-              aria-controls="pills-profile" aria-selected="false">{{ __("StartURL") }}</a>
+              aria-controls="pills-profile" aria-selected="false">{{ __("Start URL") }}</a>
           </li>
 
         </ul>
@@ -35,7 +45,7 @@
               <div class="form-group">
 
                 <div class="form-group make-switch pwa-switch custom-switch">
-                  <h5 class="bootstrap-switch-label">{{__('EnablePWA')}}</h5>
+                  <h5 class="bootstrap-switch-label">{{__('Enable PWA')}}</h5>
                   <div class="pwa-switch-input">
                     <input type="checkbox" id="switch" class="custom-control-input" value="1"
                       {{ env("PWA_ENABLE") =='1' ? "checked" : "" }} data-on-text="{{__('On')}}"
@@ -47,21 +57,21 @@
               </div>
 
               <div class="form-group">
-                <label>{{__('AppName')}}: </label>
+                <label>{{__('App Name')}}: </label>
                 <input class="form-control" type="text" name="app_name" value="{{ env("PWA_NAME")}}" />
               </div>
 
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>{{__('ThemeColorForHeader')}}: </label>
+                    <label>{{__('Theme Color For Header')}}: </label>
                     <input name="PWA_THEME_COLOR" class="form-control" type="color"
                       value="{{env('PWA_THEME_COLOR') ?? '' }}" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">{{__('BackgroundColor')}}:</label>
+                    <label for="">{{__('Background Color')}}:</label>
                     <input name="PWA_BG_COLOR" class="form-control" type="color"
                       value="{{ env('PWA_BG_COLOR') ?? '' }}" />
                   </div>
@@ -69,10 +79,10 @@
               </div>
 
               <div class="row">
-                <div class="col-md-5">
+                <div class="col-lg-5 col-md-8">
 
                   <div class="form-group">
-                    <label for="">{{__('ShortcutIconForHome')}}: <span class="text-danger">*</span> </label>
+                    <label for="">{{__('Shortcut Icon For Home')}}: <span class="text-danger">*</span> </label>
                     <div class="custom-file">
                       <input name="shorticon_1" type="file"
                         class="custom-file-input @error('shorticon_1') is-invalid @enderror" id="shorticon_1">
@@ -88,7 +98,7 @@
                   </div>
                 </div>
                 @if(env('SHORTCUT_ICON1') != NULL)
-                <div class="col-md-1 card text-center">
+                <div class="col-lg-1 col-md-4 card text-center">
                   @if(env('SHORTCUT_ICON1') != NULL)
                   <div class="card-body">
                     <img class="img-responsive" src="{{ url('images/icons/'.env('SHORTCUT_ICON1'))}}"
@@ -97,9 +107,9 @@
                   @endif
                 </div>
                 @endif
-                <div class="col-md-5">
+                <div class="col-lg-5 col-md-8">
                   <div class="form-group">
-                    <label for="">{{__('ShortcutIconForLogin')}}: <span class="text-danger">*</span> </label>
+                    <label for="">{{__('Shortcut Icon For Login')}}: <span class="text-danger">*</span> </label>
 
                     <div class="custom-file">
                       <input name="shorticon_2" type="file"
@@ -116,7 +126,7 @@
                   </div>
                 </div>
                 @if(env('SHORTCUT_ICON2') != NULL)
-                <div class="col-md-1 card text-center">
+                <div class="col-lg-1 col-md-4 card text-center">
 
                   <div class="card-body">
                     <img class="img-responsive" src="{{ url('images/icons/'.env('SHORTCUT_ICON2'))}}"
@@ -136,7 +146,7 @@
             <form action="{{ route('pwa.icons.update') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-lg-6 col-md-12">
                   <div class="form-group">
                      <label>{{__('PWAIcon')}} (512x512): <span class="text-danger">*</span> </label>
                        <div class="custom-file">
@@ -166,7 +176,7 @@
 
               <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-12">
 
                   <div class="form-group">
 

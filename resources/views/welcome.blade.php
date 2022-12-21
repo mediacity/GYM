@@ -10,7 +10,11 @@
     <link href="{{ url('css/font_awesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
+    @if(in_array(app()->getLocale(),array('ar','he','ur', 'arc', 'az', 'dv', 'ku', 'fa')))
+    <link href="{{ url('assets/css/style_rtl.css') }}" rel="stylesheet" type="text/css">
+    @else 
     <link href="{{ url('css/theme.css') }}" rel="stylesheet" type="text/css">
+    @endif
     <!-- Styles -->
     
     <style>
@@ -70,23 +74,23 @@
 </head>
 <body>
     <div id="navbar" class="navbar-main-block">
-        <div class="container-fluid">
+        <div class="container-xl">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-5 col-md-5">
                     <div class="navbar-logo">
                         <img src="{{ url('media/logo/1670406124GYMX 1 (1).png') }}" class="img-fluid" alt="">
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 col-md-7">
                     <div class="navbar-login-signup-btn">
                         @if (Route::has('login'))
                         <div class="links">
                             @auth
                             @hasrole('Super Admin')
-                                <a href="{{ route('admin.dashboard.index') }}">{{ __("Admin") }}</a>
+                                <a href="{{ route('admin.dashboard.index') }}" class="btn btn-primary mr-2">{{ __("Admin") }}</a>
                             @endhasrole
                             @hasrole('Trainer')
-                            <a href="{{ route('admin.dashboard.index') }}">{{ __("Trainer") }}</a>
+                            <a href="{{ route('admin.dashboard.index') }}" class="btn btn-primary mr-2">{{ __("Trainer") }}</a>
                         @endhasrole
                             @else
                             <a href="{{ route('login') }}" class="btn btn-primary mr-2"><i class="fa-solid fa-right-to-bracket mr-1"></i> {{ __("Login") }}</a>
@@ -117,8 +121,8 @@
                     <div class="overlay-bg"></div>
                 </div>
                 <div class="home-slider-dtl">
-                    <h1 class="home-slider-heading" style="color: {{$slider->headingtextcolor}};">{{$slider->heading}}</h1>
-                    <h4 class="home-slider-sub-heading" style="color: {{$slider->subheadingcolor}};">{{$slider->subheading}}</h4>
+                    <h1 class="home-slider-heading">{{$slider->heading}}</h1>
+                    <h4 class="home-slider-sub-heading">{{$slider->subheading}}</h4>
                 </div>
             </div>
         </div>
@@ -128,11 +132,11 @@
     
     @if($faq)
     <div id="faq" class="faq-main-block">
-        <div class="container-fluid">
-            <h3 class="faq-heading text-center">Frequently Asked Question</h3>
+        <div class="container-xl">
+            <h3 class="faq-heading">Frequently Asked Question</h3>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="faq-block col-md-6 offset-md-3">
+                <div class="col-lg-6 col-md-6">
+                    <div class="faq-block">
                         <div class="accordion" id="accordionExample">
                             @foreach($faq as $key => $value)
                             <div class="card">
@@ -160,8 +164,8 @@
     @if($blogs)
 
     <section id="blog" class="blog-main-block">
-        <div class="container-fluid">
-            <h3 class="blog-heading text-center">Blog</h3>
+        <div class="container-xl">
+            <h3 class="blog-heading">Blog</h3>
             <div id="blog-slider" class="blog-slider-main-block owl-carousel">
                 @foreach($blogs as $key => $blog)
                 <div class="item">
@@ -180,11 +184,11 @@
                         </div>
                         <div class="blog-dtl">
                             <h4 class="blog-dtl-heading"><a href="{{ route('blog.detail',$blog->id ) }}" title="{{$blog->title}}">{{$blog->title}}</a></h4>
-                            <!-- <p>{{substr($blog->detail, 0, 100);}}</p> -->
+                            <p>{{substr($blog->detail, 0, 100);}}</p>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-lg-5">
+                            <div class="col-lg-5 col-md-5 col-5">
                                 <div class="blog-user-dtl">
                                     <ul>
                                         <li>
@@ -202,7 +206,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-7">
+                            <div class="col-lg-7 col-md-7 col-7">
                                 <div class="blog-date">{{date('F,d Y', strtotime($blog->created_at))}}</div>
                             </div>
                         </div>
@@ -223,40 +227,19 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-block">
-                    <p>All rights reserved<br><span><a href="{{ route('front-terms-condition' ) }}" title="">Terms &amp; Condition</a> and <a href="{{ route('front-privacy-policy') }}" title="">Privacy Policy</a></span></p>
+                        <p>All rights reserved<br><span><a href="#" title="">Terms &amp; Condition</a> and <a href="#" title="">Privacy Policy</a></span></p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-            @hasrole('Super Admin')
-                <a href="{{ route('admin.dashboard.index') }}">{{ __("Admin") }}</a>
-            @endhasrole
-            @hasrole('Trainer')
-            <a href="{{ route('admin.dashboard.index') }}">{{ __("Trainer") }}</a>
-        @endhasrole
-            @else
-            <a href="{{ route('login') }}">{{ __("Login") }}</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">{{ __("Register") }}</a>
-            @endif
-            @endauth
-        </div>
-        @endif
-        <div class="content">
-            <div class="title m-b-md" style="color:black;">
-            {{ ('GYM') }}
-        </div>
-        </div>
-    </div> -->
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
+    @if(in_array(app()->getLocale(),array('ar','he','ur', 'arc', 'az', 'dv', 'ku', 'fa')))
+    <script src="{{ url('assets/js/theme_rtl.js') }}"></script>
+    @else 
     <script src="{{ url('assets/js/theme.js') }}"></script>
+    @endif
 </body>
 </html>

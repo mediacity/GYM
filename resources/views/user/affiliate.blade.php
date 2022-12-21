@@ -1,15 +1,23 @@
 @extends('layouts.master')
 @section('title',__('Referal link'))
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5">
+            <h4 class="page-title">{{ __("Referal Link") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Referal Link') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 @section('maincontent')
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Referal Link') }}
-@endslot
-
-@slot('menu1')
-{{ __('Referal Link') }}
-@endslot
-@endcomponent
 <div class="shadow-sm mt-3 card text-center">
     <div class="card-body">
         <div class="form-group">

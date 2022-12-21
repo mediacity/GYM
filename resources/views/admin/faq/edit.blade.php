@@ -1,25 +1,29 @@
 @extends('layouts.master')
 @section('title',__('Edit Faq :eid -',['eid' => $faq->title]))
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-4 col-lg-5">
+                <h4 class="page-title">{{ __("Faq") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Edit Faq') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-7">
+                <div class="top-btn-block text-right">
+                    <a href="{{route('faq.index')}}" class="btn btn-primary-rgba mr-2"><i
+                    class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+                </div>
+            </div>  
+        </div>          
+    </div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Home') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Faq') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6">
-    <a href="{{route('faq.index')}}" class="float-right btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
-</div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <!-- Start Row -->
 <div class="row">
     <!-- Start col -->
@@ -58,7 +62,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('status', 1,$faq->status==1 ? 1 : 0, ['id' => 'switch1', 'class'
                                     => 'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Status") }}</label>
+                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -64,765 +64,766 @@
 
                         <label class="text-dark">{{ __('Assign Permissions to role') }}</label>
                         <hr>
+                        <div class="table-responsive">
+                            <table class="permissionTable table table-bordered">
+                                <th>
+                                    {{ __("Section") }}
+                                </th>
 
-                        <table class="permissionTable table table-bordered">
-                            <th>
-                                {{ __("Section") }}
-                            </th>
+                                <th>
+                                    {{ __("Action") }}
+                                </th>
 
-                            <th>
-                                {{ __("Action") }}
-                            </th>
-
-                            <th>
-                                #
-                            </th>
+                                <th>
+                                    #
+                                </th>
 
 
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        {{ __("Login") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'can'))
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{ __("Login") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'can'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p['id'] ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('can.', '', $p['name']) }}</label>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p['id'] ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('can.', '', $p['name']) }}</label>
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td>
-                                        {{ __("Dashboard") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'dashboard'))
+                                    <tr>
+                                        <td>
+                                            {{ __("Dashboard") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'dashboard'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('dashboard.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('dashboard.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Users") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'users'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Users") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'users'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('users.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('users.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Exercise") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'exercise'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Exercise") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'exercise'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('exercise.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('exercise.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Measurement") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'measurements'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Measurement") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'measurements'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('measurements.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('measurements.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Lockers") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'locker'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Lockers") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'locker'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('locker.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('locker.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       {{ __(" Trainer packages") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'trainerp'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __(" Trainer packages") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'trainerp'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('trainerp.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('trainerp.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Slider") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'slider'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Slider") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'slider'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('slider.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('slider.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       {{ __(" PT Subscriptions") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'pt'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __(" PT Subscriptions") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'pt'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('pt.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('pt.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       {{ __(" Faq") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'faq'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __(" Faq") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'faq'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('faq.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('faq.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Pages") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'pages'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Pages") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'pages'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('pages.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('pages.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Blogs") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'blogs'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Blogs") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'blogs'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('blogs.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('blogs.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Packages") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'packages'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Packages") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'packages'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('packages.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('packages.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Fees") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'fees'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Fees") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'fees'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('fees.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('fees.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Diet") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'diet.'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Diet") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'diet.'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('diet.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('diet.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                      {{ __("  Diet Session") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'diet_session'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __("  Diet Session") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'diet_session'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('diet_session.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('diet_session.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                     {{ __("Diet Content") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'diet_content'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __("Diet Content") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'diet_content'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('diet_content.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('diet_content.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Supplement") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'supplement'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Supplement") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'supplement'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('supplement.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('supplement.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Payment Report") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'paymentreport'))
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('paymentreport.', '', $p['name']) }}</label>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       {{ __(" Trainer List") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'trainer_list'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Payment Report") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'paymentreport'))
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('paymentreport.', '', $p['name']) }}</label>
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __(" Trainer List") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'trainer_list'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('trainer_list.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('trainer_list.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                      {{ __("Services") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'service'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __("Services") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'service'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('service.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('service.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Group") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'group'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Group") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'group'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('group.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('group.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Trainer") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'trainer.'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Trainer") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'trainer.'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('trainer.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('trainer.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                     {{ __("Member Attendance") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'member_attendance'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __("Member Attendance") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'member_attendance'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('member_attendance.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('member_attendance.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    {{ __("Staff Attendance") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'staff_attendance'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __("Staff Attendance") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'staff_attendance'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('staff_attendance.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('staff_attendance.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Group") }}
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'group'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Group") }}
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'group'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('group.', '', $p['name']) }}</label>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('group.', '', $p['name']) }}</label>
 
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Todo") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'todo'))
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Todo") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'todo'))
 
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('todo.', '', $p['name']) }}</label>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {{ __("Enquiry") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'enquiry'))
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('enquiry.', '', $p['name']) }}</label>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       {{ __(" Site Settings") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'settings'))
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('settings.', '', $p['name']) }}</label>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('todo.', '', $p['name']) }}</label>
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ __("Enquiry") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'enquiry'))
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('enquiry.', '', $p['name']) }}</label>
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        {{ __(" Site Settings") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'settings'))
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('settings.', '', $p['name']) }}</label>
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td>
-                                        {{ __("Roles") }}
-                                    </td>
-                                    <td>
-                                        <label>
-                                            <input class="selectall" type="checkbox" name="customCheckboxInline2">
-                                            &nbsp;{{ __('Select all') }}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @foreach($role_permission as $p)
-                                        @if(strstr($p->name, 'roles'))
-                                        <input @foreach($role->permissions as $rp)
-                                        {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
-                                        type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
-                                        name="permissions[]">
-                                        <label
-                                            for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('roles.', '', $p['name']) }}</label>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <tr>
+                                        <td>
+                                            {{ __("Roles") }}
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input class="selectall" type="checkbox" name="customCheckboxInline2">
+                                                &nbsp;{{ __('Select all') }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            @foreach($role_permission as $p)
+                                            @if(strstr($p->name, 'roles'))
+                                            <input @foreach($role->permissions as $rp)
+                                            {{ $rp->id == $p->id ? "checked" : ""}} @endforeach class="permissioncheckbox"
+                                            type="checkbox" id="customCheckboxInline{{ $p['id'] }}" value="{{ $p['name'] }}"
+                                            name="permissions[]">
+                                            <label
+                                                for="customCheckboxInline{{ $p['id'] }}">&nbsp;{{ str_replace('roles.', '', $p['name']) }}</label>
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-md btn-primary">

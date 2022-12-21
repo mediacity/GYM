@@ -69,7 +69,7 @@ return [
         // '#FFC107',
         // '#FF9800',
         // '#FF5722',
-        '#c8f2dc'
+        '#FF6500'
     ],
 
     'border' => [
@@ -121,9 +121,9 @@ return [
                 // '#FFC107',
                 // '#FF9800',
                 // '#FF5722',
-                '#ced7f8'
+                '#FF6500'
             ],
-            'foregrounds' => ['#506fe4'],
+            'foregrounds' => ['#FFF'],
         ],
         'pastel' => [
             'backgrounds' => [
@@ -141,8 +141,8 @@ return [
                 // '#FFAB91',
                 // '#FFCCBC',
                 // '#D7CCC8',
-                '#c8f2dc',
-                '#ced7f8'
+                '#FF6500',
+                '#FF6500'
             ],
             'foregrounds' => [
                 '#FFF',

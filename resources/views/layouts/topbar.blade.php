@@ -38,24 +38,15 @@
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
-        <div class="col-lg-6">
-            <!-- <div class="togglebar">
-                <ul class="list-inline mb-0">
-
-                    <li class="list-inline-item">
-                        <div class="menubar">
-                            <a class="menu-hamburger" href="javascript:void();">
-                                <img src="{{ url('assets/images/svg-icon/menu.svg') }}"
-                                     class="img-fluid menu-hamburger-collapse" alt="menu">
-                                <img src="{{ url('assets/images/svg-icon/close.svg') }}"
-                                     class="img-fluid menu-hamburger-close" alt="close">
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div> -->
+        <div class="col-lg-4 col-md-3">
+            <div class="visit-btn">
+                <a href="#" target="_blank">
+                    <span class="live-icon">Visit Site</span>
+                    <i class="feather icon-external-link" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-8 col-md-9">
             <div class="infobar">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item mr-5 align-self-center">

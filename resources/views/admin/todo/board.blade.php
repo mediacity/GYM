@@ -1,23 +1,30 @@
 @extends('layouts.master')
 @section('title',__('All Todo Boards'))
-@section('maincontent')
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-   {{ __('Dashboard') }}
-@endslot
-@slot('menu1')
-   {{ __('All Boards') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6 text-right">
-  <a href="{{url('admin/todo')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-list mr-2"></i>{{ __("My Boards") }}</a>
- </div>
- @endslot
-@endcomponent     
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-6">
+            <h4 class="page-title">{{ __("Dashboard") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('All Board') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+            <div class="top-btn-block text-right">
+				<a href="{{url('admin/todo')}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-list mr-2"></i>{{ __("My Boards") }}</a>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Contentbar -->    
-<div class="contentbar">  
+<div class="">  
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card m-b-30">
@@ -58,9 +65,11 @@
 												@endif
 											</td>
 										  <td>
-											{{ucfirst($list->user->name)}}
+											{{ucfirst($list->user->name ?? '')}}
 										</td>
-										  <td>{{$list->assigned_to != null ? ucfirst($list->assignedto->name) : ''}}</td>
+										@if(isset($list->assigned_to->name))
+										  <td>{{$list->assigned_to != null ? ucfirst($list->assigned_to->name) : ''}}</td>
+										  @endif
 										  <td>{{$list->todos->count()}}</td>
 										  <td>{{$list->todos->where('is_complete','1')->count()}}</td>
 										  <td>{{$list->todos->where('is_checked','1')->count()}}</td>

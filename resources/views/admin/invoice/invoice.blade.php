@@ -34,45 +34,50 @@
                 <form class="form" action="{{ route('invoice.settings.update') }}" method="POST" novalidate
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Terms And Condition:') }}</label>
-                        <input name="term_condition" autofocus="" type="text" class="form-control"
-                            placeholder="{{ __("enter terms and condition") }}" required=""
-                            value="{{ $invoice ? $invoice->term_condition : "" }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please enter site title !') }}.
-                        </div>-
-                    </div>
-
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Name:') }}</label>
-                        <input name="name" autofocus="" type="text" class="form-control" placeholder="{{ __("enter your name") }}"
-                            value="{{ $invoice ? $invoice->name : "" }}">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="text-dark">{{ __('Phone:') }}</label>
-                        <input name="phone" autofocus="" type="number" pattern="[0-9]{10}" class="form-control"
-                            placeholder="{{ __("enter your mobileno") }}" value="{{ $invoice ? $invoice->phone : "" }}">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>{{ __("Add Signature:") }}</label><span class="text-danger">*</span>
-                        <input required="" type="file" class="form-control" name="signature" id="signature" />
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="text-dark">{{ __(' Email:') }}</label>
-                        <input name="email" autofocus="" type="email" class="form-control"
-                            placeholder="{{ __("enter your email") }}" required="" value="{{ $invoice ? $invoice->email : "" }}">
-                        <div class="invalid-feedback">
-                            {{ __('Please Enter support email !') }}.
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Terms And Condition:') }}</label>
+                                <input name="term_condition" autofocus="" type="text" class="form-control"
+                                    placeholder="{{ __("enter terms and condition") }}" required=""
+                                    value="{{ $invoice ? $invoice->term_condition : "" }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please enter site title !') }}.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Name:') }}</label>
+                                <input name="name" autofocus="" type="text" class="form-control" placeholder="{{ __("enter your name") }}"
+                                    value="{{ $invoice ? $invoice->name : "" }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __('Phone:') }}</label>
+                                <input name="phone" autofocus="" type="number" pattern="[0-9]{10}" class="form-control"
+                                    placeholder="{{ __("enter your mobileno") }}" value="{{ $invoice ? $invoice->phone : "" }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label>{{ __("Add Signature:") }}</label><span class="text-danger">*</span>
+                                <input required="" type="file" class="form-control" name="signature" id="signature" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __(' Email:') }}</label>
+                                <input name="email" autofocus="" type="email" class="form-control"
+                                    placeholder="{{ __("enter your email") }}" required="" value="{{ $invoice ? $invoice->email : "" }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Please Enter support email !') }}.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="footer">
                         <button type="submit" class="btn btn-primary-rgba"><i class="feather icon-save mr-2"></i>
                             {{ __('Save') }}</button>
                     </div>

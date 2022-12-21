@@ -1,14 +1,23 @@
 @extends('layouts.master')
 @section('title',__('History'))
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-6">
+            <h4 class="page-title">{{ __("History") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('History') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 @section('maincontent')
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('History') }}
-@endslot
-@slot('menu1')
-{{ __('History') }}
-@endslot
-@endcomponent
 <div class="row">
     <!-- Start col -->
     <div class="col-lg-12">

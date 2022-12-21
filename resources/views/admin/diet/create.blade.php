@@ -1,27 +1,32 @@
 @extends('layouts.master')
 @section('title',__('Add Diet'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Diet') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __('Add Diet') }}
-@endslot
-@slot('button')
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('diet.index')}}" class="btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Diet") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Add Diet') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-4">
+            <div class="top-btn-block text-right">
+                <a href="{{route('diet.index')}}" class="btn btn-primary-rgba mr-2"><i
+                class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <form class="form form-light" action="{{route('diet.store')}}" method="POST" novalidate novalidate enctype="multipart/form-data">
     {{ csrf_field() }}
     <!--Form without header-->
@@ -34,7 +39,7 @@
                 <br>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label class="text-dark">{{ __("Diet Name: ") }}<span class="text-danger">*</span></label>
                                 <input pattern="\A\pL+\z" value="{{ old('dietname') }}" autofocus="" type="text"
@@ -45,33 +50,85 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter your diet type eg : Weight Loss, Body Shaping") }} </small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter your diet type eg : Weight Loss, Body Shaping") }} </small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">{{ __("Diet Day:") }} <span class="text-danger">*</span></label>
+                                <select data-placeholder="{{ __('Please select day') }}" name="day_id[]"
+                                    class="mdb-select md-form form-control select2  @error('day_id[]') is-invalid @enderror"
+                                    multiple>
+                                    <option value="">{{ __("Select Day") }}</option>
+                                    @if (isset($days))
+                                    @foreach($days as $day)
+                                    <option value="{{ $day->id }}">{{ $day->day}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                                @error('day_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the day on which you have to eat the diet eg : Monday, Tuesday") }} </small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                    <label class="text-dark">{{ __("Session:") }}<span class="text-danger">*</span></label>
+                                <select data-placeholder="{{ __('Please select diet session') }}" name="session_id[]"
+                                    id="session_id[]"
+                                    class="form-control select2 @error('session_id[]') is-invalid @enderror"
+                                    multiple>
+                                    <option value="">{{ __('Please select diet session') }} </option>
+                                    @if (isset($dietid))
+                                    @foreach ($dietid as $session_id)
+                                    <option value="{{ $session_id->id }}">
+                                        {{ $session_id->session_id }}</option>
+                                            @endforeach
+                                    @endif
+                                </select>
+                                @error('session_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                    <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
+                                    {{ __("Selecting diet session eg : Morning, Afternoon ") }}</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label class="text-dark"> {{ __("Follow Up Date: ") }}<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input value="{{ old('followup_date') }}" name="followup_date" type="text" id="calendar2"
+                                    class="calendar form-control" placeholder="{{ __('yyyy/mm/dd') }}" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2"><i
+                                            class="feather icon-calendar"></i></span>
+                                </div>
+                            </div>
+                            @error('followup_date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
+                            {{ __(" Please Enter Next Followup Date ") }}</small>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 {!! Form::label('description', 'Description',['class'=>'required text-dark']) !!} <span
                                     class="text-danger">*</span>
                                 {!! Form::textarea('description',null, ['id' => 'description','class' =>
                                 'form-control ' ,'required','placeholder' => 'Your Diet Description']) !!}
                                 <small class="text-danger">{{ $errors->first('description') }}</small>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Describe your diet to eat eg : Rice ,Salad ") }}</small>
+                                <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Describe your diet to eat eg : Rice ,Salad ") }}</small>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }} input-file-block">
-                        {!! Form::label('image', 'Diet Image',['class'=>'text-dark']) !!} </br>
-                        {!! Form::file('image', ['class' => 'input-file', 'id'=>'image']) !!}
-                        <small class="text-danger">{{ $errors->first('image') }}</small>
-                    </div>
-                     <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <label class="text-dark">{{ __("Diet Includes:") }} <span class="text-danger">*</span></label>
+                        <div class="col-lg-12 col-md-12 mb-3">
+                            <label class="text-dark">{{ __("Diet Includes:") }} <span class="text-danger">*</span></label>
+                            <div class="table-responsive">
                                 <table class="myTable table table-bordered" id="table_field">
                                     <thead>
                                         <tr>
@@ -79,7 +136,7 @@
                                             <th>{{ __("Quantity") }}</th>
                                             <th>{{ __("Single Calories") }}</th>
                                             <th>{{ __("Total Calories") }}</th>
-                                             <th> </th>
+                                            <th> </th>
                                             </tr>
                                     </thead>
                                     <tbody>
@@ -97,10 +154,10 @@
                                                     class="form-control single_kal  @error('single_kal') is-invalid @enderror"
                                                     value="">
                                             </td>
-                                             <td><input type="text" name="dcalories[]"
+                                            <td><input type="text" name="dcalories[]"
                                                     class="form-control dcalories @error('dcalories') is-invalid @enderror"
                                                     value="">
-                                                  </td>
+                                                </td>
                                             <td><button class="btn addNew btn-success" type="button" name="add" id="add"
                                                     value="+">
                                                     +</button>
@@ -111,104 +168,42 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the content , quantity and its calories which your diet need eg : Rice:130 kcal, Tomato:22 kcal") }}
-                                 </small>
                             </div>
+                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the content , quantity and its calories which your diet need eg : Rice:130 kcal, Tomato:22 kcal") }}
+                            </small>
                         </div>
-                    </div>
-                    @error('diet includes')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="text-dark">{{ __("Diet Day:") }} <span class="text-danger">*</span></label>
-                                    <select data-placeholder="{{ __('Please select day') }}" name="day_id[]"
-                                        class="mdb-select md-form form-control select2  @error('day_id[]') is-invalid @enderror"
-                                        multiple>
-                                        <option value="">{{ __("Select Day") }}</option>
-                                        @if (isset($days))
-                                        @foreach($days as $day)
-                                        <option value="{{ $day->id }}">{{ $day->day}}</option>
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                    @error('day_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the day on which you have to eat the diet eg : Monday, Tuesday") }} </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                     <label class="text-dark">{{ __("Session:") }}<span class="text-danger">*</span></label>
-                                    <select data-placeholder="{{ __('Please select diet session') }}" name="session_id[]"
-                                        id="session_id[]"
-                                        class="form-control select2 @error('session_id[]') is-invalid @enderror"
-                                        multiple>
-                                        <option value="">{{ __('Please select diet session') }} </option>
-                                        @if (isset($dietid))
-                                        @foreach ($dietid as $session_id)
-                                        <option value="{{ $session_id->id }}">
-                                            {{ $session_id->session_id }}</option>
-                                             @endforeach
-                                        @endif
-                                    </select>
-                                    @error('session_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                     <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>
-                                        {{ __("Selecting diet session eg : Morning, Afternoon ") }}</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <label class="text-dark"> {{ __("Follow Up Date: ") }}<span class="text-danger">*</span></label>
-                        <div class="input-group">
-                            <input value="{{ old('followup_date') }}" name="followup_date" type="text" id="calendar2"
-                                class="calendar form-control" placeholder="{{ __('yyyy/mm/dd') }}" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2"><i
-                                        class="feather icon-calendar"></i></span>
-                            </div>
-                        </div>
-                        @error('followup_date')
+                        @error('diet includes')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>
-                           {{ __(" Please Enter Next Followup Date ") }}</small>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="text-dark"
-                                class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
-                                <div class="custom-switch">
-                                    {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>'custom-control-input'])
-                                    !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Is Active") }}</label>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }} input-file-block">
+                                {!! Form::label('image', 'Diet Image',['class'=>'text-dark']) !!} </br>
+                                {!! Form::file('image', ['class' => 'input-file', 'id'=>'image']) !!}
+                                <small class="text-danger">{{ $errors->first('image') }}</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <div class="text-dark"
+                                    class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
+                                    <div class="custom-switch">
+                                        {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class' =>'custom-control-input'])
+                                        !!}
+                                        <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
-                            <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
-                                {{ __("Create") }}</button>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i> {{ __("Reset") }}</button>
+                                <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
+                                    {{ __("Create") }}</button>
+                            </div>
                         </div>
                     </div>
                     <div class="clear-both"></div>

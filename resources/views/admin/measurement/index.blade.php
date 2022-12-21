@@ -1,27 +1,32 @@
 @extends('layouts.master')
 @section('title',__('All Measurement'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Measurement') }}
-@endslot
-@slot('menu1')
-{{ __('Measurement') }}
-@endslot
-@slot('button')
-@if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' )
-<div class="col-md-12 col-lg-6 text-right">
-    <div class="top-btn-block">
-        <a href="{{route('measurement.create',['id' => app('request')->input('id')])}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-plus mr-2"></i>{{ __("Add Measurement") }}</a>
-        <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
-        <a href="{{ route('mea.index') }}" class="btn btn-success-rgba mr-2"><i class="feather icon-download-cloud mr-2"></i>{{ __("Recycle") }}</a>
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5">
+            <h4 class="page-title">{{ __("Measurement") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Measurement') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @if(auth()->user()->can('users.add'))
+        <div class="col-lg-8 col-md-7">
+            <div class="top-btn-block text-right">
+                <a href="{{route('measurement.create',['id' => app('request')->input('id')])}}" class="btn btn-primary-rgba mr-2"><i class="feather icon-plus mr-2"></i>{{ __("Add Measurement") }}</a>
+                <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal" data-target="#bulk_delete"><i class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
+                <a href="{{ route('mea.index') }}" class="btn btn-success-rgba mr-2"><i class="feather icon-download-cloud mr-2"></i>{{ __("Recycle") }}</a>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
-@endslot
-@endif
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Row -->
 <div class="row">
     <div class="col-md-12">
@@ -104,7 +109,7 @@
                                                         @method('POST')
                                                         <button type="reset" class="btn btn-gray translate-y-3"
                                                             data-dismiss="modal">{{ __("No") }}</button>
-                                                        <button type="submit" class="btn btn-danger">{{ _("Yes") }}}</button>
+                                                        <button type="submit" class="btn btn-danger">{{ __("Yes") }}}</button>
                                                     </form>
                                                 </div>
                                             </div>

@@ -1,131 +1,124 @@
 @extends('layouts.master')
 @section('title',__('All Payment'))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->
-@component('components.breadcumb',['secondaryactive' => 'active'])
-@slot('heading')
-{{ __('Manual Payment') }}
-@endslot
-@slot('menu1')
-{{ __('Payment') }}
-@endslot
-@slot('button')
-@if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' )
-<div class="col-md-4 col-lg-4">
-    <a href="{{route('manual.payment.gateway.store')}}" class="float-right btn btn-primary-rgba mr-2"
-        data-toggle="modal" data-target="#exampleModalCenter"><i class="feather icon-plus mr-2"></i>{{ __("Add Manual Payement") }}</a>
-    <button type="button" class="float-right btn btn-danger-rgba mr-2 " data-toggle="modal"
-        data-target="#bulk_delete"><i class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
-    @endif
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form autocomplete="off" class="form-light" action="{{route('manual.payment.gateway.store')}}"
-                        method="POST" novalidate enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h1 class="card-title">{{ __('Manual Payement Details:') }}</h1>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="text-dark">{{ __("Payement Name:") }} <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text"
-                                                        class="form-control @error('payment_name') is-invalid @enderror"
-                                                        placeholder="{{ __("Your Payment Name ") }}" name="payment_name"
-                                                        required="">
-                                                    @error('payment_name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the manual payement name") }}</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="text-dark">{{ __("Description: ") }}}<span
-                                                        class="text-danger">*</span></label>
-                                                <textarea type="text" rows="10" cols="10"
-                                                    class="form-control @error('description') is-invalid @enderror"
-                                                    placeholder="{{ __("Your Payment Description") }}" name="description"
-                                                    required=""></textarea>
-                                                @error('description')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Enter your payment description") }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div
-                                                    class="form-group{{ $errors->has('thumbnail') ? ' has-error' : '' }} input-file-block">
-                                                    {!! Form::label('thumbnail', 'Image',['class'=>'required text-dark']) !!} 
-                                                     {!! Form::file('thumbnail', ['class' => 'input-file',
-                                                    'id'=>'thumbnail']) !!}
-                                                    <small class="text-danger">{{ $errors->first('thumbnail') }}</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="text-dark"
-                                                    class="form-group{{ $errors->has('status') ? ' has-error' : '' }} switch-main-block">
-                                                    <div class="custom-switch">
-                                                        {!! Form::checkbox('status', 1,1,
-                                                        ['id' => 'switch2', 'class' =>
-                                                        'custom-control-input'])
-                                                        !!}
-                                                        <label class="custom-control-label" for="switch2">Is
-                                                            {{ __("Active") }}</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i>
-                                            {{ __("Reset") }}</button>
-                                        <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
-                                            {{ __("Create") }}</button>
-                                    </div>
-                                </div>
-                                <div class="clear-both"></div>
-                    </form>
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-8">
+                <h4 class="page-title">{{ __("Manual Payment") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Payment') }}
+                        </li>
+                    </ol>
                 </div>
             </div>
-        </div>
+            <div class="col-md-7 col-lg-4">
+                <div class="top-btn-block  text-right">
+                    @if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' )
+                        <a href="{{route('manual.payment.gateway.store')}}" class="btn btn-primary-rgba mr-2"
+                        data-toggle="modal" data-target="#exampleModalCenter"><i class="feather icon-plus mr-2"></i>{{ __("Add Manual Payement") }}</a>
+                        <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal"
+                        data-target="#bulk_delete"><i class="feather icon-trash"></i> {{ __("Delete Selected") }}</button>
+                    @endif
+                </div>
+                <div class="modal fade manual-pay-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form autocomplete="off" class="form-light" action="{{route('manual.payment.gateway.store')}}"
+                                    method="POST" novalidate enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header mb-4">
+                                                    <h1 class="card-title">{{ __('Manual Payement Details:') }}</h1>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-dark">{{ __("Payement Name:") }} <span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text"
+                                                                class="form-control @error('payment_name') is-invalid @enderror"
+                                                                placeholder="{{ __("Your Payment Name ") }}" name="payment_name"
+                                                                required="">
+                                                            @error('payment_name')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> {{ __("Enter the manual payement name") }}</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-dark">{{ __("Description: ") }}}<span
+                                                                    class="text-danger">*</span></label>
+                                                            <textarea type="text" rows="10" cols="10"
+                                                                class="form-control @error('description') is-invalid @enderror"
+                                                                placeholder="{{ __("Your Payment Description") }}" name="description"
+                                                                required=""></textarea>
+                                                            @error('description')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Enter your payment description") }}</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div
+                                                                class="form-group{{ $errors->has('thumbnail') ? ' has-error' : '' }} input-file-block">
+                                                                {!! Form::label('thumbnail', 'Image',['class'=>'required text-dark']) !!} 
+                                                                    {!! Form::file('thumbnail', ['class' => 'input-file',
+                                                                'id'=>'thumbnail']) !!}
+                                                                <small class="text-danger">{{ $errors->first('thumbnail') }}</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="text-dark"
+                                                                class="form-group{{ $errors->has('status') ? ' has-error' : '' }} switch-main-block">
+                                                                <div class="custom-switch">
+                                                                    {!! Form::checkbox('status', 1,1,
+                                                                    ['id' => 'switch2', 'class' =>
+                                                                    'custom-control-input'])
+                                                                    !!}
+                                                                    <label class="custom-control-label" for="switch2"><span>{{ __("Status") }}</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i>
+                                                                {{ __("Reset") }}</button>
+                                                            <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
+                                                                {{ __("Create") }}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                            <div class="clear-both"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>          
     </div>
-</div>
-</div>
-</div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Row -->
 <div class="row">
     <div class="col-md-12">
@@ -198,12 +191,12 @@
                                 <td>{{str_limit($method -> description ,20)}}</td>
                                 <td>
                                     @if($method->thumbnail != '')
-                                    <img class="margin-right-15 width-height manual-img"
+                                    <img width="80px" height="80px" class="margin-right-15 width-height manual-img"
                                         src="{{url('/image/payment/'.$method->thumbnail )}}"
                                         title="{{ucfirst( $method->payment_name ) }}" class="rounded-circle img-fluid">
 
                                     @else
-                                    <img class="margin-right-15 manual-img" title="{{ ucfirst($method->payment_name) }}"
+                                    <img width="80px" height="80px" class="margin-right-15 manual-img" title="{{ ucfirst($method->payment_name) }}"
                                         src="{{ Avatar::create(ucfirst($method->payment_name))->toBase64() }}" />
                                     @endif
                                 </td>
@@ -268,34 +261,31 @@
                                                     <div class="col-md-12">
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <h1 class="card-title">
+                                                                <h1 class="card-title mb-4">
                                                                     {{ __('Edit Manual Payment Details:') }}</h1>
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label class="text-dark">{{ __("Payment Name:") }} <span
-                                                                                    class="text-danger">*</span></label>
-                                                                            <input type="text"
-                                                                                class="form-control @error('payment_name') is-invalid @enderror"
-                                                                                placeholder="{{ __("Your Payment name") }}"
-                                                                                name="payment_name" required=""
-                                                                                value="{{ $method->payment_name }}">
-                                                                            @error('payment_name')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                            @enderror
-                                                                            <small class="text-muted"> <i
-                                                                                    class="text-dark feather icon-help-circle"></i>
-                                                                               {{ __(" Enter your payement name") }}</small>
-                                                                        </div>
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label class="text-dark">{{ __("Payment Name:") }} <span
+                                                                                class="text-danger">*</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('payment_name') is-invalid @enderror"
+                                                                            placeholder="{{ __("Your Payment name") }}"
+                                                                            name="payment_name" required=""
+                                                                            value="{{ $method->payment_name }}">
+                                                                        @error('payment_name')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
+                                                                        <small class="text-muted text-info"> <i
+                                                                                class="text-dark feather icon-help-circle"></i>
+                                                                            {{ __(" Enter your payement name") }}</small>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
@@ -311,14 +301,12 @@
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                         @enderror
-                                                                        <small class="text-muted"> <i
+                                                                        <small class="text-muted text-info"> <i
                                                                                 class="text-dark feather icon-help-circle"></i>
                                                                             {{ __("Enter your payment description") }} </small>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
@@ -338,8 +326,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div
@@ -350,14 +336,14 @@
                                                                             'switch3', 'class' =>
                                                                             'custom-control-input']) !!}
                                                                             <label class="custom-control-label"
-                                                                                for="switch3">{{ __("Status") }}</label>
+                                                                                for="switch3"><span>{{ __("Status") }}</span></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <button type="reset" class="btn btn-danger-rgba"><i
                                                                     class="fa fa-ban"></i>

@@ -1,27 +1,32 @@
 @extends('layouts.master')
 @section('title',__('Edit Blogcategory :bid -',['bid' => $blogcategory->title]))
-@section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-{{ __('Blog Category') }}
-@endslot
-@slot('menu1')
-{{ __('Admin') }}
-@endslot
-@slot('menu2')
-{{ __(' Edit Blog Category') }}
-@endslot
-@slot('button')
-<div class="col-md-6 col-lg-6">
-    <a href="{{route('blogcategory.index')}}" class="float-right btn btn-primary-rgba mr-2"><i
-            class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+@section('breadcum')
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-5">
+                <h4 class="page-title">{{ __("Blog Category") }}</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item"><a href="">{{ __('Admin') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	{{ __('Edit Blog Category') }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-7">
+                <div class="top-btn-block text-right">
+                    <a href="{{route('blogcategory.index')}}" class="btn btn-primary-rgba mr-2"><i
+                    class="feather icon-arrow-left mr-2"></i>{{ __("Back") }}</a>
+                </div>
+            </div>  
+        </div>          
     </div>
-@endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
+@endsection
+@section('maincontent')
 <!-- Start Contentbar -->
-<div class="contentbar">
+<div class="">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -44,14 +49,14 @@
                                     {!! Form::label('title', 'Category Title',['class'=>'required text-dark']) !!}
                                     {!! Form::text('title', null, ['class' => 'form-control']) !!}
                                     <small class="text-danger">{{ $errors->first('title') }}</small>
-                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Create your Blog Category title") }}</small>
+                                    <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i>{{ __(" Create your Blog Category title") }}</small>
                                 </div>
                                 <div
                                     class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }} switch-main-block">
                                     <div class="custom-switch">
                                         {!! Form::checkbox('is_active', 1,$blogcategory->is_active==1 ? 1 :0, ['id' =>
                                         'switch1', 'class' => 'custom-control-input']) !!}
-                                        <label class="custom-control-label text-dark" for="switch1">{{ __("Is Active") }}</label>
+                                        <label class="custom-control-label text-dark" for="switch1"><span>{{ __("Status") }}</span></label>
                                     </div>
                                 </div>
 

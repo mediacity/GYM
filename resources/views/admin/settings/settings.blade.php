@@ -33,80 +33,87 @@
                 <div class="card-body">
                     <form class="form" action="{{ route('site.settings.update') }}" method="POST" novalidate enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Site Title:') }}</label>
-                            <input name="site_title" autofocus="" type="text" class="form-control" placeholder="{{ __("enter your project/site title") }}" required="" value="{{ $setting ? $setting->site_title : "" }}">
-                            <div class="invalid-feedback">
-                                {{ __('Please enter site title !') }}.
-                            </div>-
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Copyright Text:') }}</label>
-                            <input name="site_copyright" autofocus="" type="text" class="form-control" placeholder="{{ __("enter your copyright text" ) }}value="{{ $setting ? $setting->site_copyright : "" }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Site Keyword:') }}</label>
-                            <div class="bootstrap-tagsinput">
-                                <input type="text" id="tagsinput-typehead" class="form-control" data-role="tagsinput" name="site_keyword" value="{{ $setting ? $setting->site_keyword : "" }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Default Currency:') }}</label>
-
-                            <div class="bootstrap-tagsinput">
-                                <input type="text" class="form-control"  name="default_currency" value="{{ $setting ? $setting->default_currency : "" }}">
-                            </div>
-
- 
-                        </div>
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Site Description:') }}</label>
-                            <textarea name="site_description" cols="30" rows="5" type="text" class="form-control" placeholder="{{ __("enter your project/site description") }}" name="site_description">{{ $setting ? $setting->site_description : "" }}</textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Site Logo:') }}</label>
-                            <input type="file" class="form-control @error('site_logo') is-invalid @enderror" name="site_logo">
-                            @error('site_logo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Site Favicon:') }}</label>
-                            <input type="file" class="form-control @error('site_favicon') is-invalid @enderror" name="site_favicon">
-                             @error('site_favicon')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Support Email:') }}</label>
-                            <input name="support_email" autofocus="" type="email" class="form-control" placeholder="{{ __("enter your email") }}" required="" value="{{ $setting ? $setting->support_email : "" }}">
-                            <div class="invalid-feedback">
-                                {{ __('Please Enter support email !') }}.
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Login Side Image:') }}</label>
-                            <div class="bootstrap-tagsinput">
-                                <input type="file" class="form-control" name="login_side_image">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="text-dark">{{ __('Login Side Description:') }}</label>
-                            <textarea name="login_description" cols="30" rows="2" type="text" class="form-control" placeholder="{{ __("enter your description") }}">{{ $setting ? $setting->login_description : "" }}</textarea>
-                        </div>
-
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Site Title:') }}</label>
+                                    <input name="site_title" autofocus="" type="text" class="form-control" placeholder="{{ __("enter your project/site title") }}" required="" value="{{ $setting ? $setting->site_title : "" }}">
+                                    <div class="invalid-feedback">
+                                        {{ __('Please enter site title !') }}.
+                                    </div>-
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Copyright Text:') }}</label>
+                                    <input name="site_copyright" autofocus="" type="text" class="form-control" placeholder="{{ __("enter your copyright text" ) }}value="{{ $setting ? $setting->site_copyright : "" }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Support Email:') }}</label>
+                                    <input name="support_email" autofocus="" type="email" class="form-control" placeholder="{{ __("enter your email") }}" required="" value="{{ $setting ? $setting->support_email : "" }}">
+                                    <div class="invalid-feedback">
+                                        {{ __('Please Enter support email !') }}.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Site Logo:') }}</label>
+                                    <input type="file" class="form-control @error('site_logo') is-invalid @enderror" name="site_logo">
+                                    @error('site_logo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Site Favicon:') }}</label>
+                                    <input type="file" class="form-control @error('site_favicon') is-invalid @enderror" name="site_favicon">
+                                    @error('site_favicon')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Login Side Image:') }}</label>
+                                    <input type="file" class="form-control" name="login_side_image">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Default Currency:') }}</label>
+                                    <input type="text" class="form-control"  name="default_currency" value="{{ $setting ? $setting->default_currency : "" }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Login Side Description:') }}</label>
+                                    <textarea name="login_description" cols="30" rows="1" type="text" class="form-control" placeholder="{{ __("enter your description") }}">{{ $setting ? $setting->login_description : "" }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Site Keyword:') }}</label>
+                                    <input type="text" id="tagsinput-typehead" class="form-control" data-role="tagsinput" name="site_keyword" value="{{ $setting ? $setting->site_keyword : "" }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">{{ __('Site Description:') }}</label>
+                                    <textarea name="site_description" cols="30" rows="5" type="text" class="form-control" placeholder="{{ __("enter your project/site description") }}" name="site_description">{{ $setting ? $setting->site_description : "" }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
                                 <div class="form-group ">
-                                    <div class="custom-switch">
+                                    <div class="custom-switch settings-switch">
                                         <div class="row">
                                             <div class="col-lg-6 col-10">
                                                 <label for="exampleInputDetails">{{ __('Inspect Element Disabled') }} :</label><br>   
@@ -119,9 +126,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="form-group ">
-                                    <div class="custom-switch">
+                                    <div class="custom-switch settings-switch">
                                         <div class="row">
                                             <div class="col-lg-6 col-10">
                                                 <label for="exampleInputDetails">{{ __('Right Click Disabled') }} :</label><br> 
@@ -135,11 +142,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="footer">
                             <button type="submit" class="btn btn-primary-rgba"><i class="feather icon-save mr-2"></i> {{ __('Save') }}</button>
                         </div>
                      </form>
-                    </div> 
+                </div> 
             </div>
         </div>
     </div>

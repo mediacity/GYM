@@ -1,28 +1,33 @@
 @extends('layouts.master')
 @section('title',__('Device History'))
+@section('breadcum')
+<div class="breadcrumbbar breadcrumbbar-one">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-8">
+            <h4 class="page-title">{{ __("Device History") }}</h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ __('Reports') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ __('Device History') }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 @section('maincontent')
-<!-- Start Breadcrumbbar -->                    
-@component('components.breadcumb',['thirdactive' => 'active'])
-@slot('heading')
-        {{ __('Device History') }}
-    @endslot
-    @slot('menu1')
-        {{ __("Reports") }}
-    @endslot
-    @slot('menu2')
-        {{ __('Device History') }}
-    @endslot
-@endcomponent
-<!-- End Breadcrumbbar -->
 <!-- Start Contentbar -->
-<div class="contentbar">
+<div class="">
     <div class="row">
          <div class="col-md-12">
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">{{ __('Device History') }}</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table id="device_reports" class="text-dark w-100 table table-striped table-bordered">
                         <thead>
                             <th>{{ __("#") }}</th>

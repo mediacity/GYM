@@ -1,0 +1,1 @@
+<?php /**PATH C:\laragon\www\GYM\resources\views/message.blade.php ENDPATH**/ ?>
