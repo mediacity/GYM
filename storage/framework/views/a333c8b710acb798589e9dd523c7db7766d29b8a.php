@@ -258,6 +258,6 @@
     <script src="<?php echo e(url('assets/js/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(url('assets/js/bootstrap.min.js')); ?>"></script>
     <script src="<?php echo e(url('assets/js/owl.carousel.min.js')); ?>"></script>
-    <script src="<?php echo e(url('js/theme.js')); ?>"></script>
+    <script src="<?php echo e(url('assets/js/theme.js')); ?>"></script>
 </body>
 </html><?php /**PATH C:\xampp\htdocs\GYM\gym_new\resources\views/welcome.blade.php ENDPATH**/ ?>
