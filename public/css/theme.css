@@ -498,9 +498,6 @@ element.style {
 .blog-dtl p {
 	font-size: 14px;
 }
-.blog-user-dtl {
-	padding: 0 15px;
-}
 .blog-user-dtl ul {
 	padding-left: 0;
 }
@@ -508,10 +505,10 @@ element.style {
 	display: inline-block;
 }
 .blog-user-dtl ul li img {
-	width: 30px !important;
-	height: 30px;
+	width: 25px !important;
+	height: 25px;
 	border-radius: 100%;
-	margin-right: 5px;
+	margin-right: 0;
 }
 .blog-user-dtl ul li.user-name {
 	vertical-align: top;
@@ -519,10 +516,12 @@ element.style {
 	margin-top: 5px;
 }
 .blog-date {
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 5px;
 	text-align: right;
-    padding-right: 15px;
+}
+.blog-user-date {
+    padding: 0 15px;
 }
 .blog-block .overlay-bg {
 	position: absolute;

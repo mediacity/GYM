@@ -21,19 +21,26 @@
                         </li>
                         <!--Enquiry-->
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('enquiry.view')): ?>
-                        <li class="vertical-active">
-                         <span><?php echo e(__('Enquiry')); ?></span>
+                        <li class="header">
+                            <span><?php echo e(__('Enquiry')); ?></span>
                         </li>
-                        <li class="<?php echo e(Nav::isResource('enquiry')); ?> vertical-active">
-                            <a class="<?php echo e(Nav::isResource('enquiry')); ?>" href="<?php echo e(route('enquiry.index')); ?>">
-                                <i class="feather icon-phone-call"></i>
-                                <span><?php echo e(__('Enquiry')); ?></span>
-                            </a>
+                         <li>
+                            <a href="javaScript:void();">
+                                <i class="feather icon-phone-call"></i><span><?php echo e(__('Enquiry')); ?></span><i
+                                    class="feather icon-chevron-right"></i></a>
+                            <ul class="vertical-submenu">
+                                <li>
+                                    <a href="<?php echo e(route('enquiry.index')); ?>"><?php echo e(__('Enquiry')); ?></a>
+                                </li>
+                                 <li>
+                                    <a href="<?php echo e(url('manage/enquiryhealth/create')); ?>"><?php echo e(__('Enquiry Health')); ?></a>
+                                </li>
+                            </ul>
                         </li>
                         <?php endif; ?>
                          <!-- Users -->
                          
-                         <li class="vertical-active">
+                         <li class="header">
                          <span><?php echo e(__('User')); ?></span>
                         </li>
                           <li class="<?php echo e(Nav::isResource('users')); ?> <?php echo e(Nav::isResource('roles')); ?>">
@@ -60,7 +67,7 @@
                             </ul>
                         </li>
                         <!-- Gym Management -->
-                        <li class="vertical-active">
+                        <li class="header">
                          <span><?php echo e(__('Management')); ?></span>
                         </li>
                         <li class="<?php echo e(Nav::isResource('exercise')); ?> <?php echo e(Nav::isResource('measurement')); ?>  <?php echo e(Nav::isResource('locker')); ?>  ">
@@ -174,7 +181,7 @@
 
                         </li>
                         <?php endif; ?>
-                        <li class="vertical-active">
+                        <li class="header">
                             <span><?php echo e(__('Trainer')); ?></span>
                         </li>
                         <li class="<?php echo e(Nav::isResource('trainer')); ?> <?php echo e(Nav::isResource('trainerlist')); ?>">
@@ -258,7 +265,7 @@
                             </ul>
                         </li>
                         
-                        <li class="vertical-active">
+                        <li class="header">
                             <span><?php echo e(__('Report')); ?></span>
                         </li>
                          <li>
@@ -291,7 +298,7 @@
                         </li>
                         <?php endif; ?>
                         <!--Setting-->
-                        <li class="vertical-active">
+                        <li class="header">
                             <span><?php echo e(__('Setting')); ?></span>
                         </li>
                         <li>
@@ -351,7 +358,7 @@
                             </ul>
                         </li>
 
-                        <li class="vertical-active">
+                        <li class="header">
                             <span><?php echo e(__('Front Setting')); ?></span>
                         </li>
                         <li class="<?php echo e(Nav::isResource('pages')); ?> <?php echo e(Nav::isResource('faq')); ?> <?php echo e(Nav::isResource('slider')); ?>
@@ -432,5 +439,4 @@
     </div>
     <!-- End Navigationbar -->
 </div>
-<!-- End Sidebar -->
-<?php /**PATH C:\xampp\htdocs\GYM\gym_new\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>
+<!-- End Sidebar --><?php /**PATH C:\xampp\htdocs\GYM\gym_new\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>

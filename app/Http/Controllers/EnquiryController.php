@@ -123,6 +123,14 @@ class EnquiryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'city_id' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required',
+        ]);
 
         if (!Auth::user()->can('enquiry.add')) {
 

@@ -184,30 +184,32 @@
                         </div>
                         <div class="blog-dtl">
                             <h4 class="blog-dtl-heading"><a href="{{ route('blog.detail',$blog->id ) }}" title="{{$blog->title}}">{{$blog->title}}</a></h4>
-                            <p>{{substr($blog->detail, 0, 100);}}</p>
+                            
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-lg-5 col-md-5 col-5">
-                                <div class="blog-user-dtl">
-                                    <ul>
-                                        <li>
-                                            @if($blog->user)
-                                                @if($blog->user->photo !='' && file_exists(public_path().'/media/users/'.$blog->user->photo))
-                                                <img src="{{ url('/media/users/'.$blog->user->photo) }}" class="img-fluid" alt="">
-                                                @else 
+                        <div class="blog-user-date">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-5 col-5">
+                                    <div class="blog-user-dtl">
+                                        <ul>
+                                            <li>
+                                                @if($blog->user)
+                                                    @if($blog->user->photo !='' && file_exists(public_path().'/media/users/'.$blog->user->photo))
+                                                    <img src="{{ url('/media/users/'.$blog->user->photo) }}" class="img-fluid" alt="">
+                                                    @else 
+                                                    <img src="{{ url('image/blog/blog-user.png') }}" class="img-fluid" alt="">
+                                                    @endif
+                                                @else
                                                 <img src="{{ url('image/blog/blog-user.png') }}" class="img-fluid" alt="">
                                                 @endif
-                                            @else
-                                            <img src="{{ url('image/blog/blog-user.png') }}" class="img-fluid" alt="">
-                                            @endif
-                                        </li>
-                                        <li class="user-name">{{$blog->user?$blog->user->name:''}}</li>
-                                    </ul>
+                                            </li>
+                                            <li class="user-name">{{$blog->user?$blog->user->name:''}}</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-7">
-                                <div class="blog-date">{{date('F,d Y', strtotime($blog->created_at))}}</div>
+                                <div class="col-lg-6 col-md-7 col-7">
+                                    <div class="blog-date">{{date('F,d Y', strtotime($blog->created_at))}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -227,7 +229,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-block">
-                        <p>All rights reserved<br><span><a href="#" title="">Terms &amp; Condition</a> and <a href="#" title="">Privacy Policy</a></span></p>
+                        <p>All rights reserved<br><span><a href="{{route('front-terms-condition')}}" title="">Terms &amp; Condition</a> and <a href="{{route('front-privacy-policy')}}" title="">Privacy Policy</a></span></p>
                     </div>
                 </div>
             </div>

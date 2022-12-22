@@ -22,13 +22,20 @@
                         <!--Enquiry-->
                         @can('enquiry.view')
                         <li class="header">
-                         <span>{{ __('Enquiry') }}</span>
+                            <span>{{ __('Enquiry') }}</span>
                         </li>
-                        <li class="{{ Nav::isResource('enquiry') }} vertical-active">
-                            <a class="{{ Nav::isResource('enquiry') }}" href="{{ route('enquiry.index') }}">
-                                <i class="feather icon-phone-call"></i>
-                                <span>{{ __('Enquiry') }}</span>
-                            </a>
+                         <li>
+                            <a href="javaScript:void();">
+                                <i class="feather icon-phone-call"></i><span>{{ __('Enquiry') }}</span><i
+                                    class="feather icon-chevron-right"></i></a>
+                            <ul class="vertical-submenu">
+                                <li>
+                                    <a href="{{ route('enquiry.index') }}">{{ __('Enquiry') }}</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ url('manage/enquiryhealth/create') }}">{{ __('Enquiry Health') }}</a>
+                                </li>
+                            </ul>
                         </li>
                         @endcan
                          <!-- Users -->

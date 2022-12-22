@@ -40,7 +40,7 @@
         <!-- Start col -->
         <div class="col-lg-4 col-md-3">
             <div class="visit-btn">
-                <a href="#" target="_blank">
+                <a href="{{url('/')}}" target="_blank">
                     <span class="live-icon">Visit Site</span>
                     <i class="feather icon-external-link" aria-hidden="true"></i>
                 </a>
@@ -179,8 +179,32 @@
       minute: '2-digit',
       second: '2-digit'
     });
-    
+
     document.getElementById('timeyours').innerHTML = date + ' | ' + n;
     var t = setTimeout(startTime, 1000);
   });
+
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i
+    }; // add zero in front of numbers < 10
+    return i;
+  }
+  
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+    var n = today.toLocaleString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    document.getElementById('timeyours').innerHTML = date + ' | ' + n;
+    var t = setTimeout(startTime, 1000);
+  }
 </script>

@@ -172,7 +172,9 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group{{ $errors->has('video') ? ' has-error' : '' }} input-file-block">
                             {!! Form::label('video', 'Video',['class'=>'required text-dark']) !!}
-                            {!! Form::file('video', ['class' => 'input-file', 'id'=>'video']) !!}
+                            <div class="input-group">
+                                {!! Form::file('video', ['class' => 'input-file', 'id'=>'video']) !!}
+                            </div>
                             <small class="text-danger">{{ $errors->first('video') }}</small>
                         </div>
                     </div>

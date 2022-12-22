@@ -166,9 +166,6 @@
                             <th>{{ __("Email") }}</th>
                             <th>{{ __("Mobile No.") }}</th>
                             <th>{{ __("Purpose") }}</th>
-                            <th>{{ __("Age") }}</th>
-                            <th>{{ __("Occupation") }}</th>
-                            <th>{{ __("Cost") }}</th>
                             <th>{{ __("Health Issue") }}</th>
                             <th>{{ __("Status") }}</th>
                             @if(auth()->user()->can('enquiry.view'))
@@ -221,9 +218,6 @@
                             <td>{{$list -> email}}</td>
                             <td>{{$list -> mobile }}</td>
                             <td>{{$list -> purpose}}</td>
-                            <td>{{$list -> age}}</td>
-                            <td>{{$list -> occupation['occupation'] ?? '-'}}</td>
-                            <td>{{$list -> cost['cost'] ?? '-'}}</td>
                             <td>
                                 @if($list->issue)
                                 @foreach($list->issue as $key => $d)

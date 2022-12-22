@@ -38,24 +38,15 @@
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
-        <div class="col-lg-6">
-            <!-- <div class="togglebar">
-                <ul class="list-inline mb-0">
-
-                    <li class="list-inline-item">
-                        <div class="menubar">
-                            <a class="menu-hamburger" href="javascript:void();">
-                                <img src="<?php echo e(url('assets/images/svg-icon/menu.svg')); ?>"
-                                     class="img-fluid menu-hamburger-collapse" alt="menu">
-                                <img src="<?php echo e(url('assets/images/svg-icon/close.svg')); ?>"
-                                     class="img-fluid menu-hamburger-close" alt="close">
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div> -->
+        <div class="col-lg-4 col-md-3">
+            <div class="visit-btn">
+                <a href="<?php echo e(url('/')); ?>" target="_blank">
+                    <span class="live-icon">Visit Site</span>
+                    <i class="feather icon-external-link" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-8 col-md-9">
             <div class="infobar">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item mr-5 align-self-center">
@@ -191,8 +182,32 @@
       minute: '2-digit',
       second: '2-digit'
     });
-    
+
     document.getElementById('timeyours').innerHTML = date + ' | ' + n;
     var t = setTimeout(startTime, 1000);
   });
+
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i
+    }; // add zero in front of numbers < 10
+    return i;
+  }
+  
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+    var n = today.toLocaleString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    document.getElementById('timeyours').innerHTML = date + ' | ' + n;
+    var t = setTimeout(startTime, 1000);
+  }
 </script><?php /**PATH C:\xampp\htdocs\GYM\gym_new\resources\views/layouts/topbar.blade.php ENDPATH**/ ?>

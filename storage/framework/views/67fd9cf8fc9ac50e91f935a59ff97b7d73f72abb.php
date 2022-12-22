@@ -1,163 +1,155 @@
 
 <?php $__env->startSection('title',__('All Payment')); ?>
-<?php $__env->startSection('maincontent'); ?>
-<!-- Start Breadcrumbbar -->
-<?php $__env->startComponent('components.breadcumb',['secondaryactive' => 'active']); ?>
-<?php $__env->slot('heading'); ?>
-<?php echo e(__('Manual Payment')); ?>
+<?php $__env->startSection('breadcum'); ?>
+	<div class="breadcrumbbar breadcrumbbar-one">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-8">
+                <h4 class="page-title"><?php echo e(__("Manual Payment")); ?></h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('admin.dashboard.index')); ?>"><?php echo e(__('Dashboard')); ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        	<?php echo e(__('Payment')); ?>
 
-<?php $__env->endSlot(); ?>
-<?php $__env->slot('menu1'); ?>
-<?php echo e(__('Payment')); ?>
-
-<?php $__env->endSlot(); ?>
-<?php $__env->slot('button'); ?>
-<?php if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' ): ?>
-<div class="col-md-4 col-lg-4">
-    <a href="<?php echo e(route('manual.payment.gateway.store')); ?>" class="float-right btn btn-primary-rgba mr-2"
-        data-toggle="modal" data-target="#exampleModalCenter"><i class="feather icon-plus mr-2"></i><?php echo e(__("Add Manual Payement")); ?></a>
-    <button type="button" class="float-right btn btn-danger-rgba mr-2 " data-toggle="modal"
-        data-target="#bulk_delete"><i class="feather icon-trash"></i> <?php echo e(__("Delete Selected")); ?></button>
-    <?php endif; ?>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form autocomplete="off" class="form-light" action="<?php echo e(route('manual.payment.gateway.store')); ?>"
-                        method="POST" novalidate enctype="multipart/form-data">
-                        <?php echo e(csrf_field()); ?>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h1 class="card-title"><?php echo e(__('Manual Payement Details:')); ?></h1>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="text-dark"><?php echo e(__("Payement Name:")); ?> <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text"
-                                                        class="form-control <?php $__errorArgs = ['payment_name'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>"
-                                                        placeholder="<?php echo e(__("Your Payment Name ")); ?>" name="payment_name"
-                                                        required="">
-                                                    <?php $__errorArgs = ['payment_name'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong><?php echo e($message); ?></strong>
-                                                    </span>
-                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                    <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i> <?php echo e(__("Enter the manual payement name")); ?></small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="text-dark"><?php echo e(__("Description: ")); ?>}<span
-                                                        class="text-danger">*</span></label>
-                                                <textarea type="text" rows="10" cols="10"
-                                                    class="form-control <?php $__errorArgs = ['description'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>"
-                                                    placeholder="<?php echo e(__("Your Payment Description")); ?>" name="description"
-                                                    required=""></textarea>
-                                                <?php $__errorArgs = ['description'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong><?php echo e($message); ?></strong>
-                                                </span>
-                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                <small class="text-muted"> <i class="text-dark feather icon-help-circle"></i><?php echo e(__(" Enter your payment description")); ?></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div
-                                                    class="form-group<?php echo e($errors->has('thumbnail') ? ' has-error' : ''); ?> input-file-block">
-                                                    <?php echo Form::label('thumbnail', 'Image',['class'=>'required text-dark']); ?> 
-                                                     <?php echo Form::file('thumbnail', ['class' => 'input-file',
-                                                    'id'=>'thumbnail']); ?>
-
-                                                    <small class="text-danger"><?php echo e($errors->first('thumbnail')); ?></small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="text-dark"
-                                                    class="form-group<?php echo e($errors->has('status') ? ' has-error' : ''); ?> switch-main-block">
-                                                    <div class="custom-switch">
-                                                        <?php echo Form::checkbox('status', 1,1,
-                                                        ['id' => 'switch2', 'class' =>
-                                                        'custom-control-input']); ?>
-
-                                                        <label class="custom-control-label" for="switch2">Is
-                                                            <?php echo e(__("Active")); ?></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i>
-                                            <?php echo e(__("Reset")); ?></button>
-                                        <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
-                                            <?php echo e(__("Create")); ?></button>
-                                    </div>
-                                </div>
-                                <div class="clear-both"></div>
-                    </form>
+                        </li>
+                    </ol>
                 </div>
             </div>
-        </div>
+            <div class="col-md-7 col-lg-4">
+                <div class="top-btn-block  text-right">
+                    <?php if(Auth::user()->roles->first()->name == 'Trainer' || Auth::user()->roles->first()->name == 'Super Admin' ): ?>
+                        <a href="<?php echo e(route('manual.payment.gateway.store')); ?>" class="btn btn-primary-rgba mr-2"
+                        data-toggle="modal" data-target="#exampleModalCenter"><i class="feather icon-plus mr-2"></i><?php echo e(__("Add Manual Payement")); ?></a>
+                        <button type="button" class="btn btn-danger-rgba mr-2 " data-toggle="modal"
+                        data-target="#bulk_delete"><i class="feather icon-trash"></i> <?php echo e(__("Delete Selected")); ?></button>
+                    <?php endif; ?>
+                </div>
+                <div class="modal fade manual-pay-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form autocomplete="off" class="form-light" action="<?php echo e(route('manual.payment.gateway.store')); ?>"
+                                    method="POST" novalidate enctype="multipart/form-data">
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header mb-4">
+                                                    <h1 class="card-title"><?php echo e(__('Manual Payement Details:')); ?></h1>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-dark"><?php echo e(__("Payement Name:")); ?> <span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text"
+                                                                class="form-control <?php $__errorArgs = ['payment_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                                                placeholder="<?php echo e(__("Your Payment Name ")); ?>" name="payment_name"
+                                                                required="">
+                                                            <?php $__errorArgs = ['payment_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong><?php echo e($message); ?></strong>
+                                                            </span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i> <?php echo e(__("Enter the manual payement name")); ?></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-dark"><?php echo e(__("Description: ")); ?>}<span
+                                                                    class="text-danger">*</span></label>
+                                                            <textarea type="text" rows="10" cols="10"
+                                                                class="form-control <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                                                placeholder="<?php echo e(__("Your Payment Description")); ?>" name="description"
+                                                                required=""></textarea>
+                                                            <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong><?php echo e($message); ?></strong>
+                                                            </span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                            <small class="text-muted text-info"> <i class="text-dark feather icon-help-circle"></i><?php echo e(__(" Enter your payment description")); ?></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div
+                                                                class="form-group<?php echo e($errors->has('thumbnail') ? ' has-error' : ''); ?> input-file-block">
+                                                                <?php echo Form::label('thumbnail', 'Image',['class'=>'required text-dark']); ?> 
+                                                                    <?php echo Form::file('thumbnail', ['class' => 'input-file',
+                                                                'id'=>'thumbnail']); ?>
+
+                                                                <small class="text-danger"><?php echo e($errors->first('thumbnail')); ?></small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="text-dark"
+                                                                class="form-group<?php echo e($errors->has('status') ? ' has-error' : ''); ?> switch-main-block">
+                                                                <div class="custom-switch">
+                                                                    <?php echo Form::checkbox('status', 1,1,
+                                                                    ['id' => 'switch2', 'class' =>
+                                                                    'custom-control-input']); ?>
+
+                                                                    <label class="custom-control-label" for="switch2"><span><?php echo e(__("Status")); ?></span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <button type="reset" class="btn btn-danger-rgba"><i class="fa fa-ban"></i>
+                                                                <?php echo e(__("Reset")); ?></button>
+                                                            <button type="submit" class="btn btn-primary-rgba"><i class="fa fa-check-circle"></i>
+                                                                <?php echo e(__("Create")); ?></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                            <div class="clear-both"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>          
     </div>
-</div>
-</div>
-</div>
-<?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
-<!-- End Breadcrumbbar -->
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('maincontent'); ?>
 <!-- Start Row -->
 <div class="row">
     <div class="col-md-12">
@@ -230,12 +222,12 @@ unset($__errorArgs, $__bag); ?>
                                 <td><?php echo e(str_limit($method -> description ,20)); ?></td>
                                 <td>
                                     <?php if($method->thumbnail != ''): ?>
-                                    <img class="margin-right-15 width-height manual-img"
+                                    <img width="80px" height="80px" class="margin-right-15 width-height manual-img"
                                         src="<?php echo e(url('/image/payment/'.$method->thumbnail )); ?>"
                                         title="<?php echo e(ucfirst( $method->payment_name )); ?>" class="rounded-circle img-fluid">
 
                                     <?php else: ?>
-                                    <img class="margin-right-15 manual-img" title="<?php echo e(ucfirst($method->payment_name)); ?>"
+                                    <img width="80px" height="80px" class="margin-right-15 manual-img" title="<?php echo e(ucfirst($method->payment_name)); ?>"
                                         src="<?php echo e(Avatar::create(ucfirst($method->payment_name))->toBase64()); ?>" />
                                     <?php endif; ?>
                                 </td>
@@ -306,17 +298,17 @@ unset($__errorArgs, $__bag); ?>
                                                     <div class="col-md-12">
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <h1 class="card-title">
+                                                                <h1 class="card-title mb-4">
                                                                     <?php echo e(__('Edit Manual Payment Details:')); ?></h1>
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label class="text-dark"><?php echo e(__("Payment Name:")); ?> <span
-                                                                                    class="text-danger">*</span></label>
-                                                                            <input type="text"
-                                                                                class="form-control <?php $__errorArgs = ['payment_name'];
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label class="text-dark"><?php echo e(__("Payment Name:")); ?> <span
+                                                                                class="text-danger">*</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control <?php $__errorArgs = ['payment_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -324,30 +316,27 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                                                placeholder="<?php echo e(__("Your Payment name")); ?>"
-                                                                                name="payment_name" required=""
-                                                                                value="<?php echo e($method->payment_name); ?>">
-                                                                            <?php $__errorArgs = ['payment_name'];
+                                                                            placeholder="<?php echo e(__("Your Payment name")); ?>"
+                                                                            name="payment_name" required=""
+                                                                            value="<?php echo e($method->payment_name); ?>">
+                                                                        <?php $__errorArgs = ['payment_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong><?php echo e($message); ?></strong>
-                                                                            </span>
-                                                                            <?php unset($message);
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                                                            <small class="text-muted"> <i
-                                                                                    class="text-dark feather icon-help-circle"></i>
-                                                                               <?php echo e(__(" Enter your payement name")); ?></small>
-                                                                        </div>
+                                                                        <small class="text-muted text-info"> <i
+                                                                                class="text-dark feather icon-help-circle"></i>
+                                                                            <?php echo e(__(" Enter your payement name")); ?></small>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
@@ -378,14 +367,12 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                                                        <small class="text-muted"> <i
+                                                                        <small class="text-muted text-info"> <i
                                                                                 class="text-dark feather icon-help-circle"></i>
                                                                             <?php echo e(__("Enter your payment description")); ?> </small>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
@@ -407,8 +394,6 @@ unset($__errorArgs, $__bag); ?>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div
@@ -420,14 +405,14 @@ unset($__errorArgs, $__bag); ?>
                                                                             'custom-control-input']); ?>
 
                                                                             <label class="custom-control-label"
-                                                                                for="switch3"><?php echo e(__("Status")); ?></label>
+                                                                                for="switch3"><span><?php echo e(__("Status")); ?></span></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <button type="reset" class="btn btn-danger-rgba"><i
                                                                     class="fa fa-ban"></i>

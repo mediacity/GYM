@@ -29,7 +29,16 @@
 @endsection
 @section('maincontent')
     <!-- <div class="col-md-12"> -->
+    @if ($errors->any())  
+	<div class="alert alert-danger" role="alert">
+	@foreach($errors->all() as $error)     
+	<p>{{ $error}}<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true" style="color:red;">&times;</span></button></p>
+	@endforeach  
+	</div>
+	@endif
 <div class="row">
+    
     <div class="col-lg-12 col-md-12">
         <div class="card m-b-3">
             <div class="card-body">
@@ -43,7 +52,7 @@
                                     <label class="text-dark">{{ __("Name:") }} <span class="text-danger">*</span></label>
                                     <input value="{{ old('name') }}" type="text"
                                         class="form-control mb-2 @error('name') is-invalid @enderror"
-                                        placeholder="{{ __('Your Name') }}" name="name" required="">
+                                        placeholder="{{ __('Your Name') }}" name="name" required>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -82,7 +91,7 @@
                                             class="text-danger">*</span></label>
                                     <input value="{{ old('f_name') }}" type="text"
                                         class="form-control mb-2 @error('f_name') is-invalid @enderror"
-                                        placeholder="{{ __('Your Fathers Name') }}" name="f_name" required="">
+                                        placeholder="{{ __('Your Fathers Name') }}" name="f_name" required>
                                     @error('f_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -296,7 +305,7 @@
                                                 {{ __("Select religion eg:buddhism,islam ") }}</small>
                                         </div>
                                         <div class="col-lg-2 col-md-3 col-3">
-                                            <button class="btn btn-sm btn-primary religion-btn" data-toggle="modal"
+                                            <button class="btn btn-sm btn-primary religion-btn" type="button" data-toggle="modal"
                                                 data-target="#exampleModal">
                                                 +
                                             </button>
@@ -328,7 +337,7 @@
                                                 {{ __("Select secondlanguage eg:Marathi,Gujrathi ") }}</small>
                                         </div>
                                         <div class="col-lg-2 col-md-3 col-3">
-                                            <button class="btn btn-sm btn-primary religion-btn" data-toggle="modal"
+                                            <button class="btn btn-sm btn-primary religion-btn" type="button" data-toggle="modal"
                                                 data-target="#exampleModalll">
                                                 +
                                             </button>
@@ -394,8 +403,7 @@
                                                 {{ __("Select occupation eg:dentist,bussinessman") }} </small>
                                         </div>
                                         <div class="col-lg-2 col-md-3 col-3">
-                                            <button class="btn btn-sm btn-primary religion-btn" data-toggle="modal"
-                                                data-target="#exampleModall">
+                                            <button class="btn btn-sm btn-primary religion-btn" type="button" data-toggle="modal" data-target="#exampleModall">
                                                 +
                                             </button>
                                         </div>
@@ -420,8 +428,7 @@
                                                     @endif
                                                 </select>
                                             </div>
-                                            <button class="btn btn-sm btn-primary health-btn" data-toggle="modal"
-                                                data-target="#exampleModalCenter">
+                                            <button class="btn btn-sm btn-primary health-btn" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                                                 +
                                             </button>
                                         </div>
@@ -526,7 +533,7 @@
                                                     'custom-control-input'])
                                                     !!}
                                                     <label class="custom-control-label"
-                                                        for="switch1">{{ __("Is Active") }}</label>
+                                                        for="switch1"><span>{{ __("Is Active") }}</span></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -582,7 +589,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class'
                                     =>'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Status") }}</label>
+                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
 
@@ -633,7 +640,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class'
                                     =>'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Status") }}</label>
+                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
 
@@ -684,7 +691,7 @@
                                 <div class="custom-switch">
                                     {!! Form::checkbox('is_active', 1,1, ['id' => 'switch1', 'class'
                                     =>'custom-control-input']) !!}
-                                    <label class="custom-control-label" for="switch1">{{ __("Status") }}</label>
+                                    <label class="custom-control-label" for="switch1"><span>{{ __("Status") }}</span></label>
                                 </div>
                             </div>
                             <br>

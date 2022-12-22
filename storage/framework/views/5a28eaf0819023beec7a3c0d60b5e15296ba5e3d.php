@@ -695,7 +695,7 @@
     <?php endif; ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard.users')): ?>
     <div class="row">
-        <div class="col-lg-12 col-xl-6">
+        <div class="col-lg-6 col-xl-3 col-sm-6">
             <div class="card m-b-30  shadow-sm">
 
                 <div class="card-body">
@@ -713,7 +713,7 @@
 
             </div>
         </div>
-        <div class="col-lg-12 col-xl-6">
+        <div class="col-lg-6 col-xl-3 col-sm-6">
             <div class="card m-b-30 shadow-sm">
 
                 <div class="card-body">
@@ -744,24 +744,23 @@
     </div>
     <?php endif; ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard.trainer')): ?>
-    <div class="col-lg-12 col-xl-3">
-        <div class="card m-b-30">
-            <div class="blue">
+    <div class="row">
+        <div class="col-lg-6 col-xl-3 col-sm-6">
+            <div class="card m-b-30">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-7">
+                        <div class="col-6">
                             <h2><?php echo e($trainers); ?></h2>
-                            <h4><?php echo e(__("User")); ?></h4>
+                            <p class="font-14 mb-0"><?php echo e(__("User")); ?></p>
                         </div>
-                        <div class="col-5 text-right">
-                            <div class="font-40"><a href="<?php echo e(route('users.index')); ?>"><i
-                                        class="feather icon-user-check"></i></a></div>
+                        <div class="col-6 text-right">
+                            <div><a href="<?php echo e(route('users.index')); ?>"><i
+                                        class="feather icon-user-check icondashboard"></i></a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <?php endif; ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard.other')): ?>
